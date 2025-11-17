@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
+import LogoTicker from './LogoTicker';
 
 const partners = [
   {
@@ -54,25 +55,7 @@ export default function Partners() {
             Trusted by leading brands and creative businesses worldwide
           </p>
         </motion.div>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 max-w-5xl mx-auto">
-          {partners.map((partner, index) => (
-            <motion.div
-              key={partner.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="relative aspect-square rounded-xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
-            >
-              <Image
-                src={partner.logo}
-                alt={partner.name}
-                fill
-                className="object-cover p-4 grayscale group-hover:grayscale-0 transition-all duration-300"
-              />
-            </motion.div>
-          ))}
-        </div>
+        <LogoTicker/>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

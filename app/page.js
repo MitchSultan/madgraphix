@@ -3,7 +3,12 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
+import WorkShowcase from './components/WorkShowcase';
+import CaseStudies from './components/CaseStudies';
 import Partners from './components/Partners';
+import LogoTicker from './components/LogoTicker';
+import Testimonials from './components/Testimonials';
+import PartnershipTestimonials from './components/PartnershipTestimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -17,7 +22,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        url: '',
         width: 1200,
         height: 630,
         alt: 'Mirror Arts Designs - Creative Graphic Design',
@@ -38,9 +43,13 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      <Portfolio />
+      
+      <WorkShowcase />
+      <CaseStudies />
       <Partners />
-      <Contact />
+      
+      <PartnershipTestimonials />  
+      
       <Footer />
     </main>
   );

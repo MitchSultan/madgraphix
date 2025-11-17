@@ -53,7 +53,7 @@ export default function Footer() {
         <div className="border-t border-slate-800 pt-8 text-center">
           <p className="text-slate-400 flex items-center justify-center gap-2">
             <span>&copy; {currentYear} Mirror Arts Designs. Made with</span>
-            <Heart size={16} className="text-emerald-500 fill-emerald-500" />
+            <Heart size={16} className="text-blue-500 fill-emerald-500" />
             <span>by M.A.D Graphix</span>
           </p>
         </div>

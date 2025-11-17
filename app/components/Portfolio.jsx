@@ -9,13 +9,13 @@ const projects = [
   {
     title: 'Brand Identity - Tech Startup',
     category: 'Branding',
-    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/CAAP.png',
   },
   {
     title: 'Logo Design - Coffee House',
     category: 'Logo',
-    image: 'https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
+    image: '/images/tshrt.jpg',
+     },
   {
     title: 'Packaging - Organic Products',
     category: 'Packaging',

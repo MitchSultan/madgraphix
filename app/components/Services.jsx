@@ -1,88 +1,171 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Palette, Layers, Globe, Package, Printer, Film, Pen } from 'lucide-react';
-
-const services = [
-  {
-    icon: Palette,
-    title: 'Logo Design',
-    description: 'Memorable logos that capture your brand essence and stand the test of time',
-  },
-  {
-    icon: Layers,
-    title: 'Brand Identity',
-    description: 'Complete brand systems including guidelines, color palettes, and typography',
-  },
-  {
-    icon: Globe,
-    title: 'Web Design',
-    description: 'Beautiful, responsive websites that engage users and drive conversions',
-  },
-  {
-    icon: Package,
-    title: 'Packaging Design',
-    description: 'Eye-catching packaging that makes your product stand out on shelves',
-  },
-  {
-    icon: Printer,
-    title: 'Print Design',
-    description: 'Brochures, flyers, posters, and all print materials with stunning visuals',
-  },
-  {
-    icon: Film,
-    title: 'Motion Graphics',
-    description: 'Dynamic animations and video content that bring your brand to life',
-  },
-  {
-    icon: Pen,
-    title: 'Illustrations',
-    description: 'Custom illustrations that add unique character to your brand',
-  },
-];
-
-export default function Services() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+export default function ServiceSection() {
+  const services = [
+    {
+      title: "Website Design",
+      desc: "Modern UI/UX that elevates your brand.",
+      bg: "bg-indigo-500",
+    },
+    {
+      title: "Web Development",
+      desc: "High-performance websites & systems.",
+      bg: "bg-emerald-500",
+    },
+    {
+      title: "Brand Identity",
+      desc: "Logos, guidelines & brand alignment.",
+      bg: "bg-rose-500",
+    },
+    {
+      title: "SEO Optimization",
+      desc: "Rank higher and drive organic traffic.",
+      bg: "bg-amber-500",
+    },
+    {
+      title: "Content Strategy",
+      desc: "Engaging content that converts.",
+      bg: "bg-blue-500",
+    },
+    {
+      title: "Social Media Mgmt",
+      desc: "Grow and engage your audience.",
+      bg: "bg-fuchsia-500",
+    },
+    {
+      title: "E-Commerce Setup",
+      desc: "WooCommerce / Shopify store builds.",
+      bg: "bg-green-600",
+    },
+  ];
 
   return (
-    <section id="services" className="py-24 bg-slate-50">
-      <div className="container mx-auto px-6">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-slate-900">
+    <section className="w-full py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        {/* HEADER */}
+        <div className="flex flex-col md:flex-row justify-between mb-14">
+          <h2 className="text-4xl text-black lg:text-5xl font-bold">
             Our Services
           </h2>
-          <div className="w-24 h-1 bg-emerald-500 mx-auto mb-6"></div>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Comprehensive design solutions tailored to elevate your brand
+          <p className="text-gray-600 mt-3 text-lg">
+            Everything you need to build, grow, and scale your digital presence.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1  lg:grid-rows-3 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+          <div className=" col-span-2 row-span-1 bg-indigo-100 rounded-md p-10 flex flex-col justify-end bg-[url('/images/hoodie.jpg')] bg-contain bg-no-repeat bg-right
+           " >
+            <h5>Design</h5>
+            <p className="max-w-72">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+              soluta sapiente expedita quos sint quasi doloremque atque velit
+              quia odit.
+            </p>
+          </div>
+          <div className=" col-span-1 row-span-2 bg-indigo-800  rounded-md p-10 flex flex-col justify-end ">
+            <h4>Brand Identity</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+              soluta sapiente expedita quos sint quasi doloremque atque velit
+              quia odit.
+            </p>
+          </div>
+          <div className=" col-span-1 row-span-1 bg-indigo-800 rounded-md p-10  ">
+             <h3>Marketing</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+              soluta sapiente expedita quos sint quasi doloremque atque velit
+              quia odit.
+            </p>
+          </div>
+          <div className=" col-span-1 row-span-2 bg-indigo-800 rounded-md p-10 flex flex-col justify-end ">
+            <h3>Motion Graphics</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+              soluta sapiente expedita quos sint quasi doloremque atque velit
+              quia odit.
+            </p>
+          </div>
+          <div className=" col-span-1 row-span-1 bg-indigo-800 rounded-md p-10 ">
+            <h3>Illustration</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+              soluta sapiente expedita quos sint quasi doloremque atque velit
+              quia odit.
+            </p>
+          </div>
+          <div className=" col-span-1 row-span-1 bg-indigo-800 rounded-md p-10 ">
+           
+          </div>
+          <div className=" col-span-1 row-span-1  rounded-md p-10 bg-[url('/images/bg.png')] bg-center bg-no-repeat bg-contain "></div>
+          <div className=" col-span-2 row-span-1 bg-indigo-800 rounded-md p-10 ">
+            <h3>Ads</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+              soluta sapiente expedita quos sint quasi doloremque atque velit
+              quia odit.
+            </p>
+          </div>
+        </div>
+
+        {/*}    
+
+        <div class="grid grid-cols-4 md:grid-cols-4 grid-rows-5 md:grid-rows-5 gap-2 md:gap-2 m-4">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+            <div
+              key={index}
+              className={`
+                ${service.bg} 
+                text-white p-6 rounded-2xl shadow-lg 
+                flex flex-col justify-between 
+                transition transform hover:scale-[1.03] hover:shadow-xl duration-300
+              `}
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-100 group-hover:bg-emerald-500 transition-colors duration-300 mb-6">
-                <service.icon className="w-8 h-8 text-emerald-600 group-hover:text-white transition-colors duration-300" />
+              <div class="col-start-1 row-start-1 col-span-2 md:col-start-1 md:row-start-1 md:col-span-2 md:row-span-1 bg-gray-300 rounded-md p-10">
+                <div>
+                  <h3 className="text-2xl font-semibold mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm opacity-90">{service.desc}</p>
+                </div>
+                <span className="text-xs mt-4 opacity-80">Learn More →</span>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-slate-900">{service.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{service.description}</p>
-            </motion.div>
+              <div class="col-start-3 row-start-1 col-span-2 md:col-start-3 md:row-start-1 md:col-span-2 md:row-span-1 bg-gray-300 rounded-md p-10">
+                1
+              </div>
+              <div class="col-start-1 row-start-2 row-span-2 md:col-start-1 md:row-start-2 md:col-span-1 md:row-span-2 bg-gray-300 rounded-md p-10">
+                2
+              </div>
+              <div class="col-start-2 row-start-2 md:col-start-2 md:row-start-2 md:col-span-1 md:row-span-1 bg-gray-300 rounded-md p-10">
+                3
+              </div>
+              <div class="col-start-3 row-start-2 col-span-2 row-span-2 md:col-start-3 md:row-start-2 md:col-span-2 md:row-span-2 bg-gray-300 rounded-md p-10">
+                4
+              </div>
+              <div class="col-start-2 row-start-3 row-span-2 md:col-start-2 md:row-start-3 md:col-span-1 md:row-span-2 bg-gray-300 rounded-md p-10">
+                5
+              </div>
+              <div class="col-start-1 row-start-4 md:col-start-1 md:row-start-4 md:col-span-1 md:row-span-1 bg-gray-300 rounded-md p-10">
+                6
+              </div>
+              <div class="col-start-3 row-start-4 row-span-2 md:col-start-3 md:row-start-4 md:col-span-1 md:row-span-2 bg-gray-300 rounded-md p-10">
+                7
+              </div>
+              <div class="col-start-4 row-start-4 row-span-2 md:col-start-4 md:row-start-4 md:col-span-1 md:row-span-2 bg-gray-300 rounded-md p-10">
+                8
+              </div>
+              <div class="col-start-1 row-start-5 md:col-start-1 md:row-start-5 md:col-span-1 md:row-span-1 bg-gray-300 rounded-md p-10">
+                9
+              </div>
+              <div class="col-start-2 row-start-5 md:col-start-2 md:row-start-5 md:col-span-1 md:row-span-1 bg-gray-300 rounded-md p-10">
+                10
+              </div>
+              
+            </div>
           ))}
         </div>
+
+        */}
       </div>
     </section>
   );

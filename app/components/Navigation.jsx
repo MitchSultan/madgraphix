@@ -40,7 +40,7 @@ export default function Navigation() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-gray-50 shadow-lg' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-6">
@@ -51,7 +51,7 @@ export default function Navigation() {
               isScrolled ? 'text-slate-900' : 'text-white'
             }`}
           >
-            M.A.D Graphix
+            <img src='/logos/mad.png' className='h-full max-w-14 '></img>
           </button>
 
           <div className="hidden md:flex items-center gap-8">

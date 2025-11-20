@@ -167,3 +167,13 @@ background: -webkit-radial-gradient(circle, hsla(302, 82%, 76%, 1) 0%, hsla(258,
 
 filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F492F0", endColorstr="#A18DCE", GradientType=1 );
 }
+
+.blue-glass{
+  /* From https://css.glass */
+background: rgba(137, 246, 246, 0.43);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(11px);
+-webkit-backdrop-filter: blur(11px);
+border: 1px solid rgba(137, 246, 246, 0.3);
+}

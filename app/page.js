@@ -45,10 +45,12 @@ export default function Home() {
       <Services />
       
       <WorkShowcase />
+
+      <PartnershipTestimonials />
       <CaseStudies />
       <Partners />
       
-      <PartnershipTestimonials />  
+        
       
       <Footer />
     </main>

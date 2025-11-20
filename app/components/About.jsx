@@ -12,8 +12,9 @@ export default function AboutUs() {
        
         {/* LEFT — TEXT */}
         <div>
+          <div className="blue-glass flex justify-center items-center py-1 rounded-full w-32">About us</div>
           <h2 className="text-4xl text-black lg:text-5xl font-bold mb-6 leading-tight">
-            About Us
+             Art Straight from the Heart!
           </h2>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">

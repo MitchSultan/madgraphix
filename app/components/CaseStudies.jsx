@@ -31,7 +31,7 @@ export default function CaseStudies() {
     <section className="w-full py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
-        <h2 className="text-lg font-semibold text-red-600 mb-8">
+        <h2 className="text-lg font-semibold text-blue-600 mb-8">
           Case Studies and Insights
         </h2>
 
@@ -49,7 +49,7 @@ export default function CaseStudies() {
               </div>
 
               {/* Tag */}
-              <p className="text-sm text-red-600 font-medium mb-2">
+              <p className="text-sm text-blue-600 font-medium mb-2">
                 {item.tag}
               </p>
 
@@ -62,13 +62,13 @@ export default function CaseStudies() {
         </div>
 
         {/* CTA Link */}
-        <div className="mt-10">
+        <div className="mt-10 ">
           <a
             href="#"
-            className="text-red-600 font-medium inline-flex items-center gap-1 hover:underline"
+            className="text-blue-600 font-medium inline-flex items-center gap-1 hover:underline"
             onClick={(e) => e.preventDefault()}
           >
-            See how we have done it for our clients
+            Read all About Us
             <svg
               className="w-4 h-4"
               fill="none"

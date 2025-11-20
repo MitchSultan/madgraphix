@@ -66,7 +66,7 @@ export default function PartnershipTestimonials() {
         {/* Left Heading */}
         <div>
           <h2 className="text-5xl font-semibold text-[#3a2413] leading-tight">
-            Forming<br />lasting<br />partnerships
+            Forming lasting<br />partnerships
           </h2>
         </div>
 
@@ -90,7 +90,7 @@ export default function PartnershipTestimonials() {
             </p>
 
             {/* Divider */}
-            <div className="w-full border-t border-gray-400 my-8"></div>
+            <div className="w-full min-h-12 border-t border-gray-400 my-8"></div>
 
             {/* Author Info */}
             <div className="flex items-center gap-4">

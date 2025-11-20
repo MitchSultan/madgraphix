@@ -1,12 +1,78 @@
+'use client';
 import React from "react";
+import { gsap } from "gsap";
+import { use, useRef } from 'react';
+
+import { useGSAP } from '@gsap/react';
+    
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(ScrollTrigger,SplitText,useGSAP);
+
+
 
 export default function Hero() {
+
+
+  const container = useRef(); 
+useGSAP(() => {
+gsap.from(container.current, {
+ scrollTrigger: {
+   trigger: container.current,
+   start: "top 60%",
+   end: "bottom 20%",
+   toggleActions: "play none none none",
+ },
+ opacity: 0,
+ y: 50,
+ duration: 3,
+ ease: "power3.out",});
+
+
+ // split all elements with the class "split" into words and characters
+let split = SplitText.create(".split", { type: "words, chars" });
+
+// now animate the characters in a staggered fashion
+gsap.from(split.chars, {
+  scrollTrigger: {
+    trigger: '.split',
+    start: "top 40%",
+    end: "bottom 20%",
+    toggleActions: "play none none none"
+  },
+  duration: 1, 
+  y: 100,         // animate from 100px below
+  autoAlpha: 0,   // fade in from opacity: 0 and visibility: hidden
+  stagger: 0.05,  // 0.05 seconds between each
+});
+let split1 = SplitText.create(".split1", { type: "words, chars" });
+
+// now animate the characters in a staggered fashion
+gsap.from(split1.words, {
+  scrollTrigger: {
+    trigger: '.split1',
+    start: "top 40%",
+    end: "bottom 20%",
+    toggleActions: "play none none none"
+  },
+  duration: 1, 
+  y: 100,         // animate from 100px below
+  autoAlpha: 0,   // fade in from opacity: 0 and visibility: hidden
+  stagger: 0.05,  // 0.05 seconds between each
+});
+
+
+});
+
+
+
   return (
     <>
       <section className="hero-section h-screen pt-32 md:pt-0  flex flex-col md:flex-row       items-center  text-white">
         <div className="container">
           <div className="hero-content p-4 md:p-20">
-            <h1 className="hero-title text-2xl md:text-4xl lg:text-6xl font-extrabold">
+            <h1 className="hero-title text-2xl md:text-4xl lg:text-6xl font-extrabold split">
               {/*Where Imagination Meets Design:*/} 
               Where Creativity Goes Mad
             </h1>

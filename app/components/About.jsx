@@ -33,7 +33,7 @@ gsap.from(container.current, {
 let split = SplitText.create(".split", { type: "words, chars" });
 
 // now animate the characters in a staggered fashion
-gsap.from(split.chars, {
+gsap.from(split.words, {
   scrollTrigger: {
     trigger: '.split',
     start: "top 40%",
@@ -45,6 +45,8 @@ gsap.from(split.chars, {
   autoAlpha: 0,   // fade in from opacity: 0 and visibility: hidden
   stagger: 0.05,  // 0.05 seconds between each
 });
+
+
 let split1 = SplitText.create(".split1", { type: "words, chars" });
 
 // now animate the characters in a staggered fashion

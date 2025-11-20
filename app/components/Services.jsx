@@ -1,43 +1,7 @@
 "use client";
 
 export default function ServiceSection() {
-  const services = [
-    {
-      title: "Website Design",
-      desc: "Modern UI/UX that elevates your brand.",
-      bg: "bg-indigo-500",
-    },
-    {
-      title: "Web Development",
-      desc: "High-performance websites & systems.",
-      bg: "bg-emerald-500",
-    },
-    {
-      title: "Brand Identity",
-      desc: "Logos, guidelines & brand alignment.",
-      bg: "bg-rose-500",
-    },
-    {
-      title: "SEO Optimization",
-      desc: "Rank higher and drive organic traffic.",
-      bg: "bg-amber-500",
-    },
-    {
-      title: "Content Strategy",
-      desc: "Engaging content that converts.",
-      bg: "bg-blue-500",
-    },
-    {
-      title: "Social Media Mgmt",
-      desc: "Grow and engage your audience.",
-      bg: "bg-fuchsia-500",
-    },
-    {
-      title: "E-Commerce Setup",
-      desc: "WooCommerce / Shopify store builds.",
-      bg: "bg-green-600",
-    },
-  ];
+ 
 
   return (
     <section className="w-full py-20 bg-gray-50">
@@ -52,17 +16,17 @@ export default function ServiceSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1  lg:grid-rows-3 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+        <div className="grid grid-cols-1  lg:grid-rows-3  lg:grid-cols-4 gap-2">
           <div className=" col-span-2 row-span-1 bg-indigo-100 rounded-md p-10 flex flex-col justify-end bg-[url('/images/hoodie.jpg')] bg-contain bg-no-repeat bg-right
            " >
             <h5>Design</h5>
-            <p className="max-w-72">
+            <p className="lg:max-w-72">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
               soluta sapiente expedita quos sint quasi doloremque atque velit
               quia odit.
             </p>
           </div>
-          <div className=" col-span-1 row-span-2 shadow-md  rounded-md p-10 flex flex-col justify-end  bg-[url('/images/CAAP.png')] bg-contain bg-no-repeat bg-top  ">
+          <div className=" col-span-2 md:col-span-1 row-span-2 shadow-md  rounded-md p-10 flex flex-col justify-end  bg-[url('/images/CAAP.png')] bg-contain bg-no-repeat bg-top  ">
             <h4>Brand Identity</h4>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
@@ -70,7 +34,7 @@ export default function ServiceSection() {
               quia odit.
             </p>
           </div>
-          <div className=" col-span-1 row-span-1 bg-blue-300 rounded-md p-10  ">
+          <div className=" col-span-2 md:col-span-1 row-span-1 bg-blue-300 rounded-md p-10  ">
              <h3>Marketing</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
@@ -78,7 +42,7 @@ export default function ServiceSection() {
               quia odit.
             </p>
           </div>
-          <div className=" col-span-1 row-span-2 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/top-phn.png)] bg-center bg-no-repeat bg-contain ">
+          <div className=" col-span-2 md:col-span-1 row-span-2 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/top-phn.png)] bg-center bg-no-repeat bg-contain ">
             <h3>Motion Graphics</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
@@ -86,7 +50,7 @@ export default function ServiceSection() {
               quia odit.
             </p>
           </div>
-          <div className=" col-span-1 row-span-1 bg-blue-300 rounded-md p-10 ">
+          <div className=" col-span-2 md:col-span-1 row-span-1 bg-blue-300 rounded-md p-10 ">
             <h3>Illustration</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti

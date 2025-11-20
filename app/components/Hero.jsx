@@ -15,11 +15,18 @@ export default function Hero() {
               eye-catching designs. At Mirror Arts Designs Graphix, we mix a
               love for design with a knack for making your brand pop.
             </p>
+            <div className=" flex gap-2">
             <button className=" bg-blue-600 px-4 rounded-2xl">
             <a href="#get-started" className="hero-button">
-              Get Started
+              Our Work
             </a>
             </button>
+            <button className=" blue-glass px-4 text-black rounded-2xl">
+            <a href="https://wa.me/254708779284" className="hero-button">
+              Let's Talk
+            </a>
+            </button>
+            </div>
           </div>
         </div>
         <div className="glass">

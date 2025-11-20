@@ -9,6 +9,8 @@ export default function page() {
         <Carousel />
         <SectionCarousel />
         <MultiItemCarousel />
+
+        
     </div>
   )
 }

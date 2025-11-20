@@ -43,7 +43,7 @@ export default function Navigation() {
         isScrolled ? 'bg-gray-50 shadow-lg' : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 new-glass">
         <div className="flex items-center justify-between h-20">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

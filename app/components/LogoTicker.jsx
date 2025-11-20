@@ -1,64 +1,51 @@
-'use client';
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-
-export default function LogoTicker() {
-  const wrapperRef = useRef(null);
-  const trackRef = useRef(null);
-
-  const logos = [
-    "/logos/denri.png",
-    "/logos/mad.png",
-    "/logos/moko.png",
-    "/logos/the.png",
-    "/logos/tog.png",
-  ];
-
-  useEffect(() => {
-    const wrapper = wrapperRef.current;
-    const baseTrack = trackRef.current;
-
-    // Get base track width
-    let trackWidth = baseTrack.scrollWidth;
-
-    // Duplicate horizontally until wrapper is wide enough
-    while (wrapper.scrollWidth < window.innerWidth * 2) {
-      const clone = baseTrack.cloneNode(true);
-      wrapper.appendChild(clone);
-      trackWidth += clone.scrollWidth;
-    }
-
-    // GSAP infinite scroll
-    gsap.to(wrapper.children, {
-      x: `-=${trackWidth / 2}`,
-      duration: 18,
-      ease: "linear",
-      repeat: -1,
-      modifiers: {
-        x: gsap.utils.unitize((x) => parseFloat(x) % -(trackWidth / 2)),
-      },
-    });
-  }, []);
-
+export default function Example() {
   return (
-    <div className="overflow-hidden w-full py-8 bg-white">
-      {/* Horizontal wrapper for all tracks */}
-      <div
-        ref={wrapperRef}
-        className="flex whitespace-nowrap items-center gap-16"
-      >
-        {/* Base track */}
-        <div ref={trackRef} className="flex items-center gap-16">
-          {logos.map((logo, index) => (
-            <img
-              key={index}
-              src={logo}
-              alt={`logo-${index}`}
-              className="h-12 md:h-16 lg:h-20 w-auto opacity-70 hover:opacity-100 transition object-contain"
-            />
-          ))}
+    <div className="bg-gray-900 py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <h2 className="text-center text-lg/8 font-semibold ">Trusted by the world’s most innovative teams</h2>
+      
+        <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+          <img
+            alt="Transistor"
+            src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-white.svg"
+            width={158}
+            height={48}
+            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+          />
+
+          <img
+            alt="Reform"
+            src="https://tailwindcss.com/plus-assets/img/logos/158x48/reform-logo-white.svg"
+            width={158}
+            height={48}
+            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+          />
+
+          <img
+            alt="Tuple"
+            src="https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-white.svg"
+            width={158}
+            height={48}
+            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+          />
+
+          <img
+            alt="SavvyCal"
+            src="https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-white.svg"
+            width={158}
+            height={48}
+            className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
+          />
+
+          <img
+            alt="Statamic"
+            src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-white.svg"
+            width={158}
+            height={48}
+            className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
+          />
         </div>
       </div>
     </div>
-  );
+  )
 }

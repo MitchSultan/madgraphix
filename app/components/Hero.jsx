@@ -3,7 +3,7 @@ import React from "react";
 export default function Hero() {
   return (
     <>
-      <section className="hero-section h-screen pt-32 md:pt-0  flex flex-col md:flex-row       items-center bg-gradient-to-r from-purple-100 via-pink-200 to-red-200 text-white">
+      <section className="hero-section h-screen pt-32 md:pt-0  flex flex-col md:flex-row       items-center  text-white">
         <div className="container">
           <div className="hero-content p-4 md:p-20">
             <h1 className="hero-title text-2xl md:text-4xl lg:text-6xl font-extrabold">
@@ -22,7 +22,7 @@ export default function Hero() {
             </button>
           </div>
         </div>
-        <div>
+        <div className="glass">
           <img src="/images/herr.png" className="max-w-full h-auto"></img>
         </div>
       </section>

@@ -62,7 +62,7 @@ export default function ServiceSection() {
               quia odit.
             </p>
           </div>
-          <div className=" col-span-1 row-span-2 bg-indigo-800  rounded-md p-10 flex flex-col justify-end ">
+          <div className=" col-span-1 row-span-2 shadow-md  rounded-md p-10 flex flex-col justify-end  bg-[url('/images/CAAP.png')] bg-contain bg-no-repeat bg-top  ">
             <h4>Brand Identity</h4>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
@@ -70,7 +70,7 @@ export default function ServiceSection() {
               quia odit.
             </p>
           </div>
-          <div className=" col-span-1 row-span-1 bg-indigo-800 rounded-md p-10  ">
+          <div className=" col-span-1 row-span-1 bg-blue-300 rounded-md p-10  ">
              <h3>Marketing</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
@@ -78,7 +78,7 @@ export default function ServiceSection() {
               quia odit.
             </p>
           </div>
-          <div className=" col-span-1 row-span-2 bg-indigo-800 rounded-md p-10 flex flex-col justify-end ">
+          <div className=" col-span-1 row-span-2 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/top-phn.png)] bg-center bg-no-repeat bg-contain ">
             <h3>Motion Graphics</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
@@ -86,7 +86,7 @@ export default function ServiceSection() {
               quia odit.
             </p>
           </div>
-          <div className=" col-span-1 row-span-1 bg-indigo-800 rounded-md p-10 ">
+          <div className=" col-span-1 row-span-1 bg-blue-300 rounded-md p-10 ">
             <h3>Illustration</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
@@ -94,13 +94,13 @@ export default function ServiceSection() {
               quia odit.
             </p>
           </div>
-          <div className=" col-span-1 row-span-1 bg-indigo-800 rounded-md p-10 ">
+          <div className=" col-span-1 row-span-1 grad rounded-md p-10 ">
            
           </div>
           <div className=" col-span-1 row-span-1  rounded-md p-10 bg-[url('/images/bg.png')] bg-center bg-no-repeat bg-contain "></div>
-          <div className=" col-span-2 row-span-1 bg-indigo-800 rounded-md p-10 ">
+          <div className=" col-span-2 row-span-1 shadow-md rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/rt-lap.png')] bg-right bg-no-repeat bg-contain ">
             <h3>Ads</h3>
-            <p>
+            <p className="max-w-72">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
               soluta sapiente expedita quos sint quasi doloremque atque velit
               quia odit.

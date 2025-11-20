@@ -140,3 +140,30 @@ ol {
 .animate-logo-scroll {
   animation: logo-scroll 18s linear infinite;
 }
+
+
+
+.glass{background-size: 100% 100%;
+background-position: 0px 0px;
+background-image: radial-gradient(39% 50% at 50% 63%, #A100FFFF 0%, #A100FFFF 2%, #Ffffff 100%);}
+.new-glass{
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 0.27);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.8px);
+-webkit-backdrop-filter: blur(5.8px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.grad{
+  background: hsla(302, 82%, 76%, 1);
+
+background: radial-gradient(circle, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
+
+background: -moz-radial-gradient(circle, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
+
+background: -webkit-radial-gradient(circle, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F492F0", endColorstr="#A18DCE", GradientType=1 );
+}

@@ -14,7 +14,7 @@ const testimonials = [
     ],
     author: "Cyrus Kiani",
     role: "EveryTable, Director of Product",
-    avatar: "/images/avatar1.png", // replace with your image
+    avatar: "/images/bg.png", // replace with your image
   },
   {
     text: [
@@ -26,7 +26,7 @@ const testimonials = [
     ],
     author: "Mara Reed",
     role: "Brand Strategist, Nova Labs",
-    avatar: "/images/avatar2.png",
+    avatar: "/images/bg.png",
   },
   {
     text: [
@@ -38,7 +38,7 @@ const testimonials = [
     ],
     author: "Daniel M.",
     role: "Founder, Vortex",
-    avatar: "/images/avatar3.png",
+    avatar: "/images/bg.png",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function PartnershipTestimonials() {
   }, []);
 
   return (
-    <section className="w-full bg-gray-100 py-20 px-6">
+    <section className="w-full h-screen bg-gray-100 py-20 px-6 flex justify-center items-center">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
         {/* Left Heading */}
@@ -81,7 +81,7 @@ export default function PartnershipTestimonials() {
                 ) : (
                   <mark
                     key={i}
-                    className="px-1 py-0.5 bg-amber-200 rounded-sm"
+                    className="px-1 py-0.5 bg-blue-200 rounded-sm"
                   >
                     {part.highlight}
                   </mark>

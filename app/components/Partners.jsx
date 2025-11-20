@@ -38,23 +38,9 @@ export default function Partners() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="partners" className="py-24 bg-slate-50">
+    <section id="partners" className="py-24 bg-gray-900">
       <div className="container mx-auto px-6">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-slate-900">
-            Our Partners
-          </h2>
-          <div className="w-24 h-1 bg-emerald-500 mx-auto mb-6"></div>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Trusted by leading brands and creative businesses worldwide
-          </p>
-        </motion.div>
+        
         <LogoTicker/>
 
         <motion.div

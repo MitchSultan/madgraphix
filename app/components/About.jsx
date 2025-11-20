@@ -2,7 +2,7 @@
 
 export default function AboutUs() {
   return (
-    <section className="w-full py-16 bg-white ">
+    <section className="w-full py-32 bg-white ">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
         {/* RIGHT — VIDEO */}

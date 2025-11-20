@@ -15,15 +15,10 @@ gsap.registerPlugin(ScrollTrigger,SplitText,useGSAP);
 export default function Hero() {
 
 
-  const container = useRef(); 
+  const hero = useRef(); 
 useGSAP(() => {
-gsap.from(container.current, {
- scrollTrigger: {
-   trigger: container.current,
-   start: "top 60%",
-   end: "bottom 20%",
-   toggleActions: "play none none none",
- },
+gsap.from(hero.current, {
+ 
  opacity: 0,
  y: 50,
  duration: 3,
@@ -46,21 +41,7 @@ gsap.from(split.chars, {
   autoAlpha: 0,   // fade in from opacity: 0 and visibility: hidden
   stagger: 0.05,  // 0.05 seconds between each
 });
-let split1 = SplitText.create(".split1", { type: "words, chars" });
 
-// now animate the characters in a staggered fashion
-gsap.from(split1.words, {
-  scrollTrigger: {
-    trigger: '.split1',
-    start: "top 40%",
-    end: "bottom 20%",
-    toggleActions: "play none none none"
-  },
-  duration: 1, 
-  y: 100,         // animate from 100px below
-  autoAlpha: 0,   // fade in from opacity: 0 and visibility: hidden
-  stagger: 0.05,  // 0.05 seconds between each
-});
 
 
 });
@@ -76,7 +57,7 @@ gsap.from(split1.words, {
               {/*Where Imagination Meets Design:*/} 
               Where Creativity Goes Mad
             </h1>
-            <p className="hero-subtitle text-black">
+            <p className="hero-subtitle text-black split">
               We are all about bringing your brand to life with creative and
               eye-catching designs. At Mirror Arts Designs Graphix, we mix a
               love for design with a knack for making your brand pop.
@@ -96,7 +77,7 @@ gsap.from(split1.words, {
           </div>
         </div>
         <div className="glass">
-          <img src="/images/herr.png" className="max-w-full h-auto"></img>
+          <img src="/images/herr.png" ref={hero} className="max-w-full h-auto"></img>
         </div>
       </section>
     </>

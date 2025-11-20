@@ -12,6 +12,7 @@ export default function WorkShowcase() {
     {
       title: "The Other Guys Kenya",
       image: "/images/tshrts.jpg",
+      link:'/CaseStudies/theotherguyskenya',
       services: ["Design", "Development", "Branding"],
     },
     {
@@ -89,11 +90,14 @@ export default function WorkShowcase() {
               {/* Content */}
               <div className="p-6">
                 <h5 className="text-xl font-semibold mb-2">{work.title}</h5>
+                <a href={work.link} className="text-blue-600 hover:underline">
+                  View Case Study &rarr;
+                </a>
               </div>
 
               {/* Ticker */}
-              <div className="w-full overflow-hidden bg-black py-2">
-                <div className="flex whitespace-nowrap animate-scroll text-white text-sm gap-10 px-4">
+              <div className="w-full overflow-hidden  py-2">
+                <div className="flex whitespace-nowrap animate-scroll text-black text-sm gap-10 px-4">
                   {work.services.map((s, i) => (
                     <span key={i} className="opacity-90">
                       {s} •

@@ -33,17 +33,17 @@ gsap.from(container.current, {
 let split = SplitText.create(".split", { type: "words, chars" });
 
 // now animate the characters in a staggered fashion
-gsap.from(split.words, {
+gsap.from(split.char, {
   scrollTrigger: {
     trigger: '.split',
-    start: "top 40%",
+    start: "top 90%",
     end: "bottom 20%",
     toggleActions: "play none none none"
   },
-  duration: 1, 
+  duration: 0.7, 
   y: 100,         // animate from 100px below
   autoAlpha: 0,   // fade in from opacity: 0 and visibility: hidden
-  stagger: 0.05,  // 0.05 seconds between each
+  stagger: 0.5,  // 0.05 seconds between each
 });
 
 
@@ -53,11 +53,11 @@ let split1 = SplitText.create(".split1", { type: "words, chars" });
 gsap.from(split1.words, {
   scrollTrigger: {
     trigger: '.split1',
-    start: "top 40%",
+    start: "top 60%",
     end: "bottom 20%",
     toggleActions: "play none none none"
   },
-  duration: 1, 
+  duration: 0.5, 
   y: 100,         // animate from 100px below
   autoAlpha: 0,   // fade in from opacity: 0 and visibility: hidden
   stagger: 0.05,  // 0.05 seconds between each
@@ -72,8 +72,8 @@ gsap.from(split1.words, {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
         {/* RIGHT — VIDEO */}
-        <div className="rounded-xl overflow-hidden shadow-lg box  " >
-         <img ref={container} src="/images/hoodie.jpg"></img>
+        <div className="rounded-xl overflow-hidden shadow-lg box glass  " >
+         <img ref={container} src="/mockups/phn.png"></img>
         </div>
        
         {/* LEFT — TEXT */}

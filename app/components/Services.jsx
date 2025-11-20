@@ -1,8 +1,6 @@
 "use client";
 
 export default function ServiceSection() {
- 
-
   return (
     <section className="w-full py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -17,53 +15,52 @@ export default function ServiceSection() {
         </div>
 
         <div className="grid grid-cols-1  lg:grid-rows-3  lg:grid-cols-4 gap-2">
-          <div className=" col-span-2 row-span-1 bg-indigo-100 rounded-md p-10 flex flex-col justify-end bg-[url('/images/hoodie.jpg')] bg-contain bg-no-repeat bg-right
-           " >
+          <div
+            className=" col-span-2 row-span-1 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/images/7.png')] bg-contain bg-no-repeat bg-right
+           "
+          >
             <h5>Design</h5>
             <p className="lg:max-w-72">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-              soluta sapiente expedita quos sint quasi doloremque atque velit
-              quia odit.
+              We make digital experiences smooth and enjoyable. Our UI designs
+              improve the way users interact with your website, app, or software
+              — clean layouts, easy navigation, and beautiful visuals.
             </p>
+            <a className="text-blue-600 underline">Learn more</a>
           </div>
-          <div className=" col-span-2 md:col-span-1 row-span-2 shadow-md  rounded-md p-10 flex flex-col justify-end  bg-[url('/images/CAAP.png')] bg-contain bg-no-repeat bg-top  ">
-            <h4>Brand Identity</h4>
+          <div className=" col-span-2 md:col-span-1 row-span-2 shadow-lg  rounded-md p-10 flex flex-col justify-end  bg-[url('/images/CAAP.png')] bg-contain bg-no-repeat bg-top  ">
+            <h5>Brand Identity</h5>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-              soluta sapiente expedita quos sint quasi doloremque atque velit
-              quia odit.
+              Your brand deserves a unique personality. We create complete brand
+              identity systems that include colors, typography, style guides,
+              and visual elements.
             </p>
           </div>
-          <div className=" col-span-2 md:col-span-1 row-span-1 bg-blue-300 rounded-md p-10  ">
-             <h3>Marketing</h3>
+          <div className=" col-span-2 md:col-span-1 row-span-1 shadow-lg  rounded-md p-10  ">
+            <h5>Marketing</h5>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-              soluta sapiente expedita quos sint quasi doloremque atque velit
-              quia odit.
+              Your message deserves to be seen. We design banners, ads, social
+              media content, and promotional materials that help you market your
+              business effectively and attract the right audience.
             </p>
           </div>
-          <div className=" col-span-2 md:col-span-1 row-span-2 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/top-phn.png)] bg-center bg-no-repeat bg-contain ">
-            <h3>Motion Graphics</h3>
+          <div className=" col-span-2 md:col-span-1 row-span-2 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/bt-phone.png')] bg-contain bg-no-repeat bg-top ">
+            <h5>Motion Graphics</h5>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-              soluta sapiente expedita quos sint quasi doloremque atque velit
-              quia odit.
+              Add life and movement to your brand. We create engaging motion
+              graphics for ads, intros, social content, and brand storytelling.
             </p>
           </div>
-          <div className=" col-span-2 md:col-span-1 row-span-1 bg-blue-300 rounded-md p-10 ">
-            <h3>Illustration</h3>
+          <div className=" col-span-2 md:col-span-1 row-span-1 shadow-lg rounded-md p-10 ">
+            <h5>Illustration</h5>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-              soluta sapiente expedita quos sint quasi doloremque atque velit
-              quia odit.
+              From custom art pieces to digital illustrations, we help you
+              express your brand in a unique and artistic way.
             </p>
           </div>
-          <div className=" col-span-1 row-span-1 grad rounded-md p-10 ">
-           
-          </div>
+          <div className=" col-span-1 row-span-1  rounded-md p-10 bg-[url('/mockups/rt-lap.png')] bg-right bg-no-repeat bg-contain "></div>
           <div className=" col-span-1 row-span-1  rounded-md p-10 bg-[url('/images/bg.png')] bg-center bg-no-repeat bg-contain "></div>
-          <div className=" col-span-2 row-span-1 shadow-md rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/rt-lap.png')] bg-right bg-no-repeat bg-contain ">
-            <h3>Ads</h3>
+          <div className=" col-span-2 row-span-1 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/nf.png')] bg-right bg-no-repeat bg-contain ">
+            <h5>Ads</h5>
             <p className="max-w-72">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
               soluta sapiente expedita quos sint quasi doloremque atque velit
@@ -87,7 +84,7 @@ export default function ServiceSection() {
             >
               <div class="col-start-1 row-start-1 col-span-2 md:col-start-1 md:row-start-1 md:col-span-2 md:row-span-1 bg-gray-300 rounded-md p-10">
                 <div>
-                  <h3 className="text-2xl font-semibold mb-2">
+                  <h5 className="text-2xl font-semibold mb-2">
                     {service.title}
                   </h3>
                   <p className="text-sm opacity-90">{service.desc}</p>

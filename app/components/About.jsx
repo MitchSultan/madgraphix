@@ -90,11 +90,7 @@ gsap.from(split1.words, {
             performance-driven digital experiences.
           </p>
 
-          <p className="text-lg text-gray-700 leading-relaxed mb-8 split1">
-            With every project, we aim for clarity, simplicity, and excellence.
-            We don’t just design—we build long-term partnerships that support
-            your growth and elevate your presence.
-          </p>
+          
 
           <button className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition">
             Learn More

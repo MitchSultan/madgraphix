@@ -58,8 +58,7 @@ gsap.from(split.chars, {
               Where Creativity Goes Mad
             </h1>
             <p className="hero-subtitle text-black split">
-              We are all about bringing your brand to life with creative and
-              eye-catching designs. At Mirror Arts Designs Graphix, we mix a
+              At Mirror Arts Designs Graphix, we mix a
               love for design with a knack for making your brand pop.
             </p>
             <div className=" flex gap-2">
@@ -79,6 +78,7 @@ gsap.from(split.chars, {
         <div className="glass">
           <img src="/images/herr.png" ref={hero} className="max-w-full h-auto"></img>
         </div>
+        
       </section>
     </>
   );

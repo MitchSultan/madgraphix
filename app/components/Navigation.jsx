@@ -103,7 +103,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-20">
           <a href="/" className={`flex items-center gap-3 ${isScrolled ? '' : 'text-white'}`}>
             <img src="/logos/mad.png" alt="MAD" className="h-10 w-auto" />
-            <span className={`font-bold text-lg ${isScrolled ? 'text-slate-900' : 'text-white'}`}>MAD Graphix</span>
+            <span className={`font-bold text-lg ${isScrolled ? 'text-slate-900' : 'text-white'}`}></span>
           </a>
 
           {/* Desktop nav */}
@@ -169,7 +169,7 @@ export default function Navigation() {
             <button
               aria-label="Toggle menu"
               onClick={() => setMobileOpen((s) => !s)}
-              className={`p-2 rounded-md transition-colors ${isScrolled ? 'text-slate-900' : 'text-white'}`}
+              className={`p-2 rounded-md transition-colors ${isScrolled ? 'text-slate-900' : 'text-black'}`}
             >
               {/* simple hamburger / close icon */}
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">

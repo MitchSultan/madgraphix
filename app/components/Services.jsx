@@ -19,35 +19,28 @@ export default function ServiceSection() {
             className=" col-span-2 row-span-1 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/images/7.png')] bg-contain bg-no-repeat bg-right
            "
           >
-            <h5>Design</h5>
+            <h5>Web Design</h5>
             <p className="lg:max-w-72">
-              We make digital experiences smooth and enjoyable. Our UI designs
-              improve the way users interact with your website, app, or software
-              — clean layouts, easy navigation, and beautiful visuals.
+              We make digital experiences smooth and enjoyable. 
             </p>
             <a className="text-blue-600 underline">Learn more</a>
           </div>
           <div className=" col-span-2 md:col-span-1 row-span-2 shadow-lg  rounded-md p-10 flex flex-col justify-end  bg-[url('/images/CAAP.png')] bg-contain bg-no-repeat bg-top  ">
             <h5>Brand Identity</h5>
             <p>
-              Your brand deserves a unique personality. We create complete brand
-              identity systems that include colors, typography, style guides,
-              and visual elements.
+              Your brand deserves a unique personality. 
             </p>
           </div>
           <div className=" col-span-2 md:col-span-1 row-span-1 shadow-lg  rounded-md p-10  ">
             <h5>Marketing</h5>
             <p>
-              Your message deserves to be seen. We design banners, ads, social
-              media content, and promotional materials that help you market your
-              business effectively and attract the right audience.
+              Your message deserves to be seen. 
             </p>
           </div>
           <div className=" col-span-2 md:col-span-1 row-span-2 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/bt-phone.png')] bg-contain bg-no-repeat bg-top ">
             <h5>Motion Graphics</h5>
             <p>
-              Add life and movement to your brand. We create engaging motion
-              graphics for ads, intros, social content, and brand storytelling.
+              Add life and movement to your brand. 
             </p>
           </div>
           <div className=" col-span-2 md:col-span-1 row-span-1 shadow-lg rounded-md p-10 ">
@@ -62,9 +55,7 @@ export default function ServiceSection() {
           <div className=" col-span-2 row-span-1 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/nf.png')] bg-right bg-no-repeat bg-contain ">
             <h5>Ads</h5>
             <p className="max-w-72">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-              soluta sapiente expedita quos sint quasi doloremque atque velit
-              quia odit.
+            Get value for money spent
             </p>
           </div>
         </div>

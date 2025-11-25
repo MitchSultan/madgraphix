@@ -94,6 +94,12 @@ small {
   line-height: var(--lh-normal);
 }
 
+@theme {
+  --color-purple: #8338ec;
+  --color-tahiti: #3ab7bf;
+  --color-bermuda: #78dcca;
+}
+
 /* 6. Links */
 a {
   text-decoration: none;

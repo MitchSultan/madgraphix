@@ -23,13 +23,15 @@ export default function ServiceSection() {
             <p className="lg:max-w-72">
               We make digital experiences smooth and enjoyable. 
             </p>
-            <a className="text-blue-600 underline">Learn more</a>
+            <a className="text-blue-600 underline" href="/services/web-design">Learn more</a>
           </div>
           <div className=" col-span-2 md:col-span-1 row-span-2 shadow-lg  rounded-md p-10 flex flex-col justify-end  bg-[url('/images/CAAP.png')] bg-contain bg-no-repeat bg-top  ">
             <h5>Brand Identity</h5>
             <p>
               Your brand deserves a unique personality. 
             </p>
+            
+            <a className="text-blue-600 underline" href="/services/web-design">Learn more</a>
           </div>
           <div className=" col-span-2 md:col-span-1 row-span-1 shadow-lg  rounded-md p-10  ">
             <h5>Marketing</h5>

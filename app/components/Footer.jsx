@@ -6,9 +6,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-purple-600 text-black py-12">
+    <footer className="bg-color-purple text-black py-12">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-2 ">
           <div>
             <h3 className="text-2xl font-bold mb-4">M.A.D Graphix</h3>
             <p className="t italic mb-4">Art Straight from the Heart</p>

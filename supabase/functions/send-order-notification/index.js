@@ -5,7 +5,7 @@ import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const RESEND_API_KEY = 're_9eQZyLoS_HmC3HVTaArgYJmCBmsrk9Zcq'
-const ADMIN_EMAIL = 'admin@madgraphix.co.ke' // Change this to your admin email
+const ADMIN_EMAIL = 'mitchsultan23@gmail.com' // Change this to your admin email
 
 serve(async (req) => {
   try {

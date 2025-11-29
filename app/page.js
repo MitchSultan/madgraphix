@@ -11,6 +11,7 @@ import Testimonials from './components/Testimonials';
 import PartnershipTestimonials from './components/PartnershipTestimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ClientLayout from './ClientLayout';
 
 export const metadata = {
   title: 'Mirror Arts Designs - M.A.D Graphix | Creative Graphic Design Studio',
@@ -38,21 +39,23 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main>
-      <Navigation />
-      <Hero />
-      <About />
-      <Services />
-      
-      <WorkShowcase />
-
-      <PartnershipTestimonials />
-      <CaseStudies />
-      <Partners />
-      
+    <ClientLayout>
+      <main>
+        <Navigation />
+        <Hero />
+        <About />
+        <Services />
         
-      
-      <Footer />
-    </main>
+        <WorkShowcase />
+
+        <PartnershipTestimonials />
+        <CaseStudies />
+        <Partners />
+        
+          
+        
+        <Footer />
+      </main>
+    </ClientLayout>
   );
 }

@@ -4,21 +4,27 @@ import { supabaseServer } from "@/lib/supabase/server";
 export async function middleware(req) {
   const supabase = await supabaseServer();
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { user },
+  } = await supabase.auth.getUser();
 
   const url = req.nextUrl.clone();
 
-  // Protect admin routes
-  if (!session && url.pathname.startsWith("/admin")) {
+  // Protect admin routes - require authentication
+  if (!user && url.pathname.startsWith("/admin")) {
     url.pathname = "/login";
     return NextResponse.redirect(url);
   }
 
-  // Check if user is admin (optional: verify email)
-  if (session && url.pathname.startsWith("/admin")) {
-    const adminEmail = process.env.ADMIN_EMAIL;
-    if (adminEmail && session.user.email !== adminEmail) {
+  // Check if user is admin (from database)
+  if (user && url.pathname.startsWith("/admin")) {
+    // Check admin status from user_profiles table
+    const { data: profile } = await supabase
+      .from('user_profiles')
+      .select('is_admin')
+      .eq('id', user.id)
+      .single();
+    
+    if (!profile || !profile.is_admin) {
       url.pathname = "/";
       return NextResponse.redirect(url);
     }

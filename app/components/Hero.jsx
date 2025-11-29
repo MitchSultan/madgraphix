@@ -1,7 +1,7 @@
 'use client';
 import React from "react";
 import { gsap } from "gsap";
-import { use, useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 import { useGSAP } from '@gsap/react';
     
@@ -14,37 +14,89 @@ gsap.registerPlugin(ScrollTrigger,SplitText,useGSAP);
 
 export default function Hero() {
 
-
   const hero = useRef(); 
-useGSAP(() => {
-gsap.from(hero.current, {
- 
- opacity: 0,
- y: 50,
- duration: 3,
- ease: "power3.out",});
+  const h1Ref = useRef();
+  const currentIndexRef = useRef(0);
 
+  const sentences = [
+    "Creativity Goes Mad",
+    "Imagination Meets Design"
+  ];
 
- // split all elements with the class "split" into words and characters
-let split = SplitText.create(".split", { type: "words, chars" });
+  useGSAP(() => {
+    gsap.from(hero.current, {
+      opacity: 0,
+      y: 50,
+      duration: 3,
+      ease: "power3.out",
+    });
 
-// now animate the characters in a staggered fashion
-gsap.from(split.chars, {
-  scrollTrigger: {
-    trigger: '.split',
-    start: "top 40%",
-    end: "bottom 20%",
-    toggleActions: "play none none none"
-  },
-  duration: 1, 
-  y: 100,         // animate from 100px below
-  autoAlpha: 0,   // fade in from opacity: 0 and visibility: hidden
-  stagger: 0.05,  // 0.05 seconds between each
-});
+    // Split all elements with the class "split" into words and characters (for subtitle)
 
+    // Animate the subtitle characters
+    
 
+    // Text switching animation for h1
+    const animateText = () => {
+      const currentText = sentences[currentIndexRef.current];
+      const nextIndex = (currentIndexRef.current + 1) % sentences.length;
+      const nextText = sentences[nextIndex];
 
-});
+      // Set the text to current
+      
+
+      // Split the current text
+      const splitCurrent = new SplitText(h1Ref.current, { type: "chars" });
+      
+      // Create timeline for exit animation
+      const tl = gsap.timeline({
+        onComplete: () => {
+          // Update to next text
+          currentIndexRef.current = nextIndex;
+          h1Ref.current.textContent = nextText;
+          
+          // Split the new text
+          const splitNext = new SplitText(h1Ref.current, { type: "chars" });
+          
+          // Animate in from below
+          gsap.fromTo(splitNext.chars, 
+            { 
+              y: 100, 
+              autoAlpha: 0 
+            },
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.8,
+              stagger: 0.03,
+              ease: "power3.out",
+              onComplete: () => {
+                splitNext.revert();
+                // Wait 3 seconds, then animate to next
+                gsap.delayedCall(3, animateText);
+              }
+            }
+          );
+        }
+      });
+
+      // Animate current text out (moving up)
+      tl.to(splitCurrent.chars, {
+        y: -100,
+        autoAlpha: 0,
+        duration: 0.6,
+        stagger: 0.02,
+        ease: "power3.in",
+        onComplete: () => {
+          splitCurrent.revert();
+        }
+      });
+    };
+
+    // Start the animation after initial delay
+    gsap.delayedCall(1, animateText);
+
+  }, []);
 
 
 
@@ -53,10 +105,18 @@ gsap.from(split.chars, {
       <section className="hero-section h-screen pt-32 md:pt-0  flex flex-col md:flex-row       items-center  text-white">
         <div className="container">
           <div className="hero-content p-4 md:p-20">
-            <h1 className="hero-title text-2xl md:text-4xl lg:text-6xl font-extrabold split">
-              {/*Where Imagination Meets Design:*/} 
-              Where Creativity Goes Mad
-            </h1>
+            <div className="relative overflow-hidden" style={{ minHeight: '80px' }}>
+              <h1    className=" text-2xl md:text-4xl lg:text-6xl font-extrabold"
+             >
+              <span>Where </span><br></br>
+              <span 
+                ref={h1Ref}
+                className="hero-title text-2xl md:text-4xl lg:text-6xl font-extrabold"
+              >
+                Creativity Goes Mad
+              </span>
+              </h1>
+            </div>
             <p className="hero-subtitle text-black split">
               At Mirror Arts Designs Graphix, we mix a
               love for design with a knack for making your brand pop.

@@ -35,11 +35,11 @@ export default function AdminDashboard() {
   }, []);
 
   const checkUser = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
       router.push('/login');
     } else {
-      setUser(session.user);
+      setUser(user);
     }
     setLoading(false);
   };
@@ -111,7 +111,7 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-purple-950 to-gray-950">
+    <div className="min-h-screen mt-48">
       {/* Header */}
       <header className="bg-black/40 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">

@@ -10,6 +10,7 @@ import LogoTicker from './components/LogoTicker';
 import Testimonials from './components/Testimonials';
 import PartnershipTestimonials from './components/PartnershipTestimonials';
 import Contact from './components/Contact';
+import FAQs from './components/FAQs';
 import Footer from './components/Footer';
 import ClientLayout from './ClientLayout';
 
@@ -51,7 +52,7 @@ export default function Home() {
         <PartnershipTestimonials />
         <CaseStudies />
         <Partners />
-        
+        <FAQs />
           
         
         <Footer />

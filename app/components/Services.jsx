@@ -15,51 +15,84 @@ export default function ServiceSection() {
         </div>
 
         <div className="grid grid-cols-1  lg:grid-rows-3  lg:grid-cols-4 gap-2">
-          <div
-            className=" col-span-2 row-span-1 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/images/7.png')] bg-contain bg-no-repeat bg-right
-           "
+          {/* Web Design */}
+          <a
+            href="/Services/web-design"
+            className="col-span-2 row-span-1 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/images/7.png')] bg-contain bg-no-repeat bg-right hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
           >
-            <h5>Web Design</h5>
-            <p className="lg:max-w-72">
+            <h5 className="text-xl font-bold mb-2">Web Design & Development</h5>
+            <p className="lg:max-w-72 mb-3">
               We make digital experiences smooth and enjoyable. 
             </p>
-            <a className="text-blue-600 underline" href="/services/web-design">Learn more</a>
-          </div>
-          <div className=" col-span-2 md:col-span-1 row-span-2 shadow-lg  rounded-md p-10 flex flex-col justify-end  bg-[url('/images/CAAP.png')] bg-contain bg-no-repeat bg-top  ">
-            <h5>Brand Identity</h5>
-            <p>
+            <span className="text-blue-600 underline font-semibold">Learn more →</span>
+          </a>
+
+          {/* Brand Identity */}
+          <a
+            href="/Services/brand-identity"
+            className="col-span-2 md:col-span-1 row-span-2 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/images/CAAP.png')] bg-contain bg-no-repeat bg-top hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+          >
+            <h5 className="text-xl font-bold mb-2">Brand Identity</h5>
+            <p className="mb-3">
               Your brand deserves a unique personality. 
             </p>
-            
-            <a className="text-blue-600 underline" href="/services/web-design">Learn more</a>
-          </div>
-          <div className=" col-span-2 md:col-span-1 row-span-1 shadow-lg  rounded-md p-10  ">
-            <h5>Marketing</h5>
-            <p>
+            <span className="text-blue-600 underline font-semibold">Learn more →</span>
+          </a>
+
+          {/* Marketing */}
+          <a
+            href="/Services/marketing"
+            className="col-span-2 md:col-span-1 row-span-1 shadow-lg rounded-md p-10 hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+          >
+            <h5 className="text-xl font-bold mb-2">Marketing & Strategy</h5>
+            <p className="mb-3">
               Your message deserves to be seen. 
             </p>
-          </div>
-          <div className=" col-span-2 md:col-span-1 row-span-2 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/bt-phone.png')] bg-contain bg-no-repeat bg-top ">
-            <h5>Motion Graphics</h5>
-            <p>
+            <span className="text-blue-600 underline font-semibold">Learn more →</span>
+          </a>
+
+          {/* Motion Graphics */}
+          <a
+            href="/Services/motion-graphics"
+            className="col-span-2 md:col-span-1 row-span-2 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/bt-phone.png')] bg-contain bg-no-repeat bg-top hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+          >
+            <h5 className="text-xl font-bold mb-2">Motion Graphics</h5>
+            <p className="mb-3">
               Add life and movement to your brand. 
             </p>
-          </div>
-          <div className=" col-span-2 md:col-span-1 row-span-1 shadow-lg rounded-md p-10 ">
-            <h5>Illustration</h5>
-            <p>
+            <span className="text-blue-600 underline font-semibold">Learn more →</span>
+          </a>
+
+          {/* Illustration */}
+          <a
+            href="/Services/illustration"
+            className="col-span-2 md:col-span-1 row-span-1 shadow-lg rounded-md p-10 hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+          >
+            <h5 className="text-xl font-bold mb-2">Illustration & Art</h5>
+            <p className="mb-3">
               From custom art pieces to digital illustrations, we help you
               express your brand in a unique and artistic way.
             </p>
-          </div>
-          <div className=" col-span-1 row-span-1  rounded-md p-10 bg-[url('/mockups/rt-lap.png')] bg-right bg-no-repeat bg-contain "></div>
-          <div className=" col-span-1 row-span-1  rounded-md p-10 bg-[url('/images/bg.png')] bg-center bg-no-repeat bg-contain "></div>
-          <div className=" col-span-2 row-span-1 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/nf.png')] bg-right bg-no-repeat bg-contain ">
-            <h5>Ads</h5>
-            <p className="max-w-72">
-            Get value for money spent
+            <span className="text-blue-600 underline font-semibold">Learn more →</span>
+          </a>
+
+          {/* Product Design - Decorative */}
+          <div className="col-span-1 row-span-1 rounded-md p-10 bg-[url('/mockups/rt-lap.png')] bg-right bg-no-repeat bg-contain"></div>
+          
+          {/* Content Creation - Decorative */}
+          <div className="col-span-1 row-span-1 rounded-md p-10 bg-[url('/images/bg.png')] bg-center bg-no-repeat bg-contain"></div>
+
+          {/* Digital Advertising */}
+          <a
+            href="/Services/digital-advertising"
+            className="col-span-2 row-span-1 shadow-lg rounded-md p-10 flex flex-col justify-end bg-[url('/mockups/nf.png')] bg-right bg-no-repeat bg-contain hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+          >
+            <h5 className="text-xl font-bold mb-2">Digital Advertising</h5>
+            <p className="max-w-72 mb-3">
+              Get value for money spent
             </p>
-          </div>
+            <span className="text-blue-600 underline font-semibold">Learn more →</span>
+          </a>
         </div>
 
         {/*}    

@@ -82,15 +82,19 @@ export default function Navigation() {
       href: '/Services',
       label: 'Services',
       children: [
-        { href: '/Services/branding', label: 'Branding' },
-        { href: '/services/design', label: 'Design' },
-        { href: '/services/web', label: 'Web Development' },
-        { href: '/services/marketing', label: 'Marketing' },
+        { href: '/Services/web-design', label: 'Web Design & Development' },
+        { href: '/Services/brand-identity', label: 'Brand Identity' },
+        { href: '/Services/marketing', label: 'Marketing & Strategy' },
+        { href: '/Services/motion-graphics', label: 'Motion Graphics' },
+        { href: '/Services/illustration', label: 'Illustration & Art' },
+        { href: '/Services/product-design', label: 'Product Design' },
+        { href: '/Services/content-creation', label: 'Content Creation' },
+        { href: '/Services/digital-advertising', label: 'Digital Advertising' },
       ],
     },
     { href: '/CaseStudies', label: 'Case Studies' },
     { href: '/partners', label: 'Partners' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/Contact', label: 'Contact' },
   ];
 
   return (

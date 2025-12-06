@@ -102,43 +102,56 @@ export default function Hero() {
 
   return (
     <>
-      <section className="hero-section h-screen pt-32 md:pt-0  flex flex-col md:flex-row       items-center  text-white">
-        <div className="container">
-          <div className="hero-content p-4 md:p-20">
-            <div className="relative overflow-hidden" style={{ minHeight: '80px' }}>
-              <h1    className=" text-2xl md:text-4xl lg:text-6xl font-extrabold"
-             >
-              <span>Where </span><br></br>
-              <span 
-                ref={h1Ref}
-                className="hero-title text-2xl md:text-4xl lg:text-6xl font-extrabold"
-              >
-                Creativity Goes Mad
-              </span>
+      <section className="hero-section relative h-screen w-full overflow-hidden">
+        {/* Video Background */}
+        <video
+          ref={hero}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover"
+        >
+          <source src="/videos/madhero.mp4" type="video/mp4" />
+          <source src="/videos/madhero.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Dark Overlay for Better Text Readability */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
+
+        {/* Hero Text Content - Bottom Left */}
+        <div className="absolute bottom-0 left-0 p-6 md:p-12 lg:p-20 text-white z-10">
+          <div className="hero-content max-w-3xl">
+            <div className="relative overflow-hidden mb-4" style={{ minHeight: '80px' }}>
+              <h1 className="text-3xl text-white md:text-5xl lg:text-7xl font-extrabold">
+                <span className="text-white">Where </span><br />
+                <span 
+                  ref={h1Ref}
+                  className="hero-title text-3xl text-white md:text-5xl lg:text-7xl font-extrabold"
+                >
+                  Creativity Goes Mad
+                </span>
               </h1>
             </div>
-            <p className="hero-subtitle text-black split">
+            <p className="hero-subtitle text-white/90 split text-lg md:text-xl mb-6 max-w-2xl">
               At Mirror Arts Designs Graphix, we mix a
               love for design with a knack for making your brand pop.
             </p>
-            <div className=" flex gap-2">
-            <button className=" bg-blue-600 px-4 rounded-2xl">
-            <a href="#get-started" className="hero-button">
-              Our Work
-            </a>
-            </button>
-            <button className=" blue-glass px-4 text-black rounded-2xl">
-            <a href="https://wa.me/254708779284" className="hero-button">
-              Let's Talk
-            </a>
-            </button>
+            <div className="flex gap-4 flex-wrap">
+              <button className="bg-blue-600 hover:bg-blue-700 px-6 py-1 rounded-2xl transition-colors">
+                <a href="#get-started" className="hero-button">
+                  Our Work
+                </a>
+              </button>
+              <button className="bg-white/20 backdrop-blur-md hover:bg-white/30 px-6 py-3 text-white rounded-2xl transition-colors border border-white/30">
+                <a href="https://wa.me/254708779284" className="hero-button">
+                  Let's Talk
+                </a>
+              </button>
             </div>
           </div>
         </div>
-        <div className="glass">
-          <img src="/images/herr.png" ref={hero} className="max-w-full h-auto"></img>
-        </div>
-        
       </section>
     </>
   );

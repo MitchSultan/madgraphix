@@ -140,7 +140,7 @@ export default function Hero() {
             </p>
             <div className="flex gap-4 flex-wrap">
               <button className="bg-blue-600 hover:bg-blue-700 px-6 py-1 rounded-2xl transition-colors">
-                <a href="#get-started" className="hero-button">
+                <a href="/CaseStudies" className="hero-button">
                   Our Work
                 </a>
               </button>

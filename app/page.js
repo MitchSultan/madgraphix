@@ -2,6 +2,7 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
+import ServiceTicker from './components/ServiceTicker';
 import Portfolio from './components/Portfolio';
 import WorkShowcase from './components/WorkShowcase';
 import CaseStudies from './components/CaseStudies';
@@ -46,6 +47,7 @@ export default function Home() {
         <Hero />
         <About />
         <Services />
+        <ServiceTicker />
         
         <WorkShowcase />
 

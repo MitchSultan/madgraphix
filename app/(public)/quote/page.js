@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { quoteFormSchema } from '@/lib/validations';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import Navigation from '@/app/components/Navigation';
+import Footer from '@/app/components/Footer';
 
 const SERVICES = [
   'Branding & Identity',

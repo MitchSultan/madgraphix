@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactFormSchema } from '@/lib/validations';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import Navigation from '@/app/components/Navigation';
+import Footer from '@/app/components/Footer';
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);

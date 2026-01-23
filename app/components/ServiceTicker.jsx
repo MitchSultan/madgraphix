@@ -24,31 +24,9 @@ export default function ServiceTicker() {
   ];
 
   return (
-    <section className="relative w-full h-48 md:h-64 overflow-hidden bg-gray-100">
+    <section className="relative w-full h-screen md:h-64 overflow-hidden bg-gray-100">
       {/* Orange Band - Top to Bottom Diagonal */}
-      <div className="absolute inset-0 flex items-center">
-        <div 
-          className="relative w-full overflow-hidden"
-          style={{
-            transform: 'rotate(-4deg) translateY(-20%)',
-            height: '120%',
-          }}
-        >
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 py-8 shadow-2xl">
-            <div className="flex animate-scroll-left whitespace-nowrap">
-              {/* Duplicate for seamless loop */}
-              {[...services1, ...services1, ...services1].map((service, index) => (
-                <div key={index} className="inline-flex items-center mx-8">
-                  <span className="text-white text-2xl md:text-4xl font-bold">
-                    {service}
-                  </span>
-                  <span className="text-white text-3xl md:text-5xl mx-8">✦</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       {/* Black Band - Bottom to Top Diagonal */}
       <div className="absolute inset-0 flex items-center">
@@ -68,6 +46,29 @@ export default function ServiceTicker() {
                     {service}
                   </span>
                   <span className="text-orange-500 text-3xl md:text-5xl mx-8">✦</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute inset-0 flex items-center">
+        <div 
+          className="relative w-full overflow-hidden"
+          style={{
+            transform: 'rotate(-4deg) translateY(-20%)',
+            height: '120%',
+          }}
+        >
+          <div className="bg-gradient-to-r from-orange-500 to-orange-600 py-8 shadow-2xl">
+            <div className="flex animate-scroll-left whitespace-nowrap">
+              {/* Duplicate for seamless loop */}
+              {[...services1, ...services1, ...services1].map((service, index) => (
+                <div key={index} className="inline-flex items-center mx-8">
+                  <span className="text-white text-2xl md:text-4xl font-bold">
+                    {service}
+                  </span>
+                  <span className="text-white text-3xl md:text-5xl mx-8">✦</span>
                 </div>
               ))}
             </div>

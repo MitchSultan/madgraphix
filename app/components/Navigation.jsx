@@ -93,15 +93,15 @@ export default function Navigation() {
       ],
     },
     { href: '/CaseStudies', label: 'Case Studies' },
+    { href: '/blog', label: 'Blog' },
     { href: '/partners', label: 'Partners' },
     { href: '/Contact', label: 'Contact' },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 shadow-md' : 'bg-transparent'
-      } backdrop-blur-sm`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 shadow-md' : 'bg-transparent'
+        } backdrop-blur-sm`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-20">
@@ -119,9 +119,8 @@ export default function Navigation() {
                   <a
                     key={link.href}
                     href={link.href}
-                    className={`relative px-2 py-1 font-medium transition-colors hover:text-emerald-500 ${
-                      isScrolled ? 'text-slate-700' : 'text-white'
-                    }`}
+                    className={`relative px-2 py-1 font-medium transition-colors hover:text-emerald-500 ${isScrolled ? 'text-slate-700' : 'text-white'
+                      }`}
                   >
                     {link.label}
                   </a>
@@ -133,9 +132,8 @@ export default function Navigation() {
                 <div key={link.href} className="relative group">
                   <a
                     href={link.href}
-                    className={`px-2 py-1 inline-flex items-center gap-2 font-medium transition-colors hover:text-emerald-500 ${
-                      isScrolled ? 'text-slate-700' : 'text-white'
-                    }`}
+                    className={`px-2 py-1 inline-flex items-center gap-2 font-medium transition-colors hover:text-emerald-500 ${isScrolled ? 'text-slate-700' : 'text-white'
+                      }`}
                   >
                     {link.label}
                     <svg

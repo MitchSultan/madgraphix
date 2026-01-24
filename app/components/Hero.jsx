@@ -4,17 +4,17 @@ import { gsap } from "gsap";
 import { useRef, useEffect } from 'react';
 
 import { useGSAP } from '@gsap/react';
-    
+
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 
-gsap.registerPlugin(ScrollTrigger,SplitText,useGSAP);
+gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
 
 
 export default function Hero() {
 
-  const hero = useRef(); 
+  const hero = useRef();
   const h1Ref = useRef();
   const currentIndexRef = useRef(0);
 
@@ -34,7 +34,7 @@ export default function Hero() {
     // Split all elements with the class "split" into words and characters (for subtitle)
 
     // Animate the subtitle characters
-    
+
 
     // Text switching animation for h1
     const animateText = () => {
@@ -43,26 +43,26 @@ export default function Hero() {
       const nextText = sentences[nextIndex];
 
       // Set the text to current
-      
+
 
       // Split the current text
       const splitCurrent = new SplitText(h1Ref.current, { type: "chars" });
-      
+
       // Create timeline for exit animation
       const tl = gsap.timeline({
         onComplete: () => {
           // Update to next text
           currentIndexRef.current = nextIndex;
           h1Ref.current.textContent = nextText;
-          
+
           // Split the new text
           const splitNext = new SplitText(h1Ref.current, { type: "chars" });
-          
+
           // Animate in from below
-          gsap.fromTo(splitNext.chars, 
-            { 
-              y: 100, 
-              autoAlpha: 0 
+          gsap.fromTo(splitNext.chars,
+            {
+              y: 100,
+              autoAlpha: 0
             },
             {
               y: 0,
@@ -112,8 +112,8 @@ export default function Hero() {
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover"
         >
-          <source src="/videos/madhero.mp4" type="video/mp4" />
-          <source src="/videos/madhero.webm" type="video/webm" />
+          <source src="/videos/herr.mp4" type="video/mp4" />
+          <source src="/videos/herr.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
 
@@ -126,8 +126,8 @@ export default function Hero() {
             <div className="relative overflow-hidden mb-4" style={{ minHeight: '80px' }}>
               <h1 className="text-3xl text-white md:text-5xl lg:text-7xl font-extrabold">
                 <span className="text-white">Where </span><br />
-                <span 
-                  ref={h1Ref}
+                <span
+
                   className="hero-title text-3xl text-white md:text-5xl lg:text-7xl font-extrabold"
                 >
                   Creativity Goes Mad

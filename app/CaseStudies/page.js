@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
+import Navigation from '@/app/components/Navigation';
+import Footer from '@/app/components/Footer';
 
 export const metadata = {
   title: 'Case Studies - MAD Graphix | Our Success Stories',

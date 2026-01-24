@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Navigation from '@/app/components/Navigation';
 import Hero from '@/app/components/Hero';
 import About from '@/app/components/About';
@@ -14,6 +15,7 @@ import Contact from '@/app/components/Contact';
 import FAQs from '@/app/components/FAQs';
 import Footer from '@/app/components/Footer';
 import ClientLayout from '@/app/ClientLayout';
+import { createClient } from '@/lib/supabase/server';
 
 export const metadata = {
   title: 'Mirror Arts Designs - M.A.D Graphix | Creative Graphic Design Studio',
@@ -39,7 +41,22 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const supabase = await createClient();
+  const { data: caseStudies } = await supabase
+    .from('case_studies')
+    .select('title, slug, featured_image, tags')
+    .eq('published', true)
+    .order('created_at', { ascending: false })
+    .limit(6);
+
+  const works = (caseStudies || []).map(study => ({
+    title: study.title,
+    image: study.featured_image,
+    link: `/CaseStudies/${study.slug}`,
+    services: study.tags
+  }));
+
   return (
     <ClientLayout>
       <main>
@@ -49,7 +66,7 @@ export default function Home() {
         <Services />
         <ServiceTicker />
         
-        <WorkShowcase />
+        <WorkShowcase works={works} />
 
         <PartnershipTestimonials />
         <CaseStudies />

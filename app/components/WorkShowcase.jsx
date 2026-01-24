@@ -2,35 +2,19 @@
 
 import { useRef, useState, useEffect } from "react";
 
-export default function WorkShowcase() {
+export default function WorkShowcase({ works = [] }) {
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  const works = [
-    {
-      title: "The Other Guys Kenya",
-      image: "/images/tshrts.jpg",
-      link:'/CaseStudies/theotherguyskenya',
-      services: ["Design", "Development", "Branding"],
-    },
-    {
-      title: "Merishaw School",
-      image: "/images/5.png",
-      services: ["Shop Setup", "Payments", "UI Design"],
-    },
-    {
-      title: "Denri Collections",
-      image: "/images/12.png",
-      services: ["UX Strategy", "Frontend", "Motion Design"],
-    },
-    {
-      title: "Fayah Tours",
-      image: "/images/fayah.png",
-      services: ["Brand Identity", "Website", "Content"],
-    },
-  ];
+  // Fallback if no works are passed (optional, or just render nothing/message)
+  if (!works || works.length === 0) {
+    // You might want to handle the empty state, or just return null
+    // For now, let's keep the hook calls valid by returning early AFTER hooks
+    // But hooks are already called above.
+    // If we really want to be safe we can use a default empty array in props which we did.
+  }
 
   // Drag functionality
   const startDrag = (e) => {

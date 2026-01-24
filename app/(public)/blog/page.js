@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { Calendar, User, ArrowRight } from 'lucide-react';
+import Navigation from '@/app/components/Navigation';
+import Footer from '@/app/components/Footer';
 
 export const metadata = {
   title: 'Blog - MAD Graphix | Design Insights & Web Development Tips',
@@ -25,7 +27,8 @@ export default async function BlogPage(props) {
   const { blogs, pagination } = await getBlogs(page);
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen ">
+      <Navigation />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -61,6 +64,7 @@ export default async function BlogPage(props) {
           </div>
         )}
       </section>
+      <Footer />
     </main>
   );
 }

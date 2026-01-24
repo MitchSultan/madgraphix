@@ -64,12 +64,12 @@ export default async function Home() {
         <Hero />
         <About />
         <Services />
-        <ServiceTicker />
+        
         
         <WorkShowcase works={works} />
 
         <PartnershipTestimonials />
-        <CaseStudies />
+        
         <Partners />
         <FAQs />
           

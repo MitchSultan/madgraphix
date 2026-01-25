@@ -93,9 +93,8 @@ export default function Navigation() {
       ],
     },
     { href: '/CaseStudies', label: 'Case Studies' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/partners', label: 'Partners' },
-    { href: '/Contact', label: 'Contact' },
+    { href: '/blog', label: 'Blog' }, ,
+    { href: '/contact', label: 'Contact' },
   ];
 
   return (

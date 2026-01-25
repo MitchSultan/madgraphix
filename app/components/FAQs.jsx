@@ -50,7 +50,7 @@ export default function FAQs() {
         </div>
 
         {/* FAQ Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-1 gap-6">
           {faqs.map((faq, index) => (
             <div
               key={index}
@@ -95,7 +95,7 @@ export default function FAQs() {
                   )}
                 </div>
               </button>
-              
+
               {openIndex === index && (
                 <div className="px-6 md:px-8 pb-6 md:pb-8">
                   <p className="text-gray-600 leading-relaxed">

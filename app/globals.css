@@ -7,7 +7,7 @@
 /* 1. Root scaling for responsive typography */
 :root {
   /* Base font */
-  --font-family-sans: "Inter", "Segoe UI", Arial, sans-serif;
+  --font-family-sans: var(--font-keiner), "Inter", "Segoe UI", Arial, sans-serif;
 
   /* Line-height scale (recommended WCAG) */
   --lh-tight: 1.1;
@@ -20,15 +20,24 @@
   --ls-wide: 0.02em;
 
   /* Fluid font sizes using clamp(min, preferred, max) */
-  --fs-xs: clamp(0.75rem, 0.7vw, 0.85rem);      /* Small captions */
-  --fs-sm: clamp(0.875rem, 0.9vw, 1rem);        /* Small text */
-  --fs-base: clamp(1rem, 1vw, 1.125rem);        /* Default body */
-  --fs-lg: clamp(1.125rem, 1.4vw, 1.375rem);    /* Lead paragraph */
-  --fs-xl: clamp(1.25rem, 1.6vw, 1.625rem);     /* Subheading */
-  --fs-2xl: clamp(1.5rem, 2vw, 2rem);           /* Section headings */
-  --fs-3xl: clamp(1.875rem, 3vw, 2.5rem);       /* Page titles */
-  --fs-4xl: clamp(2.25rem, 4vw, 3.25rem);       /* Hero */
-  --fs-5xl: clamp(2.75rem, 5vw, 4rem);          /* Large Hero */
+  --fs-xs: clamp(0.75rem, 0.7vw, 0.85rem);
+  /* Small captions */
+  --fs-sm: clamp(0.875rem, 0.9vw, 1rem);
+  /* Small text */
+  --fs-base: clamp(1rem, 1vw, 1.125rem);
+  /* Default body */
+  --fs-lg: clamp(1.125rem, 1.4vw, 1.375rem);
+  /* Lead paragraph */
+  --fs-xl: clamp(1.25rem, 1.6vw, 1.625rem);
+  /* Subheading */
+  --fs-2xl: clamp(1.5rem, 2vw, 2rem);
+  /* Section headings */
+  --fs-3xl: clamp(1.875rem, 3vw, 2.5rem);
+  /* Page titles */
+  --fs-4xl: clamp(2.25rem, 4vw, 3.25rem);
+  /* Hero */
+  --fs-5xl: clamp(2.75rem, 5vw, 4rem);
+  /* Large Hero */
 }
 
 /* 2. Apply global base styles */
@@ -44,7 +53,9 @@ body {
   font-size: var(--fs-base);
   line-height: var(--lh-loose);
   letter-spacing: var(--ls-normal);
-  color: #111; /* Adjust to your design system */
+  color: #111;
+  /* Adjust to your design system */
+  background-color: var(--color-brand-bg);
 }
 
 /* 3. Heading hierarchy (consistent scale + spacing) */
@@ -58,24 +69,30 @@ h6 {
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);
   color: #0f0f0f;
-  margin: 0 0 0.5em 0; /* Vertical rhythm */
+  margin: 0 0 0.5em 0;
+  /* Vertical rhythm */
 }
 
 h1 {
   font-size: var(--fs-5xl);
 }
+
 h2 {
   font-size: var(--fs-4xl);
 }
+
 h3 {
   font-size: var(--fs-3xl);
 }
+
 h4 {
   font-size: var(--fs-2xl);
 }
+
 h5 {
   font-size: var(--fs-xl);
 }
+
 h6 {
   font-size: var(--fs-lg);
 }
@@ -98,6 +115,7 @@ small {
   --color-purple: #8338ec;
   --color-tahiti: #3ab7bf;
   --color-bermuda: #78dcca;
+  --color-brand-bg: #a67be0;
 }
 
 /* 6. Links */
@@ -108,7 +126,8 @@ a {
 }
 
 a:hover {
-  color: #2563eb; /* blue-600 */
+  color: #2563eb;
+  /* blue-600 */
 }
 
 /* 7. Strong text */
@@ -126,8 +145,13 @@ ol {
 
 
 @keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-scroll {
@@ -138,6 +162,7 @@ ol {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -149,39 +174,42 @@ ol {
 
 
 
-.glass{background-size: 100% 100%;
-background-position: 0px 0px;
-background-image: radial-gradient(39% 50% at 50% 63%, #A100FFFF 0%, #A100FFFF 2%, #Ffffff 100%);}
-.new-glass{
-  /* From https://css.glass */
-background: rgba(255, 255, 255, 0.27);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5.8px);
--webkit-backdrop-filter: blur(5.8px);
-border: 1px solid rgba(255, 255, 255, 0.3);
+.glass {
+  background-size: 100% 100%;
+  background-position: 0px 0px;
+  background-image: radial-gradient(39% 50% at 50% 63%, #A100FFFF 0%, #A100FFFF 2%, #Ffffff 100%);
 }
 
-.grad{
+.new-glass {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.27);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.grad {
   background: hsla(302, 82%, 76%, 1);
 
-background: radial-gradient(circle, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
+  background: radial-gradient(circle, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
 
-background: -moz-radial-gradient(circle, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
+  background: -moz-radial-gradient(circle, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
 
-background: -webkit-radial-gradient(circle, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
+  background: -webkit-radial-gradient(circle, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
 
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F492F0", endColorstr="#A18DCE", GradientType=1 );
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#F492F0", endColorstr="#A18DCE", GradientType=1);
 }
 
-.blue-glass{
+.blue-glass {
   /* From https://css.glass */
-background: rgba(137, 246, 246, 0.43);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(11px);
--webkit-backdrop-filter: blur(11px);
-border: 1px solid rgba(137, 246, 246, 0.3);
+  background: rgba(137, 246, 246, 0.43);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
+  border: 1px solid rgba(137, 246, 246, 0.3);
 }
 
 /* Blog Content Styles */

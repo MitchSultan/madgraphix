@@ -25,13 +25,13 @@ export default async function CaseStudiesPage() {
   const caseStudies = await getCaseStudies();
 
   return (
-    <div>
+    <div className='bg-gray-100'>
       <Navigation />
       
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-32 mb-16">
+      <div className="max-w-7xl bg-gray-100 mx-auto px-4 sm:px-6 mt-32 mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">Case Studies</h1>
-        <p className="text-center text-gray-600 text-lg max-w-3xl mx-auto">
+        <p className="text-center text-gray-600 text-lg ">
           Explore our portfolio of successful projects and see how we've helped businesses achieve their goals through exceptional design and development.
         </p>
       </div>
@@ -83,9 +83,9 @@ function CaseStudyCard({ study }) {
         <p className="text-sm font-medium text-emerald-600 mb-2">{study.client}</p>
 
         {/* Title */}
-        <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
+        <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
           {study.title}
-        </h2>
+        </h4>
 
         {/* Description */}
         <p className="text-gray-600 mb-4 line-clamp-3 flex-grow">

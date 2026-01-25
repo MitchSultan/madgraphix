@@ -30,13 +30,13 @@ export default async function BlogPage(props) {
     <main className="min-h-screen ">
       <Navigation />
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white py-20">
+      <section className="bg-gray-100 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Design Insights & Web Tips
             </h1>
-            <p className="text-xl text-emerald-50 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-900  mx-auto">
               Expert articles on web design, branding, SEO, and digital marketing to help your business thrive online.
             </p>
           </div>
@@ -102,9 +102,9 @@ function BlogCard({ blog }) {
         )}
 
         {/* Title */}
-        <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors line-clamp-2">
+        <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors line-clamp-2">
           {blog.title}
-        </h2>
+        </h4>
 
         {/* Excerpt */}
         <p className="text-gray-600 mb-4 line-clamp-3 flex-grow">

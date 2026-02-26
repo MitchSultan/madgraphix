@@ -10,6 +10,7 @@ import CaseStudies from '@/app/components/CaseStudies';
 import Partners from '@/app/components/Partners';
 import LogoTicker from '@/app/components/LogoTicker';
 import Testimonials from '@/app/components/Testimonials';
+import Print from '@/app/components/Print';
 import PartnershipTestimonials from '@/app/components/PartnershipTestimonials';
 import Contact from '@/app/components/Contact';
 import FAQs from '@/app/components/FAQs';
@@ -62,6 +63,7 @@ export default async function Home() {
       <main>
         <Navigation />
         <Hero />
+        <Print />
         <About />
         <Services />
         

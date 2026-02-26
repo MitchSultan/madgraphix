@@ -156,8 +156,8 @@ export default function Footer() {
 
 
 
-            Made By
-            <a href="https://madebymitch.com" class="text-gray-700 underline transition hover:text-gray-700/75"> Mitch</a>
+
+            <a href="https://www.madebymitch.com" target="_blank" rel="noreferrer" class="text-gray-700 underline transition hover:text-gray-700/75">Made By Mitch</a>
           </p>
         </div>
       </div>

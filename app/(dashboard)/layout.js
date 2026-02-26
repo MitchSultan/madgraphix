@@ -20,6 +20,8 @@ const SIDEBAR_ITEMS = [
   { label: 'Overview', href: '/dashboard', icon: LayoutDashboard },
   { label: 'Leads', href: '/dashboard/leads', icon: Users },
   { label: 'Subscribers', href: '/dashboard/subscribers', icon: Mail },
+  { label: 'Case-studies', href: '/dashboard/case-studies', icon: Mail },
+  { label: 'Blogs', href: '/dashboard/blogs', icon: Mail },
   { label: 'Settings', href: '/dashboard/settings', icon: Settings },
 ];
 

@@ -99,14 +99,14 @@ export default function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 shadow-md' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-canvas/90 shadow-md' : 'bg-transparent'
         } backdrop-blur-sm`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-20">
-          <a href="/" className={`flex items-center gap-3 ${isScrolled ? '' : 'text-white'}`}>
+          <a href="/" className={`flex items-center gap-3 ${isScrolled ? 'text-ink' : 'text-on-primary'}`}>
             <img src="/logos/mad.png" alt="MAD" className="h-10 w-auto" />
-            <span className={`font-bold text-lg ${isScrolled ? 'text-slate-900' : 'text-white'}`}></span>
+            <span className={`font-bold text-lg ${isScrolled ? 'text-ink' : 'text-on-primary'}`}></span>
           </a>
 
           {/* Desktop nav */}
@@ -118,7 +118,7 @@ export default function Navigation() {
                   <a
                     key={link.href}
                     href={link.href}
-                    className={`relative px-2 py-1 font-medium transition-colors hover:text-emerald-500 ${isScrolled ? 'text-slate-700' : 'text-white'
+                    className={`relative px-2 py-1 font-medium transition-colors hover:text-semantic-success ${isScrolled ? 'text-ink' : 'text-on-primary'
                       }`}
                   >
                     {link.label}
@@ -131,7 +131,7 @@ export default function Navigation() {
                 <div key={link.href} className="relative group">
                   <a
                     href={link.href}
-                    className={`px-2 py-1 inline-flex items-center gap-2 font-medium transition-colors hover:text-emerald-500 ${isScrolled ? 'text-slate-700' : 'text-white'
+                    className={`px-2 py-1 inline-flex items-center gap-2 font-medium transition-colors hover:text-semantic-success ${isScrolled ? 'text-ink' : 'text-on-primary'
                       }`}
                   >
                     {link.label}
@@ -148,12 +148,12 @@ export default function Navigation() {
                   </a>
 
                   <div className="absolute left-0 mt-2 min-w-52 rounded-md shadow-lg opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-150 origin-top">
-                    <div className="bg-white w-full rounded-md py-2 ring-1 ring-black/5">
+                    <div className="bg-canvas w-full rounded-md py-2 ring-1 ring-black/5">
                       {link.children.map((child) => (
                         <a
                           key={child.href}
                           href={child.href}
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50"
+                          className="block px-4 py-2 text-sm text-ink hover:bg-surface-soft"
                         >
                           {child.label}
                         </a>
@@ -170,7 +170,7 @@ export default function Navigation() {
             <button
               aria-label="Toggle menu"
               onClick={() => setMobileOpen((s) => !s)}
-              className={`p-2 rounded-md transition-colors ${isScrolled ? 'text-slate-900' : 'text-black'}`}
+              className={`p-2 rounded-md transition-colors ${isScrolled ? 'text-ink' : 'text-on-primary'}`}
             >
               {/* simple hamburger / close icon */}
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -186,21 +186,21 @@ export default function Navigation() {
       </div>
 
       {/* Mobile menu - GSAP animates this container */}
-      <div ref={mobileMenuRef} className="md:hidden bg-white shadow-md">
+      <div ref={mobileMenuRef} className="md:hidden bg-canvas shadow-md">
         <div className="px-4 pt-4 pb-6 space-y-2">
           {navLinks.map((link) => {
             const hasChildren = !!link.children;
             if (!hasChildren) {
-              return (
+                return (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block w-full text-left text-slate-700 font-medium hover:text-emerald-500 transition-colors py-2"
+                  className="block w-full text-left text-ink font-medium hover:text-semantic-success transition-colors py-2"
                 >
                   {link.label}
                 </a>
-              );
+                );
             }
 
             return (
@@ -230,7 +230,7 @@ export default function Navigation() {
                           setMobileOpen(false);
                           setMobileServicesOpen(false);
                         }}
-                        className="block py-2 text-slate-600 hover:text-emerald-500"
+                        className="block py-2 text-ink hover:text-semantic-success"
                       >
                         {child.label}
                       </a>

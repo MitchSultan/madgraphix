@@ -75,7 +75,7 @@ export default function AboutUs() {
         {/* RIGHT — VIDEO */}
         <div className="rounded-xl overflow-hidden    " >
           <video ref={container}
-            src="/videos/md.mp4"
+            src="/videos/md.webm"
             autoPlay
             loop
             muted

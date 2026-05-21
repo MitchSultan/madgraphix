@@ -1,43 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;480;540;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
 /* ----------------------------------------------------
-   GLOBAL TYPOGRAPHY SYSTEM — Modern Web Standards
+   DESIGN.TOKENS imported from DESIGN.md (figma system)
    ---------------------------------------------------- */
 
-/* 1. Root scaling for responsive typography */
 :root {
-  /* Base font */
-  --font-family-sans: var(--font-keiner), "Inter", "Segoe UI", Arial, sans-serif;
+  /* Font families (figmaSans -> Inter, figmaMono -> JetBrains Mono) */
+  --font-figma-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial;
+  --font-figma-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
 
-  /* Line-height scale (recommended WCAG) */
+  /* Colors */
+  --color-primary: #000000;
+  --color-on-primary: #ffffff;
+  --color-ink: #000000;
+  --color-canvas: #ffffff;
+  --color-inverse-canvas: #000000;
+  --color-inverse-ink: #ffffff;
+  --color-on-inverse-soft: #ffffff;
+  --color-hairline: #e6e6e6;
+  --color-hairline-soft: #f1f1f1;
+  --color-surface-soft: #f7f7f5;
+  --color-block-lime: #dceeb1;
+  --color-block-lilac: #c5b0f4;
+  --color-block-cream: #f4ecd6;
+  --color-block-pink: #efd4d4;
+  --color-block-mint: #c8e6cd;
+  --color-block-coral: #f3c9b6;
+  --color-block-navy: #1f1d3d;
+  --color-accent-magenta: #ff3d8b;
+  --color-semantic-success: #1ea64a;
+  --color-overlay-scrim: rgba(0,0,0,0.6);
+
+  /* Spacing scale */
+  --space-hair: 1px;
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section: 96px;
+
+  /* Rounded */
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 50px;
+  --radius-full: 9999px;
+
+  /* Typography tokens (sizes approximated with rem units) */
+  --ty-display-xl-size: 5.375rem; /* ~86px */
+  --ty-display-lg-size: 4rem; /* ~64px */
+  --ty-headline-size: 1.625rem; /* ~26px */
+  --ty-subhead-size: 1.625rem;
+  --ty-card-title-size: 1.5rem; /* 24px */
+  --ty-body-lg-size: 1.25rem; /* 20px */
+  --ty-body-size: 1.125rem; /* 18px */
+  --ty-body-sm-size: 1rem; /* 16px */
+  --ty-button-size: 1.25rem; /* 20px */
+  --ty-eyebrow-size: 1.125rem; /* 18px */
+  --ty-caption-size: 0.75rem; /* 12px */
+
+  /* Font sizes for heading scale */
+  --fs-5xl: 5.375rem;
+  --fs-4xl: 4rem;
+  --fs-3xl: 2.25rem;
+  --fs-2xl: 1.75rem;
+  --fs-xl: 1.5rem;
+  --fs-lg: 1.25rem;
+  --fs-base: 1rem;
+  --fs-xs: 0.875rem;
+
+  /* Line heights */
+  --lh-display-tight: 1.0;
+  --lh-display-lg: 1.1;
+  --lh-body-loose: 1.45;
+  --lh-loose: 1.5;
   --lh-tight: 1.1;
-  --lh-normal: 1.4;
-  --lh-loose: 1.6;
 
   /* Letter spacing */
-  --ls-tight: -0.02em;
   --ls-normal: 0em;
-  --ls-wide: 0.02em;
+  --ls-tight: -0.02em;
 
-  /* Fluid font sizes using clamp(min, preferred, max) */
-  --fs-xs: clamp(0.75rem, 0.7vw, 0.85rem);
-  /* Small captions */
-  --fs-sm: clamp(0.875rem, 0.9vw, 1rem);
-  /* Small text */
-  --fs-base: clamp(1rem, 1vw, 1.125rem);
-  /* Default body */
-  --fs-lg: clamp(1.125rem, 1.4vw, 1.375rem);
-  /* Lead paragraph */
-  --fs-xl: clamp(1.25rem, 1.6vw, 1.625rem);
-  /* Subheading */
-  --fs-2xl: clamp(1.5rem, 2vw, 2rem);
-  /* Section headings */
-  --fs-3xl: clamp(1.875rem, 3vw, 2.5rem);
-  /* Page titles */
-  --fs-4xl: clamp(2.25rem, 4vw, 3.25rem);
-  /* Hero */
-  --fs-5xl: clamp(2.75rem, 5vw, 4rem);
-  /* Large Hero */
+  /* Fallback body font family */
+  --font-family-sans: var(--font-figma-sans);
+
+  /* Letter spacing (approx in em) */
+  --ls-display-xl: -0.02em; /* approximate -1.72px at large sizes */
+  --ls-display-lg: -0.01em;
+  --ls-body: -0.002em;
+
 }
 
 /* 2. Apply global base styles */
@@ -259,4 +316,31 @@ ol {
   border-radius: 0.25rem;
   font-family: monospace;
   font-size: 0.9em;
+}
+
+.services-heading {
+  font-family: var(--font-figma-sans);
+  font-weight: 540;
+}
+
+.services-subtitle,
+.services-copy {
+  font-family: var(--font-figma-sans);
+  font-weight: 320;
+  letter-spacing: 0.02em;
+}
+
+.case-study-heading {
+  font-family: var(--font-figma-sans);
+  font-weight: 540;
+}
+
+.case-study-eyebrow {
+  font-family: var(--font-figma-mono);
+  letter-spacing: 0.54px;
+}
+
+.case-study-title {
+  font-family: var(--font-figma-sans);
+  font-weight: 700;
 }

@@ -28,10 +28,10 @@ const caseStudies = [
 
 export default function CaseStudies() {
   return (
-    <section className="w-full py-16 bg-white">
+    <section className="w-full py-section bg-canvas">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
-        <h2 className="text-lg font-semibold text-blue-600 mb-8">
+        <h2 className="text-headline font-semibold text-ink mb-8 case-study-heading">
           Case Studies and Insights
         </h2>
 
@@ -40,7 +40,7 @@ export default function CaseStudies() {
           {caseStudies.map((item) => (
             <div key={item.id} className="group cursor-pointer">
               {/* Image */}
-              <div className="w-full h-56 overflow-hidden rounded-sm mb-4">
+              <div className="w-full h-56 overflow-hidden rounded-md mb-4 bg-surface-soft">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -48,13 +48,13 @@ export default function CaseStudies() {
                 />
               </div>
 
-              {/* Tag */}
-              <p className="text-sm text-blue-600 font-medium mb-2">
+              {/* Tag (eyebrow) */}
+              <p className="text-eyebrow font-medium mb-2 uppercase case-study-eyebrow">
                 {item.tag}
               </p>
 
               {/* Title */}
-              <h5 className="text-xl font-semibold leading-snug text-gray-900 group-hover:underline">
+              <h5 className="text-card-title font-semibold leading-snug text-ink group-hover:underline case-study-title">
                 {item.title}
               </h5>
             </div>
@@ -65,7 +65,7 @@ export default function CaseStudies() {
         <div className="mt-10 ">
           <a
             href="#"
-            className="text-blue-600 font-medium inline-flex items-center gap-1 hover:underline"
+            className="text-accent-magenta font-medium inline-flex items-center gap-1 hover:underline"
             onClick={(e) => e.preventDefault()}
           >
             Read all About Us

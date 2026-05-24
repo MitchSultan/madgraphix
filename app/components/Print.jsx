@@ -12,39 +12,78 @@ function Print() {
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        speed: 2000,
-        autoplaySpeed: 2000,
-        cssEase: "linear"
+        speed: 3000,
+        autoplaySpeed: 0,
+        cssEase: "linear",
+        pauseOnHover: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
     };
     return (
-        <>
-            <div className=" overflow-hidden bg-white">
-                <h2 className="pl-10">Art Straight </h2>
-                <div className="slider-container">
+        <section className="py-24 overflow-hidden bg-[#e9e1f5] relative">
+            {/* Decorative backgrounds */}
+            <div className="absolute top-0 left-0 w-full h-full bg-white/40 z-0"></div>
+            
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+                <div className="flex flex-col md:flex-row items-center justify-between mb-12">
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-4 md:mb-0">
+                        Art Straight <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">From the Heart</span>
+                    </h2>
+                    <div className="hidden md:block">
+                        <span className="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-sm border border-purple-100">
+                            Print & Design
+                        </span>
+                    </div>
+                </div>
+
+                <div className="slider-container -mx-4">
                     <Slider {...settings}>
-                        <div>
-                            <img src="/posters/poster6.png" alt="" />
+                        <div className="px-4 outline-none">
+                            <div className="rounded-3xl overflow-hidden shadow-lg border border-white hover:shadow-xl transition-shadow duration-300">
+                                <img src="/posters/poster6.png" alt="Print Poster" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
+                            </div>
                         </div>
-                        <div>
-                            <img src="/posters/poster1.png" alt="" />
+                        <div className="px-4 outline-none">
+                            <div className="rounded-3xl overflow-hidden shadow-lg border border-white hover:shadow-xl transition-shadow duration-300">
+                                <img src="/posters/poster1.png" alt="Print Poster" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
+                            </div>
                         </div>
-                        <div>
-                            <img src="/posters/poster2.png" alt="" />
+                        <div className="px-4 outline-none">
+                            <div className="rounded-3xl overflow-hidden shadow-lg border border-white hover:shadow-xl transition-shadow duration-300">
+                                <img src="/posters/poster2.png" alt="Print Poster" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
+                            </div>
                         </div>
-                        <div>
-                            <img src="/posters/poster3.png" alt="" />
+                        <div className="px-4 outline-none">
+                            <div className="rounded-3xl overflow-hidden shadow-lg border border-white hover:shadow-xl transition-shadow duration-300">
+                                <img src="/posters/poster3.png" alt="Print Poster" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
+                            </div>
                         </div>
-                        <div>
-                            <img src="/posters/poster4.png" alt="" />
+                        <div className="px-4 outline-none">
+                            <div className="rounded-3xl overflow-hidden shadow-lg border border-white hover:shadow-xl transition-shadow duration-300">
+                                <img src="/posters/poster4.png" alt="Print Poster" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
+                            </div>
                         </div>
-                        <div>
-                            <img src="/posters/poster5.png" alt="" />
+                        <div className="px-4 outline-none">
+                            <div className="rounded-3xl overflow-hidden shadow-lg border border-white hover:shadow-xl transition-shadow duration-300">
+                                <img src="/posters/poster5.png" alt="Print Poster" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
+                            </div>
                         </div>
                     </Slider>
                 </div>
-                <h2 className="text-right pt-10">From the Heart</h2>
             </div>
-        </>
+        </section>
     );
 }
 

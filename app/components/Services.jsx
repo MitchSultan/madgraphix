@@ -69,95 +69,91 @@ export default function ServiceSection() {
   };
 
   return (
-    <section className="w-full  py-16 text-white overflow-hidden">
+    <section className="w-full py-24 text-gray-800 bg-surface-soft overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="max-w-3xl">
-          <p className="text-sm uppercase tracking-[0.35em] text-fuchsia-400/80 mb-4">
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-accent mb-4">
             Services
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
-            What We Print
+          <h2 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight leading-tight">
+            What We Do
           </h2>
-          <div className="mt-5 h-1 w-24 rounded-full bg-fuchsia-400" />
-          <p className="mt-6 max-w-2xl text-sm text-slate-300 lg:text-base">
-            Premium print experiences built for brands that want a refined, editorial presence.
+          <div className="mt-5 h-1.5 w-24 rounded-full bg-accent" />
+          <p className="mt-6 max-w-2xl text-lg text-gray-600">
+            Premium creative experiences built for brands that want a refined presence.
             Every detail is designed with precision, authority, and a polished finish.
           </p>
         </div>
 
         {/* Desktop grid layout */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 mt-14">
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 mt-16">
           {services.map((service) => (
             <Link
               key={service.title}
               href={service.href}
-              className="group rounded-[28px] border border-white/10  p-8 min-h-[250px] overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_25px_80px_rgba(0,0,0,0.35)]"
+              className="group rounded-3xl bg-white border border-purple-50 p-8 min-h-[280px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-200"
             >
-              <div className="flex h-full flex-col justify-between">
-                <div>
-                  <span className="inline-flex rounded-full bg-fuchsia-500/10 px-3 py-1 text-xs font-thins uppercase tracking-[0.2em] text-fuchsia-300">
-                    Mad Graphix
-                  </span>
-                  <h3 className="mt-6 text-2xltext-slate-500 font-semibold leading-tight  ">
-                    {service.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-slate-300">
-                    {service.description}
-                  </p>
-                </div>
-                <div className="mt-8 flex items-center gap-2 text-sm font-semibold text-fuchsia-300 transition-all duration-300 group-hover:text-fuchsia-400">
-                  <span className="border-b border-fuchsia-400 border-dashed pb-1">Explore</span>
-                  <span aria-hidden="true">→</span>
-                </div>
+              <div>
+                <span className="inline-flex rounded-full bg-purple-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+                  Mad Graphix
+                </span>
+                <h3 className="mt-6 text-2xl font-bold text-gray-800 leading-tight group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="mt-4 text-base leading-relaxed text-gray-600">
+                  {service.description}
+                </p>
+              </div>
+              <div className="mt-8 flex items-center gap-2 text-sm font-bold text-accent transition-all duration-300 group-hover:gap-3">
+                <span className="border-b-2 border-accent border-dashed pb-0.5">Explore</span>
+                <span aria-hidden="true" className="text-lg">→</span>
               </div>
             </Link>
           ))}
         </div>
 
         {/* Mobile carousel layout */}
-        <div className="md:hidden mt-14">
+        <div className="md:hidden mt-12">
           <div
             ref={carouselRef}
-            className="mobile-scroll-x no-scrollbar snap-x -mx-6 px-6 flex gap-4 pb-6"
+            className="mobile-scroll-x no-scrollbar snap-x -mx-6 px-6 flex gap-5 pb-6"
           >
             {services.map((service, index) => (
               <Link
                 key={service.title}
                 href={service.href}
                 data-service-card={index}
-                className="snap-start shrink-0 w-[85vw] min-w-[85vw] rounded-[28px] border border-white/10 bg-[#111111] p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+                className="snap-start shrink-0 w-[85vw] min-w-[85vw] rounded-3xl bg-white border border-purple-50 p-8 flex flex-col justify-between transition-all duration-300 shadow-md"
               >
-                <div className="flex h-full flex-col justify-between gap-6">
-                  <div>
-                    <span className="inline-flex rounded-full bg-fuchsia-500/10 px-3 py-1 text-[11px] font-thin uppercase tracking-[0.25em] text-fuchsia-300">
-                      Mad Graphix
-                    </span>
-                    <h3 className="mt-6 text-2xl font-semibold leading-tight ">
-                      {service.title}
-                    </h3>
-                    <p className="mt-4 text-sm leading-relaxed text-slate-300">
-                      {service.description}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm font-semibold text-fuchsia-300">
-                    <span className="border-b border-fuchsia-400 border-dashed pb-1">Explore</span>
-                    <span aria-hidden="true">→</span>
-                  </div>
+                <div>
+                  <span className="inline-flex rounded-full bg-purple-50 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-primary">
+                    Mad Graphix
+                  </span>
+                  <h3 className="mt-6 text-2xl font-bold text-gray-800 leading-tight">
+                    {service.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-relaxed text-gray-600">
+                    {service.description}
+                  </p>
+                </div>
+                <div className="mt-8 flex items-center gap-2 text-sm font-bold text-accent">
+                  <span className="border-b-2 border-accent border-dashed pb-0.5">Explore</span>
+                  <span aria-hidden="true" className="text-lg">→</span>
                 </div>
               </Link>
             ))}
           </div>
 
           {/* Scroll indicator dots */}
-          <div className="mt-3 flex items-center justify-center gap-2">
+          <div className="mt-6 flex items-center justify-center gap-3">
             {services.map((_, index) => (
               <button
                 key={index}
                 type="button"
                 onClick={() => scrollToCard(index)}
                 aria-label={`Go to service ${index + 1}`}
-                className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
-                  activeIndex === index ? 'bg-fuchsia-400 scale-110' : 'bg-white/20'
+                className={`h-3 w-3 rounded-full transition-all duration-300 ${
+                  activeIndex === index ? 'bg-primary scale-125' : 'bg-purple-200'
                 }`}
               />
             ))}

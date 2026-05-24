@@ -8,15 +8,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#000000',
+        primary: '#512396',
         'on-primary': '#ffffff',
-        ink: '#000000',
+        accent: '#ff8c00',
+        'on-accent': '#ffffff',
+        ink: '#1a1a1a',
         canvas: '#ffffff',
-        'inverse-canvas': '#000000',
+        'inverse-canvas': '#512396',
         'inverse-ink': '#ffffff',
         'hairline': '#e6e6e6',
         'hairline-soft': '#f1f1f1',
-        'surface-soft': '#f7f7f5',
+        'surface-soft': '#f9f8fc', // Light purple tint
+        'surface-brand': '#e9e1f5', // Slightly darker light purple
         'block-lime': '#dceeb1',
         'block-lilac': '#c5b0f4',
         'block-cream': '#f4ecd6',
@@ -36,9 +39,11 @@ module.exports = {
         xs: '2px',
         sm: '6px',
         md: '8px',
-        lg: '24px',
-        xl: '32px',
-        pill: '50px',
+        lg: '16px',
+        xl: '24px',
+        '2xl': '32px',
+        '3xl': '48px',
+        pill: '9999px',
         full: '9999px'
       },
       spacing: {

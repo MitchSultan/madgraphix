@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
+import MultiItemCarousel from '@/app/components/card';
 
 const projects = [
   {
@@ -61,7 +62,7 @@ export default function Portfolio() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <MultiItemCarousel itemsPerView={3}>
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -70,15 +71,13 @@ export default function Portfolio() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer aspect-square"
             >
-             
-
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                 <span className="text-emerald-400 text-sm font-semibold mb-2">{project.category}</span>
                 <h3 className="text-white text-xl font-bold">{project.title}</h3>
               </div>
             </motion.div>
           ))}
-        </div>
+        </MultiItemCarousel>
       </div>
     </section>
   );

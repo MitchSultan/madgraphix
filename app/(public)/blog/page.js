@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
+import MultiItemCarousel from '@/app/components/card';
 import Footer from '@/app/components/Footer';
 
 export const metadata = {
@@ -47,11 +48,11 @@ export default async function BlogPage(props) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         {blogs && blogs.length > 0 ? (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <MultiItemCarousel itemsPerView={3}>
               {blogs.map((blog) => (
                 <BlogCard key={blog.id} blog={blog} />
               ))}
-            </div>
+            </MultiItemCarousel>
 
             {/* Pagination */}
             {pagination.totalPages > 1 && (

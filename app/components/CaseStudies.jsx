@@ -2,6 +2,7 @@
 // Responsive Case Studies Section (JavaScript + Tailwind)
 'use client';
 import React from "react";
+import MultiItemCarousel from '@/app/components/card';
 
 const caseStudies = [
   {
@@ -36,10 +37,9 @@ export default function CaseStudies() {
         </h2>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <MultiItemCarousel itemsPerView={3}>
           {caseStudies.map((item) => (
             <div key={item.id} className="group cursor-pointer">
-              {/* Image */}
               <div className="w-full h-56 overflow-hidden rounded-md mb-4 bg-surface-soft">
                 <img
                   src={item.image}
@@ -48,18 +48,16 @@ export default function CaseStudies() {
                 />
               </div>
 
-              {/* Tag (eyebrow) */}
               <p className="text-eyebrow font-medium mb-2 uppercase case-study-eyebrow">
                 {item.tag}
               </p>
 
-              {/* Title */}
               <h5 className="text-card-title font-semibold leading-snug text-ink group-hover:underline case-study-title">
                 {item.title}
               </h5>
             </div>
           ))}
-        </div>
+        </MultiItemCarousel>
 
         {/* CTA Link */}
         <div className="mt-10 ">

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Navigation from '@/app/components/Navigation';
+import MultiItemCarousel from '@/app/components/card';
 import Footer from '@/app/components/Footer';
 
 export const metadata = {
@@ -39,11 +40,11 @@ export default async function CaseStudiesPage() {
       {/* Case Studies Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
         {caseStudies && caseStudies.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <MultiItemCarousel itemsPerView={3}>
             {caseStudies.map((study) => (
               <CaseStudyCard key={study.id} study={study} />
             ))}
-          </div>
+          </MultiItemCarousel>
         ) : (
           <div className="text-center py-20">
             <p className="text-gray-500 text-lg">No case studies available yet.</p>

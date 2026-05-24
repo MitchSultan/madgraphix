@@ -175,7 +175,7 @@ export default async function CaseStudyPage(props) {
               Let's discuss how we can help transform your business with our proven strategies and creative solutions.
             </p>
             <Link
-              href="/Contact"
+              href="/contact"
               className="inline-block bg-white text-emerald-600 font-semibold px-8 py-3 rounded-lg hover:bg-emerald-50 transition-colors"
             >
               Start Your Project

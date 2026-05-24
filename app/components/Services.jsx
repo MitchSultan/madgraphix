@@ -1,158 +1,168 @@
 "use client";
 
+import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+
+const services = [
+  {
+    title: 'Web Design & Development',
+    href: '/Services/web-design',
+    description: 'We make digital experiences smooth and enjoyable.',
+  },
+  {
+    title: 'Brand Identity',
+    href: '/Services/brand-identity',
+    description: 'Your brand deserves a unique personality.',
+  },
+  {
+    title: 'Marketing & Strategy',
+    href: '/Services/marketing',
+    description: 'Your message deserves to be seen.',
+  },
+  {
+    title: 'Motion Graphics',
+    href: '/Services/motion-graphics',
+    description: 'Add life and movement to your brand.',
+  },
+  {
+    title: 'Illustration & Art',
+    href: '/Services/illustration',
+    description:
+      'From custom art pieces to digital illustrations, we help you express your brand in a unique and artistic way.',
+  },
+  {
+    title: 'Digital Advertising',
+    href: '/Services/digital-advertising',
+    description: 'Get value for money spent with campaigns that convert.',
+  },
+];
+
 export default function ServiceSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const carouselRef = useRef(null);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const updateActiveIndex = () => {
+      const cards = Array.from(carousel.querySelectorAll('[data-service-card]'));
+      if (!cards.length) return;
+
+      const scrollLeft = carousel.scrollLeft;
+      const distances = cards.map((card) => Math.abs(card.offsetLeft - scrollLeft));
+      const closestIndex = distances.indexOf(Math.min(...distances));
+      setActiveIndex(closestIndex);
+    };
+
+    updateActiveIndex();
+    carousel.addEventListener('scroll', updateActiveIndex, { passive: true });
+    return () => carousel.removeEventListener('scroll', updateActiveIndex);
+  }, []);
+
+  const scrollToCard = (index) => {
+    const carousel = carouselRef.current;
+    const card = carousel?.querySelector(`[data-service-card='${index}']`);
+    if (!carousel || !card) return;
+
+    carousel.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+  };
+
   return (
-    <section className="w-full py-section bg-canvas">
+    <section className="w-full  py-16 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* HEADER */}
-        <div className="flex flex-col md:flex-row justify-between mb-14">
-          <h2 className="text-display-lg text-ink services-heading">
-            Our Services
+        <div className="max-w-3xl">
+          <p className="text-sm uppercase tracking-[0.35em] text-fuchsia-400/80 mb-4">
+            Services
+          </p>
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
+            What We Print
           </h2>
-          <p className="text-ink mt-3 services-subtitle">
-            Everything you need to build, grow, and scale your digital presence.
+          <div className="mt-5 h-1 w-24 rounded-full bg-fuchsia-400" />
+          <p className="mt-6 max-w-2xl text-sm text-slate-300 lg:text-base">
+            Premium print experiences built for brands that want a refined, editorial presence.
+            Every detail is designed with precision, authority, and a polished finish.
           </p>
         </div>
 
-        <div className="grid grid-cols-1  lg:grid-rows-3  lg:grid-cols-4 gap-2">
-          {/* Web Design */}
-          <a
-            href="/Services/web-design"
-            className="col-span-2 row-span-1 rounded-lg p-10 flex flex-col justify-end bg-[url('/images/7.png')] bg-contain bg-no-repeat bg-right transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
-          >
-            <h5 className="text-card-title font-bold mb-2 text-ink">Web Design & Development</h5>
-            <p className="lg:max-w-72 mb-3 text-ink services-copy">
-              We make digital experiences smooth and enjoyable.
-            </p>
-            <span className="text-accent-magenta underline font-semibold">Learn more →</span>
-          </a>
-
-          {/* Brand Identity */}
-          <a
-            href="/Services/brand-identity"
-            className="col-span-2 md:col-span-1 row-span-2 rounded-lg p-10 flex flex-col justify-end bg-[url('/images/CAAP.png')] bg-contain bg-no-repeat bg-top transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
-          >
-            <h5 className="text-card-title font-bold mb-2 text-ink">Brand Identity</h5>
-            <p className="mb-3 text-ink services-copy">
-              Your brand deserves a unique personality.
-            </p>
-            <span className="text-accent-magenta underline font-semibold">Learn more →</span>
-          </a>
-
-          {/* Marketing */}
-          <a
-            href="/Services/marketing"
-            className="col-span-2 md:col-span-1 row-span-1 rounded-lg p-10 transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
-          >
-            <h5 className="text-card-title font-bold mb-2 text-ink">Marketing & Strategy</h5>
-            <p className="mb-3 text-ink services-copy">
-              Your message deserves to be seen.
-            </p>
-            <span className="text-accent-magenta underline font-semibold">Learn more →</span>
-          </a>
-
-          {/* Motion Graphics */}
-          <a
-            href="/Services/motion-graphics"
-            className="col-span-2 md:col-span-1 row-span-2 rounded-lg p-10 flex flex-col justify-end bg-[url('/mockups/bt-phone.png')] bg-contain bg-no-repeat bg-top transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
-          >
-            <h5 className="text-card-title font-bold mb-2 text-ink">Motion Graphics</h5>
-            <p className="mb-3 text-ink services-copy">
-              Add life and movement to your brand.
-            </p>
-            <span className="text-accent-magenta underline font-semibold">Learn more →</span>
-          </a>
-
-          {/* Illustration */}
-          <a
-            href="/Services/illustration"
-            className="col-span-2 md:col-span-1 row-span-1 rounded-lg p-10 transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
-          >
-            <h5 className="text-card-title font-bold mb-2 text-ink">Illustration & Art</h5>
-            <p className="mb-3 text-ink services-copy">
-              From custom art pieces to digital illustrations, we help you
-              express your brand in a unique and artistic way.
-            </p>
-            <span className="text-accent-magenta underline font-semibold">Learn more →</span>
-          </a>
-
-          {/* Product Design - Decorative */}
-          <div className="col-span-1 row-span-1 rounded-lg p-10 bg-[url('/mockups/rt-lap.png')] bg-right bg-no-repeat bg-contain"></div>
-          
-          {/* Content Creation - Decorative */}
-          <div className="col-span-1 row-span-1 rounded-lg p-10 bg-[url('/images/bg.png')] bg-center bg-no-repeat bg-contain"></div>
-
-          {/* Digital Advertising */}
-          <a
-            href="/Services/digital-advertising"
-            className="col-span-2 row-span-1 rounded-lg p-10 flex flex-col justify-end bg-[url('/mockups/nf.png')] bg-right bg-no-repeat bg-contain transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
-          >
-            <h5 className="text-card-title font-bold mb-2 text-ink">Digital Advertising</h5>
-            <p className="max-w-72 mb-3 text-ink services-copy">
-              Get value for money spent
-            </p>
-            <span className="text-accent-magenta underline font-semibold">Learn more →</span>
-          </a>
-        </div>
-
-        {/*}    
-
-        <div class="grid grid-cols-4 md:grid-cols-4 grid-rows-5 md:grid-rows-5 gap-2 md:gap-2 m-4">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`
-                ${service.bg} 
-                text-white p-6 rounded-2xl shadow-lg 
-                flex flex-col justify-between 
-                transition transform hover:scale-[1.03] hover:shadow-xl duration-300
-              `}
+        {/* Desktop grid layout */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 mt-14">
+          {services.map((service) => (
+            <Link
+              key={service.title}
+              href={service.href}
+              className="group rounded-[28px] border border-white/10  p-8 min-h-[250px] overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_25px_80px_rgba(0,0,0,0.35)]"
             >
-              <div class="col-start-1 row-start-1 col-span-2 md:col-start-1 md:row-start-1 md:col-span-2 md:row-span-1 bg-gray-300 rounded-md p-10">
+              <div className="flex h-full flex-col justify-between">
                 <div>
-                  <h5 className="text-2xl font-semibold mb-2">
+                  <span className="inline-flex rounded-full bg-fuchsia-500/10 px-3 py-1 text-xs font-thins uppercase tracking-[0.2em] text-fuchsia-300">
+                    Mad Graphix
+                  </span>
+                  <h3 className="mt-6 text-2xltext-slate-500 font-semibold leading-tight  ">
                     {service.title}
                   </h3>
-                  <p className="text-sm opacity-90">{service.desc}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-slate-300">
+                    {service.description}
+                  </p>
                 </div>
-                <span className="text-xs mt-4 opacity-80">Learn More →</span>
+                <div className="mt-8 flex items-center gap-2 text-sm font-semibold text-fuchsia-300 transition-all duration-300 group-hover:text-fuchsia-400">
+                  <span className="border-b border-fuchsia-400 border-dashed pb-1">Explore</span>
+                  <span aria-hidden="true">→</span>
+                </div>
               </div>
-              <div class="col-start-3 row-start-1 col-span-2 md:col-start-3 md:row-start-1 md:col-span-2 md:row-span-1 bg-gray-300 rounded-md p-10">
-                1
-              </div>
-              <div class="col-start-1 row-start-2 row-span-2 md:col-start-1 md:row-start-2 md:col-span-1 md:row-span-2 bg-gray-300 rounded-md p-10">
-                2
-              </div>
-              <div class="col-start-2 row-start-2 md:col-start-2 md:row-start-2 md:col-span-1 md:row-span-1 bg-gray-300 rounded-md p-10">
-                3
-              </div>
-              <div class="col-start-3 row-start-2 col-span-2 row-span-2 md:col-start-3 md:row-start-2 md:col-span-2 md:row-span-2 bg-gray-300 rounded-md p-10">
-                4
-              </div>
-              <div class="col-start-2 row-start-3 row-span-2 md:col-start-2 md:row-start-3 md:col-span-1 md:row-span-2 bg-gray-300 rounded-md p-10">
-                5
-              </div>
-              <div class="col-start-1 row-start-4 md:col-start-1 md:row-start-4 md:col-span-1 md:row-span-1 bg-gray-300 rounded-md p-10">
-                6
-              </div>
-              <div class="col-start-3 row-start-4 row-span-2 md:col-start-3 md:row-start-4 md:col-span-1 md:row-span-2 bg-gray-300 rounded-md p-10">
-                7
-              </div>
-              <div class="col-start-4 row-start-4 row-span-2 md:col-start-4 md:row-start-4 md:col-span-1 md:row-span-2 bg-gray-300 rounded-md p-10">
-                8
-              </div>
-              <div class="col-start-1 row-start-5 md:col-start-1 md:row-start-5 md:col-span-1 md:row-span-1 bg-gray-300 rounded-md p-10">
-                9
-              </div>
-              <div class="col-start-2 row-start-5 md:col-start-2 md:row-start-5 md:col-span-1 md:row-span-1 bg-gray-300 rounded-md p-10">
-                10
-              </div>
-              
-            </div>
+            </Link>
           ))}
         </div>
 
-        */}
+        {/* Mobile carousel layout */}
+        <div className="md:hidden mt-14">
+          <div
+            ref={carouselRef}
+            className="mobile-scroll-x no-scrollbar snap-x -mx-6 px-6 flex gap-4 pb-6"
+          >
+            {services.map((service, index) => (
+              <Link
+                key={service.title}
+                href={service.href}
+                data-service-card={index}
+                className="snap-start shrink-0 w-[85vw] min-w-[85vw] rounded-[28px] border border-white/10 bg-[#111111] p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+              >
+                <div className="flex h-full flex-col justify-between gap-6">
+                  <div>
+                    <span className="inline-flex rounded-full bg-fuchsia-500/10 px-3 py-1 text-[11px] font-thin uppercase tracking-[0.25em] text-fuchsia-300">
+                      Mad Graphix
+                    </span>
+                    <h3 className="mt-6 text-2xl font-semibold leading-tight ">
+                      {service.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-slate-300">
+                      {service.description}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-fuchsia-300">
+                    <span className="border-b border-fuchsia-400 border-dashed pb-1">Explore</span>
+                    <span aria-hidden="true">→</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Scroll indicator dots */}
+          <div className="mt-3 flex items-center justify-center gap-2">
+            {services.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => scrollToCard(index)}
+                aria-label={`Go to service ${index + 1}`}
+                className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                  activeIndex === index ? 'bg-fuchsia-400 scale-110' : 'bg-white/20'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

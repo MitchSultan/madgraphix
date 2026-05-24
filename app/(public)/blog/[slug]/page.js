@@ -155,7 +155,7 @@ export default async function BlogPostPage(props) {
             Let MAD Graphix bring your vision to life with stunning design and powerful digital solutions.
           </p>
           <Link
-            href="/Contact"
+            href="/contact"
             className="inline-block bg-white text-emerald-600 font-semibold px-8 py-3 rounded-lg hover:bg-emerald-50 transition-colors"
           >
             Get Started Today

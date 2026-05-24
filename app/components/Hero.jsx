@@ -124,7 +124,7 @@ export default function Hero() {
         <div className="absolute bottom-0 left-0 p-6 md:p-12 lg:p-20 text-white z-10">
           <div className="hero-content max-w-3xl">
             <div className="relative overflow-hidden mb-4" >
-              <h1 className="text-display-xl font-extrabold ">
+              <h1 className="text-lg md:text-display-xl font-extrabold ">
                 <span>Where </span><br />
                 <span className="hero-title">Creativity Goes Mad</span>
               </h1>

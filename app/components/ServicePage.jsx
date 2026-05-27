@@ -4,7 +4,7 @@ import React from 'react';
 export default function ServicePage() {
   const services = [
     {
-      title: "Web Design & Development",
+      title: "Web Design t",
       description: "Creating beautiful, responsive websites that captivate and convert.",
       image: "/images/services/web-design.jpg",
       tags: ["UI/UX", "Responsive", "Modern"],
@@ -20,7 +20,7 @@ export default function ServicePage() {
       url: "/Services/brand-identity"
     },
     {
-      title: "Marketing & Strategy",
+      title: "Logo Design",
       description: "Your message deserves to be seen by the right audience.",
       image: "/images/services/marketing.jpg",
       tags: ["Digital", "Strategy", "Growth"],
@@ -28,7 +28,7 @@ export default function ServicePage() {
       url: "/Services/marketing"
     },
     {
-      title: "Motion Graphics",
+      title: "Packaging designs",
       description: "Add life and movement to your brand with stunning animations.",
       image: "/images/services/motion.jpg",
       tags: ["Animation", "Video", "Motion"],
@@ -36,37 +36,14 @@ export default function ServicePage() {
       url: "/Services/motion-graphics"
     },
     {
-      title: "Illustration & Art",
+      title: "Print Design",
       description: "Express your brand in a unique and artistic way.",
       image: "/images/services/illustration.jpg",
       tags: ["Custom", "Digital", "Art"],
       span: "col-span-1 row-span-1",
       url: "/Services/illustration"
-    },
-    {
-      title: "Product Design",
-      description: "Design intuitive digital products that users love.",
-      image: "/images/services/product.jpg",
-      tags: ["Apps", "Products", "UX"],
-      span: "col-span-1 row-span-1",
-      url: "/Services/product-design"
-    },
-    {
-      title: "Content Creation",
-      description: "Compelling content that tells your brand story.",
-      image: "/images/services/content.jpg",
-      tags: ["Copy", "Content", "Story"],
-      span: "col-span-1 row-span-1",
-      url: "/Services/content-creation"
-    },
-    {
-      title: "Digital Advertising",
-      description: "Get value for money spent on strategic ad campaigns.",
-      image: "/images/services/ads.jpg",
-      tags: ["Ads", "ROI", "Campaigns"],
-      span: "col-span-2 row-span-1",
-      url: "/Services/digital-advertising"
     }
+    
   ];
 
   return (

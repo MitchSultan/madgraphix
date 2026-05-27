@@ -45,26 +45,26 @@ export default async function BlogPage(props) {
       </section>
 
       {/* Blog Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-        {blogs && blogs.length > 0 ? (
-          <>
-            <MultiItemCarousel itemsPerView={3}>
-              {blogs.map((blog) => (
-                <BlogCard key={blog.id} blog={blog} />
-              ))}
-            </MultiItemCarousel>
+      {/* Blog Grid */}
+<section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">  {/* ← max-w-7xl, remove max-w-full */}
+  {blogs && blogs.length > 0 ? (
+    <>
+      <MultiItemCarousel itemsPerView={3}>   {/* ← stays as-is */}
+        {blogs.map((blog) => (
+          <BlogCard key={blog.id} blog={blog} />
+        ))}
+      </MultiItemCarousel>
 
-            {/* Pagination */}
-            {pagination.totalPages > 1 && (
-              <Pagination currentPage={page} totalPages={pagination.totalPages} />
-            )}
-          </>
-        ) : (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No blog posts found.</p>
-          </div>
-        )}
-      </section>
+      {pagination.totalPages > 1 && (
+        <Pagination currentPage={page} totalPages={pagination.totalPages} />
+      )}
+    </>
+  ) : (
+    <div className="text-center py-12">
+      <p className="text-gray-500 text-lg">No blog posts found.</p>
+    </div>
+  )}
+</section>
       <Footer />
     </main>
   );

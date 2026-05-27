@@ -4,29 +4,29 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-white rounded-t-[3rem] mt-12 overflow-hidden shadow-2xl relative">
+    <footer className=" rounded-t-[3rem] mt-12 overflow-hidden shadow-2xl relative">
       {/* Decorative background circle */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full filter blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
 
       <div className="mx-auto max-w-7xl px-6 pt-20 pb-12 sm:px-8 relative z-10">
         <div className="mx-auto max-w-md flex flex-col justify-space-between text-center">
-          <strong className="block text-2xl font-bold text-white sm:text-3xl mb-2">
+          <strong className="block text-2xl font-bold  sm:text-3xl mb-2">
             Get Quality Newsletters to your inbox?
           </strong>
-          <p className="text-purple-200 mb-6">Stay updated with our latest creative insights.</p>
+          <p className=" mb-6">Stay updated with our latest creative insights.</p>
 
           <form className="mt-2 w-full">
             <div className="relative max-w-lg mx-auto">
               <label className="sr-only" htmlFor="email"> Email </label>
 
               <input 
-                className="w-full rounded-pill border-2 border-white/20 bg-white/10 p-4 pr-36 text-sm font-medium text-white placeholder-purple-200 focus:outline-none focus:border-white/50 backdrop-blur-sm transition-colors" 
+                className="w-full rounded-pill border-2 border-white/20 bg-white/10 p-4 pr-36 text-sm font-medium  focus:outline-none focus:border-white/50 backdrop-blur-sm transition-colors" 
                 id="email" 
                 type="email" 
                 placeholder="john@doe.com" 
               />
 
-              <button className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-pill bg-accent px-6 py-2.5 text-sm font-bold text-white transition hover:bg-[#e67e00] shadow-lg">
+              <button className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-pill bg-accent px-6 py-2.5 text-sm font-bold  transition hover:bg-[#e67e00] shadow-lg">
                 Subscribe
               </button>
             </div>
@@ -36,11 +36,11 @@ export default function Footer() {
         <div className="mt-20 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-32">
           <div className="mx-auto max-w-sm lg:max-w-none lg:text-left text-center">
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
-              <img src="/logos/mad.png" alt="MAD Graphix" className="h-10 w-auto brightness-0 invert" />
-              <span className="font-bold text-xl text-white tracking-tight">M.A.D Graphix</span>
+              <img src="/logos/mad.png" alt="MAD Graphix" className="h-10 w-auto " />
+              <span className="font-bold text-xl  tracking-tight">M.A.D Graphix</span>
             </div>
             
-            <p className="mt-4 text-purple-100 lg:text-lg leading-relaxed max-w-md">
+            <p className="mt-4  lg:text-lg leading-relaxed max-w-md">
               We are all about bringing your brand to life with creative
               and eye-catching designs. Art straight from the heart.
             </p>
@@ -77,11 +77,11 @@ export default function Footer() {
             </div>
 
             <div>
-              <strong className="font-bold text-white uppercase tracking-wider text-sm"> About </strong>
+              <strong className="font-bold  uppercase tracking-wider text-sm"> About </strong>
               <ul className="mt-6 space-y-3">
                 {['About Us', 'Case Studies', 'Blog', 'Our Team'].map(item => (
                   <li key={item}>
-                    <a className="text-purple-100 hover:text-white hover:translate-x-1 inline-block transition-all" href="#">
+                    <a className="text-purple-100 hover:text-white hover:translate-x-1  transition-all" href="#">
                       {item}
                     </a>
                   </li>
@@ -105,10 +105,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-purple-200">
+          <p className="text-sm ">
             © {currentYear} M.A.D Graphix. All rights reserved.
           </p>
-          <p className="text-sm text-purple-200">
+          <p className="text-sm ">
             <a href="https://www.madebymitch.com" target="_blank" rel="noreferrer" className="underline hover:text-white transition-colors">Made By Mitch</a>
           </p>
         </div>

@@ -1,8 +1,10 @@
 import { supabaseServer } from '@/lib/supabase/server';
 import { LeadsChart, SourceChart } from './charts';
 import Link from 'next/link';
-import { ArrowUpRight, Users, Mail, CheckCircle, TrendingUp } from 'lucide-react';
-
+import { ArrowUpRight, Users, Mail, CheckCircle, TrendingUp, ShoppingBag, DollarSign, Package } from 'lucide-react';
+import { getOrders } from '@/lib/actions/orders';
+import { getProfile } from '@/lib/auth';
+import { ORDER_STATUS_CONFIG } from '@/types/database';
 
 // Simple date formatter without extra dep
 function timeAgo(date) {
@@ -111,107 +113,165 @@ async function getDashboardData() {
 }
 
 export default async function DashboardPage() {
-  const data = await getDashboardData();
-  const { kpis, recentLeads, recentActivities, chartData, sourceData } = data;
+  const profile = await getProfile();
+  if (!profile) return null;
+
+  const orders = await getOrders();
+  
+  const totalOrders = orders.length;
+  const statusBreakdown = {};
+  let totalRevenue = 0;
+
+  for (const order of orders) {
+    statusBreakdown[order.status] = (statusBreakdown[order.status] || 0) + 1;
+    if (order.status === 'delivered') {
+      totalRevenue += Number(order.total_price || 0);
+    }
+  }
+
+  const totalSpend = orders.reduce((sum, o) => sum + Number(o.total_price || 0), 0);
+
+  let crmData = null;
+  if (profile.role === 'admin' || profile.role === 'agent') {
+    crmData = await getDashboardData();
+  }
 
   return (
     <div className="space-y-8">
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Dashboard Overview</h1>
-        <p className="text-gray-500">Welcome back to your CRM control center.</p>
+        <p className="text-gray-500">
+          {(profile.role === 'admin' || profile.role === 'agent') ? 'Welcome back to your CRM and Order control center.' : 'Welcome to your print shop dashboard.'}
+        </p>
       </div>
 
-      {/* KPI Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <KpiCard title="Total Leads (30d)" value={kpis.totalLeads} icon={Users} color="bg-blue-500" />
-        <KpiCard title="New Leads (7d)" value={kpis.newLeads} icon={ArrowUpRight} color="bg-green-500" />
-        <KpiCard title="Conversion Rate" value={`${kpis.conversionRate}%`} icon={CheckCircle} color="bg-purple-500" />
-        <KpiCard title="Subscribers (30d)" value={kpis.totalSubscribers} icon={Mail} color="bg-indigo-500" />
+      {/* Orders Summary Cards */}
+      <div>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Orders Overview</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <KpiCard title="Total Orders" value={totalOrders} icon={ShoppingBag} color="bg-blue-500" />
+          <KpiCard title={(profile.role === 'admin' || profile.role === 'agent') ? "Revenue (Delivered)" : "Total Spend"} value={`KES ${((profile.role === 'admin' || profile.role === 'agent') ? totalRevenue : totalSpend).toLocaleString('en-KE')}`} icon={DollarSign} color="bg-green-500" />
+          <KpiCard title="Active Orders" value={(statusBreakdown['pending'] || 0) + (statusBreakdown['processing'] || 0)} icon={Package} color="bg-yellow-500" />
+        </div>
       </div>
 
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Order Status Breakdown */}
+      {totalOrders > 0 && (
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 className="font-semibold text-gray-900 mb-6">Leads Over Time (7 Days)</h3>
-          <LeadsChart data={chartData} />
-        </div>
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 className="font-semibold text-gray-900 mb-6">Leads by Source</h3>
-          <SourceChart data={sourceData} />
-        </div>
-      </div>
-
-      {/* Tables Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Recent Leads */}
-        <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <div className="p-6 border-b border-gray-100 flex justify-between items-center">
-            <h3 className="font-semibold text-gray-900">Recent Leads</h3>
-            <Link href="/dashboard/leads" className="text-sm text-blue-600 hover:text-blue-700 font-medium">
-              View All
-            </Link>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm text-left">
-              <thead className="bg-gray-50 text-gray-600 font-medium border-b border-gray-100">
-                <tr>
-                  <th className="px-6 py-3">Name</th>
-                  <th className="px-6 py-3">Source</th>
-                  <th className="px-6 py-3">Status</th>
-                  <th className="px-6 py-3">Date</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                {recentLeads?.length > 0 ? recentLeads.map((lead) => (
-                  <tr key={lead.id} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-6 py-3 font-medium text-gray-900">
-                      <Link href={`/dashboard/leads/${lead.id}`} className="hover:underline">
-                        {lead.full_name}
-                      </Link>
-                      <div className="text-gray-500 text-xs font-normal">{lead.email}</div>
-                    </td>
-                    <td className="px-6 py-3 capitalize">{lead.source.replace('_', ' ')}</td>
-                    <td className="px-6 py-3">
-                      <StatusBadge status={lead.status} />
-                    </td>
-                    <td className="px-6 py-3 text-gray-500">{new Date(lead.created_at).toLocaleDateString()}</td>
-                  </tr>
-                )) : (
-                  <tr>
-                    <td colSpan={4} className="px-6 py-8 text-center text-gray-500">No leads yet.</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Recent Activity */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <div className="p-6 border-b border-gray-100">
-            <h3 className="font-semibold text-gray-900">Recent Activity</h3>
-          </div>
-          <div className="p-6 space-y-6">
-            {recentActivities?.length > 0 ? recentActivities.map((activity) => (
-              <div key={activity.id} className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center shrink-0 text-blue-600">
-                  <TrendingUp size={16} />
+          <h3 className="text-sm font-medium text-gray-500 mb-4">Orders by Status</h3>
+          <div className="flex flex-wrap gap-4">
+            {Object.entries(statusBreakdown).map(([status, count]) => {
+              const config = ORDER_STATUS_CONFIG[status]
+              if (!config) return null
+              return (
+                <div key={status} className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider ${config.color}`}>
+                  <span className={`inline-block w-2 h-2 rounded-full ${config.dot}`} />
+                  {config.label}: {count}
                 </div>
-                <div>
-                  <p className="text-sm text-gray-900 font-medium">
-                    {formatActivityType(activity.type)}
-                  </p>
-                  <p className="text-xs text-gray-500">
-                    {activity.leads?.full_name} • {timeAgo(activity.created_at)}
-                  </p>
-                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Admin Only CRM Data */}
+      {(profile.role === 'admin' || profile.role === 'agent') && crmData && (
+        <div className="mt-12 space-y-8 border-t border-gray-200 pt-8">
+          <h2 className="text-xl font-semibold text-gray-900">CRM Overview</h2>
+          
+          {/* KPI Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <KpiCard title="Total Leads (30d)" value={crmData.kpis.totalLeads} icon={Users} color="bg-blue-500" />
+            <KpiCard title="New Leads (7d)" value={crmData.kpis.newLeads} icon={ArrowUpRight} color="bg-green-500" />
+            <KpiCard title="Conversion Rate" value={`${crmData.kpis.conversionRate}%`} icon={CheckCircle} color="bg-purple-500" />
+            <KpiCard title="Subscribers (30d)" value={crmData.kpis.totalSubscribers} icon={Mail} color="bg-indigo-500" />
+          </div>
+
+          {/* Charts Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <h3 className="font-semibold text-gray-900 mb-6">Leads Over Time (7 Days)</h3>
+              <LeadsChart data={crmData.chartData} />
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <h3 className="font-semibold text-gray-900 mb-6">Leads by Source</h3>
+              <SourceChart data={crmData.sourceData} />
+            </div>
+          </div>
+
+          {/* Tables Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Recent Leads */}
+            <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+              <div className="p-6 border-b border-gray-100 flex justify-between items-center">
+                <h3 className="font-semibold text-gray-900">Recent Leads</h3>
+                <Link href="/dashboard/leads" className="text-sm text-blue-600 hover:text-blue-700 font-medium">
+                  View All
+                </Link>
               </div>
-            )) : (
-              <p className="text-center text-gray-500 text-sm">No activity yet.</p>
-            )}
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                  <thead className="bg-gray-50 text-gray-600 font-medium border-b border-gray-100">
+                    <tr>
+                      <th className="px-6 py-3">Name</th>
+                      <th className="px-6 py-3">Source</th>
+                      <th className="px-6 py-3">Status</th>
+                      <th className="px-6 py-3">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {crmData.recentLeads?.length > 0 ? crmData.recentLeads.map((lead) => (
+                      <tr key={lead.id} className="hover:bg-gray-50 transition-colors">
+                        <td className="px-6 py-3 font-medium text-gray-900">
+                          <Link href={`/dashboard/leads/${lead.id}`} className="hover:underline">
+                            {lead.full_name}
+                          </Link>
+                          <div className="text-gray-500 text-xs font-normal">{lead.email}</div>
+                        </td>
+                        <td className="px-6 py-3 capitalize">{lead.source.replace('_', ' ')}</td>
+                        <td className="px-6 py-3">
+                          <StatusBadge status={lead.status} />
+                        </td>
+                        <td className="px-6 py-3 text-gray-500">{new Date(lead.created_at).toLocaleDateString()}</td>
+                      </tr>
+                    )) : (
+                      <tr>
+                        <td colSpan={4} className="px-6 py-8 text-center text-gray-500">No leads yet.</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Recent Activity */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+              <div className="p-6 border-b border-gray-100">
+                <h3 className="font-semibold text-gray-900">Recent Activity</h3>
+              </div>
+              <div className="p-6 space-y-6">
+                {crmData.recentActivities?.length > 0 ? crmData.recentActivities.map((activity) => (
+                  <div key={activity.id} className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center shrink-0 text-blue-600">
+                      <TrendingUp size={16} />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-900 font-medium">
+                        {formatActivityType(activity.type)}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {activity.leads?.full_name} • {timeAgo(activity.created_at)}
+                      </p>
+                    </div>
+                  </div>
+                )) : (
+                  <p className="text-center text-gray-500 text-sm">No activity yet.</p>
+                )}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -249,3 +309,4 @@ function StatusBadge({ status }) {
 function formatActivityType(type) {
   return type.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 }
+

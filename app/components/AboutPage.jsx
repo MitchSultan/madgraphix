@@ -86,7 +86,7 @@ export default function AboutPage() {
             {/* Visual element placeholder mimicking the hero from screenshot */}
             <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-[#cbb5e8] to-[#fbd4a1] shadow-2xl flex items-center justify-center p-4">
               <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden border-8 border-white shadow-inner">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Creative Design" className="w-full h-full object-cover" />
+                <img src="/posters/billb.webp" alt="Creative Design" className="w-full h-full object-cover" />
               </div>
               
               {/* Floating badges */}
@@ -126,7 +126,7 @@ export default function AboutPage() {
           
           <div className="mt-12">
             <span className="text-2xl md:text-3xl font-extrabold text-[#ff8c00] transform -rotate-2 inline-block">
-              Art Straight from the Heart! ❤️
+              Art Straight from the Heart! 
             </span>
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#512396] mb-4">What We Do</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xltext-center mx-auto">
               From conception to completion, we offer a comprehensive suite of design services to elevate your brand.
             </p>
           </div>

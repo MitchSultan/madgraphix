@@ -47,24 +47,24 @@ export default function Hero() {
       
       {/* Decorative Circles matching GoTo Prints style */}
       <div className="hidden lg:block absolute right-[5%] top-[20%] w-80 h-80 rounded-full border-4 border-white shadow-2xl overflow-hidden floating-circle-1 z-10 bg-white">
-        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Creative Design" className="w-full h-full object-cover" />
+        <img src="/posters/stan.webp" alt="Creative Design" className="w-full h-full object-cover" />
       </div>
       <div className="hidden lg:block absolute right-[25%] bottom-[15%] w-60 h-60 rounded-full border-4 border-white shadow-2xl overflow-hidden floating-circle-2 z-20 bg-white">
-        <img src="https://images.unsplash.com/photo-1626785773579-c10814bb6036?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Brand Identity" className="w-full h-full object-cover" />
+        <img src="/posters/poster.webp" alt="Brand Identity" className="w-full h-full object-cover" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-30 w-full flex flex-col lg:flex-row items-center">
         {/* Left Content Area */}
         <div className="w-full lg:w-3/5 text-center lg:text-left mt-16 lg:mt-0">
           <div className="hero-element inline-block mb-4">
-            <span className="bg-white text-accent px-4 py-1.5 rounded-full text-sm font-bold tracking-wider shadow-sm border border-purple-100 uppercase">
+            <span className="bg-white text-accent px-4 py-1.5 rounded-full text-sm font-thin tracking-wider shadow-sm border border-purple-100 uppercase">
               Your Creative Partner
             </span>
           </div>
           
           <h1 className="hero-element text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary mb-6 leading-tight tracking-tight">
             Where <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Creativity</span> <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-[#8B5CF6]">Creativity</span> <br className="hidden md:block" />
             Goes Mad
           </h1>
           

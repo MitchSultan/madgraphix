@@ -56,7 +56,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen  w-full bg-gray-50 flex flex-col">
       <Navigation />
       
       <main className="flex-grow container mx-auto px-4 py-12 max-w-2xl">

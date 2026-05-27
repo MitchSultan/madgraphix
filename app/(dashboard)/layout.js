@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { 
   LayoutDashboard, 
   Users, 
@@ -10,25 +10,58 @@ import {
   Settings, 
   LogOut,
   Menu,
-  X 
+  X,
+  Package,
+  FileText,
+  ShoppingBag,
+  BookOpen
 } from 'lucide-react';
 import { supabaseBrowser } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
-const SIDEBAR_ITEMS = [
-  { label: 'Overview', href: '/dashboard', icon: LayoutDashboard },
-  { label: 'Leads', href: '/dashboard/leads', icon: Users },
-  { label: 'Subscribers', href: '/dashboard/subscribers', icon: Mail },
-  { label: 'Case-studies', href: '/dashboard/case-studies', icon: Mail },
-  { label: 'Blogs', href: '/dashboard/blogs', icon: Mail },
-  { label: 'Settings', href: '/dashboard/settings', icon: Settings },
+// All possible sidebar items with role visibility
+const ALL_SIDEBAR_ITEMS = [
+  { label: 'Overview',      href: '/dashboard',              icon: LayoutDashboard, roles: ['admin', 'agent', 'client'] },
+  { label: 'Orders',        href: '/dashboard/orders',       icon: ShoppingBag,     roles: ['admin', 'agent', 'client'] },
+  { label: 'Leads',         href: '/dashboard/leads',        icon: Users,           roles: ['admin', 'agent'] },
+  { label: 'Subscribers',   href: '/dashboard/subscribers',  icon: Mail,            roles: ['admin', 'agent'] },
+  { label: 'Print Orders',  href: '/dashboard/orders',       icon: Package,         roles: [] }, // legacy — hidden, orders page now handles both
+  { label: 'Invoices',      href: '/dashboard/invoices',     icon: FileText,        roles: ['admin', 'agent'] },
+  { label: 'Case-studies',  href: '/dashboard/case-studies',  icon: BookOpen,        roles: ['admin', 'agent'] },
+  { label: 'Blogs',         href: '/dashboard/blogs',        icon: FileText,        roles: ['admin', 'agent'] },
+  { label: 'Settings',      href: '/dashboard/settings',     icon: Settings,        roles: ['admin', 'agent', 'client'] },
 ];
 
 export default function DashboardLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [profile, setProfile] = useState(null);
   const pathname = usePathname();
   const router = useRouter();
+
+  // Fetch user profile for role-based nav
+  useEffect(() => {
+    async function loadProfile() {
+      const supabase = supabaseBrowser();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { data } = await supabase
+        .from('profiles')
+        .select('id, full_name, email, role')
+        .eq('id', user.id)
+        .single();
+
+      if (data) setProfile(data);
+    }
+    loadProfile();
+  }, []);
+
+  const userRole = profile?.role || 'admin';
+
+  // Filter sidebar items by role
+  const sidebarItems = ALL_SIDEBAR_ITEMS.filter(item =>
+    item.roles.includes(userRole)
+  );
 
   const handleLogout = async () => {
     const supabase = supabaseBrowser();
@@ -55,7 +88,7 @@ export default function DashboardLayout({ children }) {
         <div className="h-full flex flex-col">
           <div className="h-16 flex items-center px-6 border-b border-gray-200">
             <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              CRM Admin
+              {userRole === 'admin' ? 'Admin Panel' : 'My Dashboard'}
             </span>
             <button 
               className="ml-auto lg:hidden"
@@ -66,13 +99,13 @@ export default function DashboardLayout({ children }) {
           </div>
 
           <nav className="flex-1 px-4 py-6 space-y-1">
-            {SIDEBAR_ITEMS.map((item) => {
+            {sidebarItems.map((item) => {
               const isActive = pathname === item.href;
               const Icon = item.icon;
               
               return (
                 <Link
-                  key={item.href}
+                  key={item.href + item.label}
                   href={item.href}
                   className={cn(
                     "flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors",
@@ -88,7 +121,28 @@ export default function DashboardLayout({ children }) {
             })}
           </nav>
 
-          <div className="p-4 border-t border-gray-200">
+          {/* User info + Logout */}
+          <div className="p-4 border-t border-gray-200 space-y-3">
+            {profile && (
+              <div className="px-4 py-2">
+                <p className="text-sm font-medium text-gray-900 truncate">
+                  {profile.full_name || profile.email || 'User'}
+                </p>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className={cn(
+                    "inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider",
+                    userRole === 'admin'
+                      ? "bg-purple-100 text-purple-700"
+                      : "bg-blue-100 text-blue-700"
+                  )}>
+                    {userRole}
+                  </span>
+                  {profile.email && (
+                    <span className="text-xs text-gray-500 truncate">{profile.email}</span>
+                  )}
+                </div>
+              </div>
+            )}
             <button
               onClick={handleLogout}
               className="flex items-center gap-3 px-4 py-3 w-full text-left text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors"
@@ -112,8 +166,8 @@ export default function DashboardLayout({ children }) {
           </button>
 
           <div className="flex items-center gap-4 ml-auto">
-            <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium text-gray-600">
-              A
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-sm font-medium text-white">
+              {profile?.full_name?.charAt(0)?.toUpperCase() || 'U'}
             </div>
           </div>
         </header>

@@ -110,9 +110,9 @@ body {
   font-size: var(--fs-base);
   line-height: var(--lh-loose);
   letter-spacing: var(--ls-normal);
-  color: #111;
+  color: var(--black);
   /* Adjust to your design system */
-  background-color: var(--color-brand-bg);
+  background-color: var(--white);
 }
 
 /* 3. Heading hierarchy (consistent scale + spacing) */
@@ -173,6 +173,9 @@ small {
   --color-tahiti: #3ab7bf;
   --color-bermuda: #78dcca;
   --color-brand-bg: #a67be0;
+  --white:#ffffff;
+  --black:#000000;
+  --blue:#0043CE;
 }
 
 /* 6. Links */

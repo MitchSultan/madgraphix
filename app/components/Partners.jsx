@@ -12,7 +12,7 @@ export default function Partners() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="partners" className='flex flex-col items-center justify-center' >
+    <section id="partners" className='flex flex-col items-center justify-center bg[#fff]' >
       
         
         <LogoTicker/>

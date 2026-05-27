@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const services = [
   {
-    title: 'Web Design & Development',
+    title: 'Web Design ',
     href: '/Services/web-design',
     description: 'We make digital experiences smooth and enjoyable.',
   },
@@ -15,26 +15,22 @@ const services = [
     description: 'Your brand deserves a unique personality.',
   },
   {
-    title: 'Marketing & Strategy',
-    href: '/Services/marketing',
+    title: 'Logo Design',
+    href: '/Services/logo-design',
     description: 'Your message deserves to be seen.',
   },
   {
-    title: 'Motion Graphics',
-    href: '/Services/motion-graphics',
+    title: 'Packaging designs',
+    href: '/Services/packaging-designs',
     description: 'Add life and movement to your brand.',
   },
   {
-    title: 'Illustration & Art',
-    href: '/Services/illustration',
+    title: 'Print Design',
+    href: '/Services/print-design',
     description:
       'From custom art pieces to digital illustrations, we help you express your brand in a unique and artistic way.',
   },
-  {
-    title: 'Digital Advertising',
-    href: '/Services/digital-advertising',
-    description: 'Get value for money spent with campaigns that convert.',
-  },
+  
 ];
 
 export default function ServiceSection() {
@@ -69,7 +65,7 @@ export default function ServiceSection() {
   };
 
   return (
-    <section className="w-full py-24 text-gray-800 bg-surface-soft overflow-hidden">
+    <section className="w-full py-24 text-gray-800 bg-[#f2f2f2] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="max-w-3xl">
           <p className="text-sm font-bold uppercase tracking-[0.3em] text-accent mb-4">

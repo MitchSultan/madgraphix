@@ -1,74 +1,88 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function MultiItemCarousel({ children, itemsPerView = 4 }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+function useItemsPerView(desktopCount) {
+  const [items, setItems] = useState(1); // SSR-safe default
+
+  useEffect(() => {
+    const update = () =>
+      setItems(window.innerWidth >= 768 ? desktopCount : 1);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [desktopCount]);
+
+  return items;
+}
+
+export default function MultiItemCarousel({ children, itemsPerView = 3 }) {
+  const [current, setCurrent] = useState(0);
+  const perView = useItemsPerView(itemsPerView);
 
   const totalItems = React.Children.count(children);
-  const maxIndex = Math.ceil(totalItems / itemsPerView) - 1;
+  const totalPages = Math.ceil(totalItems / perView);
+  const page = Math.min(current, totalPages - 1); // clamp on resize
 
-  const goToPrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
-  };
+  const goTo = (p) => setCurrent(Math.max(0, Math.min(p, totalPages - 1)));
+  const goToPrev = () => goTo(page === 0 ? totalPages - 1 : page - 1);
+  const goToNext = () => goTo(page === totalPages - 1 ? 0 : page + 1);
 
   return (
-    <>
-      {/* Mobile: native touch-scroll carousel */}
-      <div className="md:hidden -mx-4 px-4">
-        <div className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory touch-pan-x">
-          {React.Children.map(children, (child, i) => (
-            <div
-              key={`m-${i}`}
-              className="snap-start flex-shrink-0"
-              style={{ width: '80%' }}
-            >
-              {child}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Desktop/tablet: JS controlled carousel with buttons */}
-      <div className="hidden md:block relative w-full overflow-hidden">
-        {/* Track */}
+    <div className="w-full">
+      {/* Track */}
+      <div className="relative overflow-hidden">
         <div
-          className="flex transition-transform duration-700 ease-in-out"
+          className="flex transition-transform duration-500 ease-in-out"
           style={{
-            transform: `translateX(-${currentIndex * 100}%)`,
-            width: `${(totalItems / itemsPerView) * 100}%`,
+            transform: `translateX(-${page * 100}%)`,
+            width: `${(totalItems / perView) * 100}%`,
           }}
         >
           {React.Children.map(children, (child, i) => (
             <div
-              key={`d-${i}`}
-              className="w-full flex-shrink-0"
-              style={{ width: `${100 / itemsPerView}%` }}
+              key={i}
+              className="flex-shrink-0 px-2 box-border"
+              style={{ width: `${(perView / totalItems) * 100}%` }}
             >
               {child}
             </div>
           ))}
-
         </div>
 
-        {/* Controls */}
+        {/* Prev / Next */}
         <button
           onClick={goToPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full"
+          aria-label="Previous"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white border border-gray-200 text-gray-700 w-9 h-9 rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50 transition z-10"
         >
           ‹
         </button>
         <button
           onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full"
+          aria-label="Next"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white border border-gray-200 text-gray-700 w-9 h-9 rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50 transition z-10"
         >
           ›
         </button>
       </div>
-    </>
+
+      {/* Dots */}
+      {totalPages > 1 && (
+        <div className="flex justify-center gap-2 mt-4">
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Page ${i + 1}`}
+              className={`rounded-full transition-all ${
+                i === page
+                  ? "w-4 h-2 bg-emerald-600"
+                  : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

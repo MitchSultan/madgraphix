@@ -37,8 +37,8 @@ function Print() {
             <div className="absolute top-0 left-0 w-full h-full  z-0"></div>
             
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="flex flex-col md:flex-row items-center justify-between mb-12">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-4 md:mb-0">
+                <div className="flex flex-col md:flex-row items-left justify-between mb-12">
+                    <h2 className="text-4xl text-left md:text-5xl font-extrabold text-primary mb-4 md:mb-0">
                         Art Straight </h2>
                     <div className="hidden md:block">
                         <span className="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-sm border border-purple-100">

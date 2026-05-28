@@ -33,7 +33,7 @@ export default function WebDesignPage() {
               </p>
             </div>
             <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
-              <img src="/images/services/web-design.jpg" alt="Web Design" className="w-full h-full object-cover rounded-2xl" />
+              <img src="/posters/phon.webp" alt="Web Design" className="w-full h-full object-cover rounded-2xl" />
             </div>
           </div>
 

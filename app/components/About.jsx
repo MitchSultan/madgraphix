@@ -86,7 +86,7 @@ export default function AboutUs() {
 
         {/* LEFT — TEXT */}
         <div>
-          <div className="blue-glass flex justify-center items-center py-1 rounded-full w-32">About us</div>
+          <div className=" flex justify-center items-center py-1 rounded-full w-32">About us</div>
           <h2 className="text-4xl text-black lg:text-5xl font-bold mb-6 leading-tight split" >
             This is where Creativity Goes Mad
           </h2>
@@ -99,10 +99,11 @@ export default function AboutUs() {
           </p>
 
 
-
-          <button className="bg-[#0043CE] text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition">
+          <a href="/About" >
+          <button className="bg-[#0043CE] text-white px-6 py-3 rounded-sm hover:bg-gray-900 transition">
             Learn More
           </button>
+          </a>
         </div>
 
 

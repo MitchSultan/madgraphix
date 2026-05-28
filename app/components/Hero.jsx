@@ -40,16 +40,16 @@ export default function Hero() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative min-h-[90vh] w-full overflow-hidden bg-gradient-to-br from-[#e9e1f5] via-[#f9f8fc] to-[#fbd4a1]/30 pt-24 pb-12 flex items-center">
+    <section ref={containerRef} className="relative min-h-[90vh] w-full overflow-hidden bg-gradient-to-br from-[#ffffff] via-[#f1f1f1] to-[#f2f2f2]/30 pt-24 pb-12 flex items-center">
       {/* Background Graphic Elements */}
       <div className="absolute top-20 right-10 w-64 h-64 md:w-96 md:h-96 bg-[#d1c2eb] rounded-full mix-blend-multiply filter blur-3xl opacity-60 floating-circle-1"></div>
       <div className="absolute bottom-10 left-10 w-72 h-72 bg-[#fbd4a1] rounded-full mix-blend-multiply filter blur-3xl opacity-50 floating-circle-2"></div>
       
       {/* Decorative Circles matching GoTo Prints style */}
-      <div className="hidden lg:block absolute right-[5%] top-[20%] w-80 h-80 rounded-full border-4 border-white shadow-2xl overflow-hidden floating-circle-1 z-10 bg-white">
+      <div className="hidden lg:block absolute right-[5%] top-[20%] w-80 h-80 rounded-sm border-4 border-white shadow-2xl overflow-hidden floating-circle-1 z-10 bg-white">
         <img src="/posters/stan.webp" alt="Creative Design" className="w-full h-full object-cover" />
       </div>
-      <div className="hidden lg:block absolute right-[25%] bottom-[15%] w-60 h-60 rounded-full border-4 border-white shadow-2xl overflow-hidden floating-circle-2 z-20 bg-white">
+      <div className="hidden lg:block absolute right-[25%] bottom-[15%] w-60 h-60 rounded-md border-4 border-white shadow-2xl overflow-hidden floating-circle-2 z-20 bg-white">
         <img src="/posters/poster.webp" alt="Brand Identity" className="w-full h-full object-cover" />
       </div>
 

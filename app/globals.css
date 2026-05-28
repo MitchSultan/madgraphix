@@ -198,7 +198,7 @@ strong {
 /* 8. List spacing */
 ul,
 ol {
-  margin: 0 0 1em 1.5em;
+  margin: 0 0 0 0;
   padding: 0;
   line-height: var(--lh-loose);
 }

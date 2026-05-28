@@ -26,8 +26,10 @@ export default async function CaseStudiesPage() {
   const caseStudies = await getCaseStudies();
 
   return (
+    <>
+    <Navigation />
     <div className='bg-gray-100'>
-      <Navigation />
+      
       
       {/* Hero Section */}
       <div className="max-w-7xl bg-gray-100 mx-auto px-4 sm:px-6 mt-32 mb-16">
@@ -40,7 +42,7 @@ export default async function CaseStudiesPage() {
       {/* Case Studies Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
         {caseStudies && caseStudies.length > 0 ? (
-          <MultiItemCarousel itemsPerView={3}>
+          <MultiItemCarousel >
             {caseStudies.map((study) => (
               <CaseStudyCard key={study.id} study={study} />
             ))}
@@ -54,6 +56,7 @@ export default async function CaseStudiesPage() {
 
       <Footer />
     </div>
+      </>
   );
 }
 
@@ -72,7 +75,7 @@ function CaseStudyCard({ study }) {
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
           <div className="absolute top-4 left-4">
-            <span className="bg-emerald-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+            <span className="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-sm">
               {study.category}
             </span>
           </div>
@@ -81,10 +84,10 @@ function CaseStudyCard({ study }) {
 
       <div className="p-6 flex flex-col flex-grow">
         {/* Client */}
-        <p className="text-sm font-medium text-emerald-600 mb-2">{study.client}</p>
+        <p className="text-sm font-medium text-blue-600 mb-2">{study.client}</p>
 
         {/* Title */}
-        <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
+        <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
           {study.title}
         </h4>
 
@@ -109,7 +112,7 @@ function CaseStudyCard({ study }) {
 
         {/* View Link */}
         <div className="mt-4 pt-4 border-t border-gray-100">
-          <span className="text-emerald-600 font-medium text-sm group-hover:gap-2 inline-flex items-center gap-1 transition-all">
+          <span className="text-blue-600 font-medium text-sm group-hover:gap-2 inline-flex items-center gap-1 transition-all">
             View Case Study
             <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />

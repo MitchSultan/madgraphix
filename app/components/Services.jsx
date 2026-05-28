@@ -90,7 +90,7 @@ export default function ServiceSection() {
               className="group rounded-3xl bg-white border border-purple-50 p-8 min-h-[280px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-200"
             >
               <div>
-                <span className="inline-flex rounded-full bg-purple-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+                <span className="inline-flex rounded-full bg-[#78a9ff] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
                   Mad Graphix
                 </span>
                 <h3 className="mt-6 text-2xl font-bold text-gray-800 leading-tight group-hover:text-primary transition-colors">
@@ -100,7 +100,7 @@ export default function ServiceSection() {
                   {service.description}
                 </p>
               </div>
-              <div className="mt-8 flex items-center gap-2 text-sm font-bold text-accent transition-all duration-300 group-hover:gap-3">
+              <div className="mt-8 flex items-center gap-2 text-sm font-semibold text-accent transition-all duration-300 group-hover:gap-3">
                 <span className="border-b-2 border-accent border-dashed pb-0.5">Explore</span>
                 <span aria-hidden="true" className="text-lg">→</span>
               </div>

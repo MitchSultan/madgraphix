@@ -28,7 +28,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white">
+    <section id="contact" className="py-24 mt-36 bg-white">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -65,7 +65,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-slate-900 mb-1">Phone</h4>
-                  <p className="text-slate-600">+1 (555) 123-4567</p>
+                  <p className="text-slate-600">+254 700 000 000</p>
                 </div>
               </div>
 
@@ -75,7 +75,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-slate-900 mb-1">Email</h4>
-                  <p className="text-slate-600">hello@madgraphix.com</p>
+                  <p className="text-slate-600">hello@madgraphix.co.ke</p>
                 </div>
               </div>
 
@@ -85,7 +85,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-slate-900 mb-1">Location</h4>
-                  <p className="text-slate-600">Creative District, Design City</p>
+                  <p className="text-slate-600">Nairobi, Kenya</p>
                 </div>
               </div>
             </div>

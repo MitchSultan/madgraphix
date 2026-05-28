@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactFormSchema } from '@/lib/validations';
 import Navigation from '@/app/components/Navigation';
+import { MapPin,Mail, Phone } from 'lucide-react';
 import Footer from '@/app/components/Footer';
 
 export default function ContactPage() {
@@ -56,16 +57,49 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen  w-full bg-gray-50 flex flex-col">
-      <Navigation />
+    <>
+    <Navigation />
+    <div className="min-h-screen mt-24 w-full bg-[#f2f2f2] flex items-center justify-center p-4 ">
       
-      <main className="flex-grow container mx-auto px-4 py-12 max-w-2xl">
-        <h1 className="text-4xl font-bold mb-6 text-center text-gray-900">Contact Us</h1>
-        <p className="text-center text-gray-600 mb-10">
+      
+      <main className=" flex flex-col w-full md:flex-row md:justify-between md:px-48 py-12 ">
+        <div className="mb-12 md:mb-0 md:w-1/2 lg:w-2/5">
+        <h1 className="text-4xl font-bold mb-6 text-left">What can we do for you?</h1>
+        <p className="text-left text-gray-600 mb-10">
           Have a project in mind? Let's talk about it.
         </p>
+        <ul className="space-y-6 m-0">
+          <li className="flex items-center gap-4 mb-6">
+            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+              <MapPin className="w-6 h-6 text-blue" />
+            </div>
+            <div>
+              <h4 className="font-semibold  mb-1">Location</h4>
+              <p className="text-slate-600">Nairobi, Kenya</p>
+            </div>
+          </li>
+          <li className="flex items-center gap-4 mb-6">
+            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+              <Mail  className="w-6 h-6 text-blue" />
+            </div>
+            <div>
+              <h4 className="font-semibold  mb-1">Email</h4>
+              <p className="text-slate-600">hello@madgraphix.co.ke</p>
+            </div>
+          </li>
+          <li className="flex items-center gap-4 mb-6">
+            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue -100 flex items-center justify-center">
+              <Phone className="w-6 h-6 text-blue" />
+            </div>
+            <div>
+              <h4 className="font-semibold text-slate-900 mb-1">Phone</h4>
+              <p className="text-slate-600">+254 700 000 000</p>
+            </div>
+          </li>
+        </ul>
+        </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-white rounded-xl shadow-lg p-8 md:w-1/2 lg:w-2/5">
           {success ? (
             <div className="text-center py-10">
               <div className="text-green-500 text-5xl mb-4">✓</div>
@@ -129,7 +163,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-blue-600 text-white py-3 rounded-lg font-thin hover:bg-blue-700  transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
@@ -138,7 +172,9 @@ export default function ContactPage() {
         </div>
       </main>
 
-      <Footer />
+      
     </div>
+    <Footer />
+    </>
   );
 }

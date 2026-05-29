@@ -1,7 +1,7 @@
-import { createClient } from '@/lib/supabase/server'
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import OrderStatusUpdater from './OrderStatusUpdater'
+import { createClient } from '@/lib/supabase/server';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import OrderStatusUpdater from './orderStatusUpdater';
 
 const statusColors = {
   pending:        'bg-yellow-100 text-yellow-800',

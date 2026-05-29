@@ -1,4 +1,5 @@
 'use client';
+import SubscribeForm from "./SubscribeForm";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,25 +16,10 @@ export default function Footer() {
           </strong>
           <p className=" mb-6">Stay updated with our latest creative insights.</p>
 
-          <form className="mt-2 w-full">
-            <div className="relative max-w-lg mx-auto">
-              <label className="sr-only" htmlFor="email"> Email </label>
-
-              <input 
-                className="w-full rounded-pill border-2 border-white/20 bg-white/10 p-4 pr-36 text-sm font-medium  focus:outline-none focus:border-white/50 backdrop-blur-sm transition-colors" 
-                id="email" 
-                type="email" 
-                placeholder="john@doe.com" 
-              />
-
-              <button className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-pill bg-accent px-6 py-2.5 text-sm font-bold  transition hover:bg-[#e67e00] shadow-lg">
-                Subscribe
-              </button>
-            </div>
-          </form>
+          <SubscribeForm />
         </div>
 
-        <div className="mt-20 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-32">
+        <div className="mt-20 bg[#f2f2f2] grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-32">
           <div className="mx-auto max-w-sm lg:max-w-none lg:text-left text-center">
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
               <img src="/logos/mad.png" alt="MAD Graphix" className="h-10 w-auto " />
@@ -64,41 +50,81 @@ export default function Footer() {
 
           <div className="grid grid-cols-2 gap-8 text-left lg:grid-cols-3">
             <div>
-              <strong className="font-bold text-white uppercase tracking-wider text-sm"> Services </strong>
+              <strong className="font-bold  uppercase tracking-wider text-sm"> Services </strong>
               <ul className="mt-6 space-y-3">
-                {['Brand Identity', 'Graphic Design', 'Web Design', 'Marketing'].map(item => (
-                  <li key={item}>
-                    <a className="text-purple-100 hover:text-white hover:translate-x-1 inline-block transition-all" href="#">
-                      {item}
+                
+                  <li >
+                    <a className=" font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
+                      Brand Identity
                     </a>
                   </li>
-                ))}
+                  <li >
+                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
+                      Graphic Design
+                    </a>
+                  </li>
+                  <li >
+                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
+                      Web Design
+                    </a>
+                  </li>
+                  <li >
+                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
+                      Brand Identity
+                    </a>
+                  </li>
+              
               </ul>
             </div>
 
             <div>
               <strong className="font-bold  uppercase tracking-wider text-sm"> About </strong>
               <ul className="mt-6 space-y-3">
-                {['About Us', 'Case Studies', 'Blog', 'Our Team'].map(item => (
-                  <li key={item}>
-                    <a className="text-purple-100 hover:text-white hover:translate-x-1  transition-all" href="#">
-                      {item}
+                
+                  <li >
+                    <a className="font-thin hover:text-blue-300 hover:translate-x-1  transition-all" href="/About">
+                      About Us
                     </a>
                   </li>
-                ))}
+                  <li >
+                    <a className="font-thin hover:text-blue-300 hover:translate-x-1  transition-all" href="/case-studies">
+                      Case Studies
+                    </a>
+                  </li>
+                  <li >
+                    <a className="font-thin hover:text-blue-300 hover:translate-x-1  transition-all" href="/blog">
+                      Blog
+                    </a>
+                  </li>
+                  <li >
+                    <a className="font-thin hover:text-blue-300 hover:translate-x-1  transition-all" href="/our-team">
+                      Our Team
+                    </a>
+                  </li>
+                
               </ul>
             </div>
 
             <div className="col-span-2 lg:col-span-1">
-              <strong className="font-bold text-white uppercase tracking-wider text-sm"> Support </strong>
+              <strong className="font-bold  uppercase tracking-wider text-sm"> Support </strong>
               <ul className="mt-6 space-y-3">
-                {['FAQs', 'Contact', 'Live Chat'].map(item => (
-                  <li key={item}>
-                    <a className="text-purple-100 hover:text-white hover:translate-x-1 inline-block transition-all" href="#">
-                      {item}
+                
+                  <li >
+                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/contact#faqs">
+                      FAQs 
                     </a>
                   </li>
-                ))}
+                  <li >
+                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/contact">
+                      Contact
+                    </a>
+                  </li>
+                  <li >
+                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/wa.me/254708779284">
+                      Live Chat
+                    </a>
+                  </li>
+                
               </ul>
             </div>
           </div>

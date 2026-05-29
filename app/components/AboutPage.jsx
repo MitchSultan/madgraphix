@@ -61,8 +61,8 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#512396] mb-6 tracking-tight">
-              Hey there! <br /> Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#of62fe] to-[#78a9ff]">M.A.D Graphix!</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold  mb-6 tracking-tight">
+              Hey there! <br /> Welcome to <span className="text-transparent bg-clip-text bg-[#78a9ff]">M.A.D Graphix!</span>
             </h1>
             <div className="text-lg md:text-xl text-gray-700 space-y-6 max-w-2xl">
               <p>
@@ -77,9 +77,9 @@ export default function AboutPage() {
             </div>
             
             <div className="mt-10">
-              <button className="bg-blue-900 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hover:bg-[#3d1a73]">
+              <a href="https://wa.me/254708779284" className="inline-block bg-blue-600 text-white hover:bg-blue-700 border-2 border-blue-600 hover:border-blue-700 px-8 py-4 rounded-pill font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                 Let's Work Together
-              </button>
+              </a>
             </div>
           </div>
           

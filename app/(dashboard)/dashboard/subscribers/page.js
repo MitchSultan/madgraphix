@@ -1,57 +1,59 @@
-import { supabaseServer } from '@/lib/supabase/server';
-import { Mail } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server'
 
 export default async function SubscribersPage() {
-  const supabase = await supabaseServer();
+  const supabase = await createClient()
 
   const { data: subscribers } = await supabase
     .from('subscribers')
     .select('*')
-    .order('created_at', { ascending: false });
+    .order('subscribed_at', { ascending: false })
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-900">Email Subscribers</h1>
+    <div className="p-6 space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-semibold">Subscribers</h1>
+        <span className="text-sm text-gray-500">{subscribers?.length ?? 0} total</span>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm text-left">
-            <thead className="bg-gray-50 text-gray-600 font-medium border-b border-gray-100">
+      <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+        <table className="w-full text-sm">
+          <thead className="bg-gray-50 border-b">
+            <tr>
+              <th className="text-left p-4 font-medium text-gray-600">Email</th>
+              <th className="text-left p-4 font-medium text-gray-600">Subscribed</th>
+              <th className="text-left p-4 font-medium text-gray-600">Status</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y">
+            {subscribers?.length === 0 && (
               <tr>
-                <th className="px-6 py-3">Email</th>
-                <th className="px-6 py-3">Source</th>
-                <th className="px-6 py-3">Subscribed Date</th>
-                <th className="px-6 py-3">Status</th>
+                <td colSpan={3} className="p-8 text-center text-gray-400">
+                  No subscribers yet.
+                </td>
               </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100">
-              {subscribers?.length > 0 ? subscribers.map((sub) => (
-                <tr key={sub.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-3 font-medium text-gray-900 flex items-center gap-2">
-                    <Mail size={16} className="text-gray-400" />
-                    {sub.email}
-                  </td>
-                   <td className="px-6 py-3 text-gray-600 capitalize">{sub.source || 'Newsletter'}</td>
-                  <td className="px-6 py-3 text-gray-500">{new Date(sub.created_at).toLocaleDateString()}</td>
-                  <td className="px-6 py-3">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${sub.unsubscribed_at ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
-                      {sub.unsubscribed_at ? 'Unsubscribed' : 'Active'}
-                    </span>
-                  </td>
-                </tr>
-              )) : (
-                <tr>
-                  <td colSpan={4} className="px-6 py-12 text-center text-gray-500">
-                    No subscribers yet.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+            )}
+            {subscribers?.map((sub) => (
+              <tr key={sub.id} className="hover:bg-gray-50">
+                <td className="p-4 font-medium">{sub.email}</td>
+                <td className="p-4 text-gray-400">
+                  {new Date(sub.subscribed_at).toLocaleDateString('en-KE', {
+                    day: 'numeric', month: 'short', year: 'numeric'
+                  })}
+                </td>
+                <td className="p-4">
+                  <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                    sub.is_active
+                      ? 'bg-green-100 text-green-800'
+                      : 'bg-gray-100 text-gray-500'
+                  }`}>
+                    {sub.is_active ? 'Active' : 'Unsubscribed'}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
-  );
+  )
 }

@@ -72,7 +72,7 @@ export default function Hero() {
             At Mirror Arts Designs Graphix, we mix a love for design with a knack for making your brand pop. Let's build something unforgettable.
           </p>
           
-          <div className="hero-element flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <div className="hero-element flex flex-col-reverse sm:flex-row gap-4 justify-center lg:justify-start">
             <Link 
               href="/CaseStudies" 
               className="bg-primary text-white hover:bg-accent px-8 py-4 rounded-pill font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-center"
@@ -81,9 +81,9 @@ export default function Hero() {
             </Link>
             <a 
               href="https://wa.me/254708779284" 
-              className="bg-white text-primary hover:text-accent border-2 border-primary hover:border-accent px-8 py-4 rounded-pill font-bold text-lg shadow-sm transition-all transform hover:-translate-y-1 text-center flex items-center justify-center gap-2"
-            >
-              Let's Talk
+              className="bg-blue-600 text-white hover:bg-blue-700 border-2 border-blue-600 hover:border-blue-700 px-8 py-4 rounded-pill font-bold text-lg shadow-sm transition-all transform hover:-translate-y-1 text-center flex items-center justify-center gap-2"
+            ><button>
+              Let's Talk</button>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

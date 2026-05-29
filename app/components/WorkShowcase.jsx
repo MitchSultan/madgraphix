@@ -32,7 +32,7 @@ export default function WorkShowcase({ works = [] }) {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {/* Header */}
-        <div className="mb-16 flex flex-col md:flex-row items-center md:justify-between text-center md:text-left">
+        <div className="mb-16 flex flex-col md:flex-row items-center md:justify-between text-left md:text-left">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.3em] text-accent mb-4">
               Portfolio

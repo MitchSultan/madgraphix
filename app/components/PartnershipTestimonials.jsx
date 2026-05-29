@@ -1,128 +1,149 @@
-// /components/PartnershipTestimonials.js
-// Fully working testimonial carousel — JavaScript + Tailwind
-'use client';   
+// components/PartnershipTestimonials.tsx
+'use client';
+
 import React, { useState, useEffect } from "react";
 
 const testimonials = [
   {
-    text: [
-      "“The 500 Designs’ team was nothing but highly professional when it came to our project.",
-      { highlight: "They were incredibly efficient, quick to respond, and organized." },
-      "We are ecstatic about the finished product &",
-      { highlight: "would definitely recommend them." },
-      "”",
-    ],
+    text: "The MAD Graphix team was nothing but highly professional. They were incredibly efficient, quick to respond, and organized. We are ecstatic about the finished product and would definitely recommend them.",
+    highlight: "would definitely recommend them",
     author: "Cyrus Kiani",
-    role: "EveryTable, Director of Product",
-    avatar: "/images/bg.png", // replace with your image
+    role: "Director of Product, EveryTable",
+    avatar: "/logos/denri.png", // replace with real images
   },
   {
-    text: [
-      "“Working with this team exceeded every expectation.",
-      { highlight: "Their communication was flawless" },
-      "and their eye for design was exceptional.",
-      { highlight: "We will absolutely work with them again!" },
-      "”",
-    ],
+    text: "Working with this team exceeded every expectation. Their communication was flawless and their eye for design was exceptional. We will absolutely work with them again!",
+    highlight: "We will absolutely work with them again",
     author: "Mara Reed",
     role: "Brand Strategist, Nova Labs",
-    avatar: "/images/bg.png",
+    avatar: "/logos/fayahh.png", // replace with real images
   },
   {
-    text: [
-      "“Superb creative direction and top-tier professionalism.",
-      { highlight: "They delivered ahead of schedule" },
-      "and guided us through every step.",
-      { highlight: "Highly recommended." },
-      "”",
-    ],
-    author: "Daniel M.",
+    text: "Superb creative direction and top-tier professionalism. They delivered ahead of schedule and guided us through every step. Highly recommended.",
+    highlight: "Highly recommended",
+    author: "Daniel Martinez",
     role: "Founder, Vortex",
-    avatar: "/images/bg.png",
+    avatar: "/logos/kings.png",
   },
 ];
 
 export default function PartnershipTestimonials() {
-  const [index, setIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
-    setIndex((prev) => (prev + 1) % testimonials.length);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   const prevSlide = () => {
-    setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  // Auto-slide every 7 seconds
+  // Auto-slide
   useEffect(() => {
-    const interval = setInterval(nextSlide, 7000);
+    const interval = setInterval(nextSlide, 6500);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="w-full h-screen bg-gray-100 py-20 px-6 flex justify-center items-center">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-        {/* Left Heading */}
-        <div>
-          <h2 className="text-5xl font-semibold text-[#3a2413] leading-tight">
-            Forming lasting<br />partnerships
-          </h2>
+    <section className="w-full bg-zinc-950 py-24 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:justify-between gap-12 md:items-end mb-16">
+          <div className="max-w-lg">
+            <h2 className="text-5xl md:text-6xl font-bold tracking-tighter ">
+              Forming lasting<br />
+              <span className="">
+                partnerships
+              </span>
+            </h2>
+          </div>
+          
+          <p className="text-zinc-400 text-lg text-right md:max-w-sm">
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with us.
+          </p>
         </div>
 
-        {/* Right Content */}
+        {/* Carousel */}
         <div className="relative">
-          <div className="transition-opacity duration-500">
-            {/* Testimonial Text */}
-            <p className="text-2xl leading-relaxed text-[#3a2413] mb-10">
-              {testimonials[index].text.map((part, i) =>
-                typeof part === "string" ? (
-                  <span key={i}>{part} </span>
-                ) : (
-                  <mark
-                    key={i}
-                    className="px-1 py-0.5 bg-blue-200 rounded-sm"
-                  >
-                    {part.highlight}
-                  </mark>
-                )
-              )}
-            </p>
-
-            {/* Divider */}
-            <div className="w-full min-h-12 border-t border-gray-400 my-8"></div>
-
-            {/* Author Info */}
-            <div className="flex items-center gap-4">
-              <img
-                src={testimonials[index].avatar}
-                className="w-14 h-14 rounded-full bg-gray-200 object-cover"
-                alt="avatar"
-              />
-              <div>
-                <p className="text-lg font-semibold text-[#3a2413]">
-                  {testimonials[index].author}
+          <div className="min-h-[420px] md:min-h-[380px] flex items-center">
+            <div 
+              className="w-full transition-all duration-700 ease-out"
+              style={{ opacity: 1 }}
+            >
+              <div className="max-w-4xl">
+                {/* Quote Icon */}
+                <div className="text-7xl text-blue-500/20 mb-6">“</div>
+                
+                {/* Testimonial Text */}
+                <p className="text-2xl md:text-3xl leading-relaxed text-zinc-200 mb-12">
+                  {testimonials[currentIndex].text.split(testimonials[currentIndex].highlight).map((part, i, arr) => (
+                    <React.Fragment key={i}>
+                      {part}
+                      {i < arr.length - 1 && (
+                        <span className="text-white font-medium bg-zinc-800 px-1 rounded">
+                          {testimonials[currentIndex].highlight}
+                        </span>
+                      )}
+                    </React.Fragment>
+                  ))}
                 </p>
-                <p className="text-sm text-gray-600">{testimonials[index].role}</p>
+
+                {/* Author */}
+                <div className="flex items-center gap-5">
+                  <img
+                    src={testimonials[currentIndex].avatar}
+                    alt={testimonials[currentIndex].author}
+                    className="w-16 h-16 rounded-2xl object-cover ring-4 ring-zinc-800"
+                  />
+                  <div>
+                    <p className="text-xl font-semibold text-white">
+                      {testimonials[currentIndex].author}
+                    </p>
+                    <p className="text-zinc-400">{testimonials[currentIndex].role}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Navigation Buttons */}
-          <div className="flex gap-4 mt-10">
-            <button
-              onClick={prevSlide}
-              className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-600 text-gray-700 hover:bg-gray-200 transition"
-            >
-              <span className="text-2xl">&larr;</span>
-            </button>
+          {/* Navigation Controls */}
+          <div className="flex items-center justify-between mt-12 md:mt-8">
+            <div className="flex gap-4">
+              <button
+                onClick={prevSlide}
+                className="w-14 h-14 rounded-2xl border border-zinc-700 hover:border-zinc-500 flex items-center justify-center  transition-all hover:bg-zinc-900 active:scale-95"
+                aria-label="Previous testimonial"
+              >
+                ←
+              </button>
+              <button
+                onClick={nextSlide}
+                className="w-14 h-14 rounded-2xl border border-zinc-700 hover:border-zinc-500 flex items-center justify-center  transition-all hover:bg-zinc-900 active:scale-95"
+                aria-label="Next testimonial"
+              >
+                →
+              </button>
+            </div>
 
-            <button
-              onClick={nextSlide}
-              className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-600 text-gray-700 hover:bg-gray-200 transition"
-            >
-              <span className="text-2xl">&rarr;</span>
-            </button>
+            {/* Progress Dots */}
+            <div className="flex gap-3">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    idx === currentIndex 
+                      ? "bg-blue-500 w-8" 
+                      : "bg-zinc-700 hover:bg-zinc-500"
+                  }`}
+                  aria-label={`Go to testimonial ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            <div className="text-sm font-mono text-zinc-500 hidden md:block">
+              {String(currentIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+            </div>
           </div>
         </div>
       </div>

@@ -86,7 +86,7 @@ export default function Navigation() {
       ],
     },
     { href: '/CaseStudies', label: 'Case Studies' },
-    { href: '/blog', label: 'Blog' },
+   
     { href: '/contact', label: 'Contact' },
   ];
 
@@ -99,7 +99,6 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <img src="/logos/mad.png" alt="MAD" className="h-10 w-auto" />
-            <span className="font-bold text-xl text-primary tracking-tight">M.A.D Graphix</span>
           </Link>
 
           {/* Desktop nav */}
@@ -157,7 +156,7 @@ export default function Navigation() {
           </nav>
           
           <div className="hidden md:flex">
-             <Link href="/contact" className="bg-primary text-white hover:bg-accent px-6 py-2.5 rounded-pill font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+             <Link href="https://wa.me/254708779284" className="bg-blue-600 text-white hover:bg-accent px-6 py-2.5 rounded-pill font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
                Get Started
              </Link>
           </div>

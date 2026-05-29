@@ -6,6 +6,7 @@ import { supabaseBrowser } from '@/lib/supabase/client';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Navigation from '@/app/components/Navigation';
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -45,9 +46,12 @@ export default function LoginPage() {
   };
 
   return (
+    <>
+    <Navigation />
+    
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-center mb-6">CRM Login</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Mad Graphix Login</h2>
         
         {error && (
           <div className="bg-red-50 text-red-600 p-3 rounded mb-4 text-sm">
@@ -86,5 +90,6 @@ export default function LoginPage() {
         </form>
       </div>
     </div>
+    </>
   );
 }

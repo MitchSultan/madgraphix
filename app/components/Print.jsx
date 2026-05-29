@@ -32,7 +32,7 @@ function Print() {
         ]
     };
     return (
-        <section className="py-24 overflow-hidden  relative">
+        <section className="md:py-24 overflow-hidden  relative">
             {/* Decorative backgrounds */}
             <div className="absolute top-0 left-0 w-full h-full  z-0"></div>
             
@@ -76,7 +76,7 @@ function Print() {
                         </div>
                         <div className="px-4 outline-none">
                             <div className="rounded-3xl overflow-hidden shadow-lg border border-white hover:shadow-xl transition-shadow duration-300">
-                                <img src="/posters/billboards.webp" alt="Print Poster" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
+                                <img src="/posters/Billboards.webp" alt="Print Poster" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
                             </div>
                         </div>
                     </Slider>

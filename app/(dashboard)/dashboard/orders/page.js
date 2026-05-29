@@ -1,90 +1,93 @@
-import { getOrders, getClientProfiles } from '@/lib/actions/orders'
-import { getProfile } from '@/lib/auth'
-import { redirect } from 'next/navigation'
-import { ORDER_STATUS_CONFIG } from '@/types/database'
-import OrdersPageClient from './OrdersPageClient'
+import { createClient } from '@/lib/supabase/server'
+import Link from 'next/link'
+
+const statusColors = {
+  pending: 'bg-yellow-100 text-yellow-800',
+  confirmed: 'bg-blue-100 text-blue-800',
+  in_production: 'bg-orange-100 text-orange-800',
+  quality_check: 'bg-purple-100 text-purple-800',
+  ready: 'bg-green-100 text-green-800',
+  delivered: 'bg-gray-100 text-gray-800',
+  cancelled: 'bg-red-100 text-red-800',
+}
 
 export default async function OrdersPage() {
-  const profile = await getProfile()
-  if (!profile) redirect('/login')
+  const supabase = await createClient()
 
-  const orders = await getOrders()
+  const { data: orders, error } = await supabase
+    .from('orders')
+    .select('*')
+    .order('created_at', { ascending: false })
 
-  // Admin needs client list for the create form
-  let clients = []
-  if (profile.role === 'admin') {
-    clients = await getClientProfiles()
+  if (error) {
+    return (
+      <div className="p-6">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm">
+          <strong>Database error:</strong> {error.message}
+          <p className="mt-1 text-xs">Make sure the orders table exists in Supabase and RLS policies allow authenticated reads.</p>
+        </div>
+      </div>
+    )
   }
-
-  // Compute summary metrics
-  const totalOrders = orders.length
-  const statusBreakdown = {}
-  let totalRevenue = 0
-
-  for (const order of orders) {
-    statusBreakdown[order.status] = (statusBreakdown[order.status] || 0) + 1
-    if (order.status === 'delivered') {
-      totalRevenue += Number(order.total_price || 0)
-    }
-  }
-
-  const totalSpend = orders.reduce((sum, o) => sum + Number(o.total_price || 0), 0)
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">
-          {profile.role === 'admin' ? 'Order Management' : 'My Orders'}
-        </h1>
-        <p className="text-gray-500">
-          {profile.role === 'admin'
-            ? 'Manage all client orders, update statuses, and track revenue.'
-            : 'View and track your print orders.'}
-        </p>
+    <div className="p-6 space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-semibold">Orders</h1>
+        <span className="text-sm text-gray-500">{orders?.length ?? 0} total</span>
       </div>
 
-      {/* Metrics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Total Orders</p>
-          <p className="mt-4 text-3xl font-semibold text-slate-900">{totalOrders}</p>
-        </div>
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
-            {profile.role === 'admin' ? 'Revenue (Delivered)' : 'Total Spend'}
-          </p>
-          <p className="mt-4 text-3xl font-semibold text-slate-900">
-            KES {(profile.role === 'admin' ? totalRevenue : totalSpend).toLocaleString('en-KE')}
-          </p>
-        </div>
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Active Orders</p>
-          <p className="mt-4 text-3xl font-semibold text-slate-900">
-            {(statusBreakdown['pending'] || 0) + (statusBreakdown['processing'] || 0)}
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {Object.entries(statusBreakdown).map(([status, count]) => {
-              const config = ORDER_STATUS_CONFIG[status]
-              if (!config) return null
-              return (
-                <span
-                  key={status}
-                  className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${config.color}`}
-                >
-                  {config.label}: {count}
-                </span>
-              )
-            })}
-          </div>
-        </div>
+      <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+        <table className="w-full text-sm">
+          <thead className="bg-gray-50 border-b">
+            <tr>
+              <th className="text-left p-4 font-medium text-gray-600">Order #</th>
+              <th className="text-left p-4 font-medium text-gray-600">Client</th>
+              <th className="text-left p-4 font-medium text-gray-600">Status</th>
+              <th className="text-left p-4 font-medium text-gray-600">Amount</th>
+              <th className="text-left p-4 font-medium text-gray-600">Date</th>
+              <th className="p-4" />
+            </tr>
+          </thead>
+          <tbody className="divide-y">
+            {orders?.length === 0 && (
+              <tr>
+                <td colSpan={6} className="p-8 text-center text-gray-400">
+                  No orders yet. They'll appear here once clients submit quote requests.
+                </td>
+              </tr>
+            )}
+            {orders?.map((order) => (
+              <tr key={order.id} className="hover:bg-gray-50 transition-colors">
+                <td className="p-4 font-mono text-xs text-gray-500">{order.order_number}</td>
+                <td className="p-4">
+                  <p className="font-medium">{order.client_name}</p>
+                  <p className="text-xs text-gray-400">{order.client_email}</p>
+                </td>
+                <td className="p-4">
+                  <span className={`text-xs px-2 py-1 rounded-full font-medium ${statusColors[order.status]}`}>
+                    {order.status.replace(/_/g, ' ')}
+                  </span>
+                </td>
+                <td className="p-4 font-medium">KES {Number(order.total_amount).toLocaleString()}</td>
+                <td className="p-4 text-gray-400 text-xs">
+                  {new Date(order.created_at).toLocaleDateString('en-KE', {
+                    day: 'numeric', month: 'short', year: 'numeric'
+                  })}
+                </td>
+                <td className="p-4">
+                  <Link
+                    href={`/admin/orders/${order.id}`}
+                    className="text-blue-600 hover:underline text-xs"
+                  >
+                    View →
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-
-      {/* Client component handles table + create form */}
-      <OrdersPageClient
-        orders={orders}
-        role={profile.role}
-        clients={clients}
-      />
     </div>
   )
 }

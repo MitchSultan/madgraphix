@@ -1,312 +1,89 @@
-import { supabaseServer } from '@/lib/supabase/server';
-import { LeadsChart, SourceChart } from './charts';
-import Link from 'next/link';
-import { ArrowUpRight, Users, Mail, CheckCircle, TrendingUp, ShoppingBag, DollarSign, Package } from 'lucide-react';
-import { getOrders } from '@/lib/actions/orders';
-import { getProfile } from '@/lib/auth';
-import { ORDER_STATUS_CONFIG } from '@/types/database';
+import { createClient } from '@/lib/supabase/server'
 
-// Simple date formatter without extra dep
-function timeAgo(date) {
-  const seconds = Math.floor((new Date() - new Date(date)) / 1000);
-  const intervals = { year: 31536000, month: 2592000, day: 86400, hour: 3600, minute: 60 };
-  for (const [unit, secondsInUnit] of Object.entries(intervals)) {
-    const count = Math.floor(seconds / secondsInUnit);
-    if (count >= 1) return `${count} ${unit}${count > 1 ? 's' : ''} ago`;
-  }
-  return 'just now';
-}
+export default async function AdminDashboard() {
+  const supabase = await createClient()
 
-async function getDashboardData() {
-  const supabase = await supabaseServer();
-  
-  // Date ranges
-  const thirtyDaysAgo = new Date();
-  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-  const sevenDaysAgo = new Date();
-  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  // Fetch all stats in parallel
+  const [
+    { count: totalOrders },
+    { count: pendingOrders },
+    { count: totalProducts },
+    { count: totalInvoices },
+    { data: recentOrders },
+    { data: ordersByStatus },
+  ] = await Promise.all([
+    supabase.from('orders').select('*', { count: 'exact', head: true }),
+    supabase.from('orders').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
+    supabase.from('products').select('*', { count: 'exact', head: true }),
+    supabase.from('invoices').select('*', { count: 'exact', head: true }),
+    supabase.from('orders').select('*').order('created_at', { ascending: false }).limit(5),
+    supabase.from('orders').select('status'),
+  ])
 
-  // 1. KPI Queries
-  const { count: totalLeads } = await supabase
-    .from('leads')
-    .select('*', { count: 'exact', head: true })
-    .gte('created_at', thirtyDaysAgo.toISOString());
+  // Calculate revenue from invoices
+  const { data: paidInvoices } = await supabase
+    .from('invoices')
+    .select('amount')
+    .eq('status', 'paid')
 
-  const { count: newLeads } = await supabase
-    .from('leads')
-    .select('*', { count: 'exact', head: true })
-    .gte('created_at', sevenDaysAgo.toISOString());
+  const totalRevenue = paidInvoices?.reduce((sum, inv) => sum + Number(inv.amount), 0) ?? 0
 
-  const { count: totalSubscribers } = await supabase
-    .from('subscribers')
-    .select('*', { count: 'exact', head: true })
-    .gte('created_at', thirtyDaysAgo.toISOString());
+  const stats = [
+    { label: 'Total Orders', value: totalOrders ?? 0, color: 'bg-blue-500' },
+    { label: 'Pending Orders', value: pendingOrders ?? 0, color: 'bg-amber-500' },
+    { label: 'Products', value: totalProducts ?? 0, color: 'bg-emerald-500' },
+    { label: 'Revenue (KES)', value: `${(totalRevenue).toLocaleString()}`, color: 'bg-purple-500' },
+  ]
 
-  // Conversion rate: (won / total contacted+) * 100 (Simplified: won / total leads)
-  const { count: wonLeads } = await supabase
-    .from('leads')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'won');
-  
-  const { count: allTimeLeads } = await supabase
-    .from('leads')
-    .select('*', { count: 'exact', head: true });
-
-  const conversionRate = allTimeLeads ? Math.round((wonLeads / allTimeLeads) * 100) : 0;
-
-  // 2. Recent Leads
-  const { data: recentLeads } = await supabase
-    .from('leads')
-    .select('id, full_name, email, source, status, created_at')
-    .order('created_at', { ascending: false })
-    .limit(5);
-
-  // 3. Recent Activities
-  const { data: recentActivities } = await supabase
-    .from('activities')
-    .select('id, type, created_at, leads(full_name)')
-    .order('created_at', { ascending: false })
-    .limit(5);
-
-  // 4. Chart Data (Leads over time - last 7 days)
-  // Note: Doing aggregation in JS since Supabase JS client doesn't support complex group by easily without RPC
-  const { data: leadsForChart } = await supabase
-    .from('leads')
-    .select('created_at')
-    .gte('created_at', sevenDaysAgo.toISOString());
-
-  const chartMap = {};
-  // Initialize last 7 days
-  for (let i = 0; i < 7; i++) {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
-    chartMap[d.toISOString().split('T')[0]] = 0;
-  }
-  
-  leadsForChart?.forEach(lead => {
-    const date = lead.created_at.split('T')[0];
-    if (chartMap[date] !== undefined) chartMap[date]++;
-  });
-
-  const chartData = Object.entries(chartMap)
-    .map(([date, count]) => ({ date, count }))
-    .sort((a, b) => a.date.localeCompare(b.date));
-
-  // 5. Source Data
-  const { data: leadsForSource } = await supabase
-    .from('leads')
-    .select('source')
-  
-  const sourceMap = {};
-  leadsForSource?.forEach(l => {
-    sourceMap[l.source] = (sourceMap[l.source] || 0) + 1;
-  });
-  const sourceData = Object.entries(sourceMap).map(([source, count]) => ({ source, count }));
-
-  return {
-    kpis: { totalLeads, newLeads, totalSubscribers, conversionRate },
-    recentLeads,
-    recentActivities,
-    chartData,
-    sourceData
-  };
-}
-
-export default async function DashboardPage() {
-  const profile = await getProfile();
-  if (!profile) return null;
-
-  const orders = await getOrders();
-  
-  const totalOrders = orders.length;
-  const statusBreakdown = {};
-  let totalRevenue = 0;
-
-  for (const order of orders) {
-    statusBreakdown[order.status] = (statusBreakdown[order.status] || 0) + 1;
-    if (order.status === 'delivered') {
-      totalRevenue += Number(order.total_price || 0);
-    }
-  }
-
-  const totalSpend = orders.reduce((sum, o) => sum + Number(o.total_price || 0), 0);
-
-  let crmData = null;
-  if (profile.role === 'admin' || profile.role === 'agent') {
-    crmData = await getDashboardData();
+  const statusColors = {
+    pending: 'bg-yellow-100 text-yellow-800',
+    confirmed: 'bg-blue-100 text-blue-800',
+    in_production: 'bg-orange-100 text-orange-800',
+    quality_check: 'bg-purple-100 text-purple-800',
+    ready: 'bg-green-100 text-green-800',
+    delivered: 'bg-gray-100 text-gray-800',
+    cancelled: 'bg-red-100 text-red-800',
   }
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard Overview</h1>
-        <p className="text-gray-500">
-          {(profile.role === 'admin' || profile.role === 'agent') ? 'Welcome back to your CRM and Order control center.' : 'Welcome to your print shop dashboard.'}
-        </p>
+    <div className="p-6 space-y-8">
+      <h1 className="text-2xl font-semibold">Dashboard</h1>
+
+      {/* Stats Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {stats.map((stat) => (
+          <div key={stat.label} className="bg-white rounded-xl border p-5 shadow-sm">
+            <div className={`w-2 h-2 rounded-full ${stat.color} mb-3`} />
+            <p className="text-3xl font-semibold">{stat.value}</p>
+            <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
+          </div>
+        ))}
       </div>
 
-      {/* Orders Summary Cards */}
-      <div>
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">Orders Overview</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <KpiCard title="Total Orders" value={totalOrders} icon={ShoppingBag} color="bg-blue-500" />
-          <KpiCard title={(profile.role === 'admin' || profile.role === 'agent') ? "Revenue (Delivered)" : "Total Spend"} value={`KES ${((profile.role === 'admin' || profile.role === 'agent') ? totalRevenue : totalSpend).toLocaleString('en-KE')}`} icon={DollarSign} color="bg-green-500" />
-          <KpiCard title="Active Orders" value={(statusBreakdown['pending'] || 0) + (statusBreakdown['processing'] || 0)} icon={Package} color="bg-yellow-500" />
+      {/* Recent Orders */}
+      <div className="bg-white rounded-xl border shadow-sm">
+        <div className="p-5 border-b flex items-center justify-between">
+          <h2 className="font-semibold">Recent Orders</h2>
+          <a href="/admin/orders" className="text-sm text-blue-600 hover:underline">View all</a>
         </div>
-      </div>
-
-      {/* Order Status Breakdown */}
-      {totalOrders > 0 && (
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 className="text-sm font-medium text-gray-500 mb-4">Orders by Status</h3>
-          <div className="flex flex-wrap gap-4">
-            {Object.entries(statusBreakdown).map(([status, count]) => {
-              const config = ORDER_STATUS_CONFIG[status]
-              if (!config) return null
-              return (
-                <div key={status} className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider ${config.color}`}>
-                  <span className={`inline-block w-2 h-2 rounded-full ${config.dot}`} />
-                  {config.label}: {count}
-                </div>
-              )
-            })}
-          </div>
+        <div className="divide-y">
+          {recentOrders?.length === 0 && (
+            <p className="p-5 text-sm text-gray-400">No orders yet.</p>
+          )}
+          {recentOrders?.map((order) => (
+            <div key={order.id} className="p-4 flex items-center justify-between gap-4">
+              <div>
+                <p className="font-medium text-sm">{order.client_name}</p>
+                <p className="text-xs text-gray-400">{order.order_number}</p>
+              </div>
+              <span className={`text-xs px-2 py-1 rounded-full font-medium ${statusColors[order.status]}`}>
+                {order.status.replace('_', ' ')}
+              </span>
+              <p className="text-sm font-medium">KES {Number(order.total_amount).toLocaleString()}</p>
+            </div>
+          ))}
         </div>
-      )}
-
-      {/* Admin Only CRM Data */}
-      {(profile.role === 'admin' || profile.role === 'agent') && crmData && (
-        <div className="mt-12 space-y-8 border-t border-gray-200 pt-8">
-          <h2 className="text-xl font-semibold text-gray-900">CRM Overview</h2>
-          
-          {/* KPI Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <KpiCard title="Total Leads (30d)" value={crmData.kpis.totalLeads} icon={Users} color="bg-blue-500" />
-            <KpiCard title="New Leads (7d)" value={crmData.kpis.newLeads} icon={ArrowUpRight} color="bg-green-500" />
-            <KpiCard title="Conversion Rate" value={`${crmData.kpis.conversionRate}%`} icon={CheckCircle} color="bg-purple-500" />
-            <KpiCard title="Subscribers (30d)" value={crmData.kpis.totalSubscribers} icon={Mail} color="bg-indigo-500" />
-          </div>
-
-          {/* Charts Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-6">Leads Over Time (7 Days)</h3>
-              <LeadsChart data={crmData.chartData} />
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-6">Leads by Source</h3>
-              <SourceChart data={crmData.sourceData} />
-            </div>
-          </div>
-
-          {/* Tables Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Recent Leads */}
-            <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="p-6 border-b border-gray-100 flex justify-between items-center">
-                <h3 className="font-semibold text-gray-900">Recent Leads</h3>
-                <Link href="/dashboard/leads" className="text-sm text-blue-600 hover:text-blue-700 font-medium">
-                  View All
-                </Link>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm text-left">
-                  <thead className="bg-gray-50 text-gray-600 font-medium border-b border-gray-100">
-                    <tr>
-                      <th className="px-6 py-3">Name</th>
-                      <th className="px-6 py-3">Source</th>
-                      <th className="px-6 py-3">Status</th>
-                      <th className="px-6 py-3">Date</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100">
-                    {crmData.recentLeads?.length > 0 ? crmData.recentLeads.map((lead) => (
-                      <tr key={lead.id} className="hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-3 font-medium text-gray-900">
-                          <Link href={`/dashboard/leads/${lead.id}`} className="hover:underline">
-                            {lead.full_name}
-                          </Link>
-                          <div className="text-gray-500 text-xs font-normal">{lead.email}</div>
-                        </td>
-                        <td className="px-6 py-3 capitalize">{lead.source.replace('_', ' ')}</td>
-                        <td className="px-6 py-3">
-                          <StatusBadge status={lead.status} />
-                        </td>
-                        <td className="px-6 py-3 text-gray-500">{new Date(lead.created_at).toLocaleDateString()}</td>
-                      </tr>
-                    )) : (
-                      <tr>
-                        <td colSpan={4} className="px-6 py-8 text-center text-gray-500">No leads yet.</td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Recent Activity */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="p-6 border-b border-gray-100">
-                <h3 className="font-semibold text-gray-900">Recent Activity</h3>
-              </div>
-              <div className="p-6 space-y-6">
-                {crmData.recentActivities?.length > 0 ? crmData.recentActivities.map((activity) => (
-                  <div key={activity.id} className="flex gap-4">
-                    <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center shrink-0 text-blue-600">
-                      <TrendingUp size={16} />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-900 font-medium">
-                        {formatActivityType(activity.type)}
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        {activity.leads?.full_name} • {timeAgo(activity.created_at)}
-                      </p>
-                    </div>
-                  </div>
-                )) : (
-                  <p className="text-center text-gray-500 text-sm">No activity yet.</p>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function KpiCard({ title, value, icon: Icon, color }) {
-  return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
-      <div>
-        <p className="text-sm font-medium text-gray-500">{title}</p>
-        <h3 className="text-2xl font-bold text-gray-900 mt-1">{value}</h3>
-      </div>
-      <div className={`w-12 h-12 rounded-lg ${color} bg-opacity-10 flex items-center justify-center text-${color.replace('bg-', '')}`}>
-        <Icon size={24} className={color.replace('bg-', 'text-')} />
       </div>
     </div>
-  );
+  )
 }
-
-function StatusBadge({ status }) {
-  const colors = {
-    new: 'bg-blue-100 text-blue-700',
-    contacted: 'bg-yellow-100 text-yellow-700',
-    qualified: 'bg-purple-100 text-purple-700',
-    proposal_sent: 'bg-indigo-100 text-indigo-700',
-    won: 'bg-green-100 text-green-700',
-    lost: 'bg-red-100 text-red-700',
-  };
-  return (
-    <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium capitalize ${colors[status] || 'bg-gray-100 text-gray-700'}`}>
-      {status.replace('_', ' ')}
-    </span>
-  );
-}
-
-function formatActivityType(type) {
-  return type.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-}
-

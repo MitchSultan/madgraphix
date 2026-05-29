@@ -3,16 +3,14 @@ import Navigation from '@/app/components/Navigation';
 import Hero from '@/app/components/Hero';
 import About from '@/app/components/About';
 import Services from '@/app/components/Services';
-import ServiceTicker from '@/app/components/ServiceTicker';
-import Portfolio from '@/app/components/Portfolio';
+
 import WorkShowcase from '@/app/components/WorkShowcase';
-import CaseStudies from '@/app/components/CaseStudies';
+
 import Partners from '@/app/components/Partners';
-import LogoTicker from '@/app/components/LogoTicker';
-import Testimonials from '@/app/components/Testimonials';
+
 import Print from '@/app/components/Print';
 import PartnershipTestimonials from '@/app/components/PartnershipTestimonials';
-import Contact from '@/app/components/Contact';
+
 import FAQs from '@/app/components/FAQs';
 import Footer from '@/app/components/Footer';
 import ClientLayout from '@/app/ClientLayout';

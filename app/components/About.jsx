@@ -86,7 +86,7 @@ export default function AboutUs() {
 
         {/* LEFT — TEXT */}
         <div>
-          <div className=" flex justify-center items-center py-1 rounded-full w-32">About us</div>
+          <div className=" font-thin text-sm text-blue-900 uppercase tracking-wide mb-2">About us</div>
           <h2 className="text-4xl text-black lg:text-5xl font-bold mb-6 leading-tight split" >
             This is where Creativity Goes Mad
           </h2>

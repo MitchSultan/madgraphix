@@ -50,7 +50,7 @@ export default async function OrderDetailPage({ params }) {
 
       {/* Header */}
       <div className="flex items-center gap-4">
-        <Link href="/admin/orders" className="text-sm text-gray-400 hover:text-gray-600">
+        <Link href="/dashboard/orders" className="text-sm text-gray-400 hover:text-gray-600">
           ← Orders
         </Link>
         <h1 className="text-xl font-semibold">{order.order_number}</h1>
@@ -59,13 +59,13 @@ export default async function OrderDetailPage({ params }) {
         </span>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
 
         {/* Left: Order info */}
         <div className="md:col-span-2 space-y-6">
 
           {/* Client info */}
-          <div className="bg-white rounded-xl border p-5 space-y-3">
+          <div className="bg-white rounded-sm border p-5 space-y-3">
             <h2 className="font-medium text-sm text-gray-500 uppercase tracking-wide">Client</h2>
             <div className="space-y-1">
               <p className="font-semibold text-lg">{order.client_name}</p>

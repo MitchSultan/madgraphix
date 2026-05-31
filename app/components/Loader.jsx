@@ -66,7 +66,7 @@ export default function Loader({ onLoadComplete }) {
   return (
     <div 
       ref={loaderRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black"
+      className="fixed inset-0 z-1000 flex items-center justify-center bg-black"
     >
       <div className="flex items-center gap-2 text-white">
         <span className="text-8xl font-extrabold">M</span>

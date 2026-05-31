@@ -3,32 +3,41 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { 
-  LayoutDashboard, 
-  Users, 
-  Mail, 
-  Settings, 
+import {
+  LayoutDashboard,
+  Users,
+  Mail,
+  Settings,
   LogOut,
   Menu,
   X,
   Package,
   FileText,
   ShoppingBag,
-  BookOpen
+  BookOpen,
+  Activity
 } from 'lucide-react';
 import { supabaseBrowser } from '@/lib/supabase/client';
 import { cn } from '@/lib/utils';
+import BottomNavbar from './dashboard/components/BottomNavbar'; // Import the new BottomNavbar
 
 // All possible sidebar items with role visibility
 const ALL_SIDEBAR_ITEMS = [
-  { label: 'Overview',      href: '/dashboard',              icon: LayoutDashboard, roles: ['admin', 'agent', 'client'] },
-  { label: 'Orders',        href: '/dashboard/orders',       icon: ShoppingBag,     roles: ['admin', 'agent', 'client'] },
+  { label: 'Overview',      href: '/dashboard',              icon: LayoutDashboard, roles: ['admin', 'agent'] },
+  { label: 'Analytics',     href: '/dashboard/analytics',    icon: Activity,        roles: ['admin'] },
+  { label: 'Client Home',   href: '/client',                 icon: LayoutDashboard, roles: ['client'] },
+  { label: 'Orders',        href: '/dashboard/orders',       icon: ShoppingBag,     roles: ['admin', 'agent'] },
+  { label: 'Inventory',     href: '/dashboard/inventory',    icon: Package,         roles: ['admin'] },
+  { label: 'Clients',       href: '/dashboard/clients',      icon: Users,           roles: ['admin'] },
+  { label: 'Products',      href: '/dashboard/products',     icon: ShoppingBag,     roles: ['admin'] },
+  { label: 'System Logs',   href: '/dashboard/logs',         icon: FileText,        roles: ['admin'] },
   { label: 'Leads',         href: '/dashboard/leads',        icon: Users,           roles: ['admin', 'agent'] },
   { label: 'Subscribers',   href: '/dashboard/subscribers',  icon: Mail,            roles: ['admin', 'agent'] },
-  { label: 'Print Orders',  href: '/dashboard/orders',       icon: Package,         roles: [] }, // legacy — hidden, orders page now handles both
   { label: 'Invoices',      href: '/dashboard/invoices',     icon: FileText,        roles: ['admin', 'agent'] },
-  { label: 'Case-studies',  href: '/dashboard/case-studies',  icon: BookOpen,        roles: ['admin', 'agent'] },
+  { label: 'Case-studies',  href: '/dashboard/case-studies', icon: BookOpen,        roles: ['admin', 'agent'] },
   { label: 'Blogs',         href: '/dashboard/blogs',        icon: FileText,        roles: ['admin', 'agent'] },
+  { label: 'My Orders',     href: '/client/orders',          icon: ShoppingBag,     roles: ['client'] },
+  { label: 'Catalogue',     href: '/client/products',        icon: Package,         roles: ['client'] },
   { label: 'Settings',      href: '/dashboard/settings',     icon: Settings,        roles: ['admin', 'agent', 'client'] },
 ];
 
@@ -71,7 +80,7 @@ export default function DashboardLayout({ children }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
+    <div className="min-h-screen bg-gray-100 flex flex-col lg:flex-row">
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div 
@@ -80,9 +89,9 @@ export default function DashboardLayout({ children }) {
         />
       )}
 
-      {/* Sidebar */}
+      {/* Sidebar - Hidden on mobile, visible on large screens */}
       <aside className={cn(
-        "fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0",
+        "fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0 hidden lg:block", // Added hidden lg:block
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         <div className="h-full flex flex-col">
@@ -155,9 +164,9 @@ export default function DashboardLayout({ children }) {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
-        {/* Topbar */}
-        <header className="h-16 bg-white border-b border-gray-200 flex items-center px-4 lg:px-8 justify-between">
+      <div className="flex-1 flex flex-col min-h-0 overflow-hidden pb-16 lg:pb-0"> {/* Added pb-16 for mobile spacing */}
+        {/* Topbar - Only visible on mobile */}
+        <header className="h-16 bg-white border-b border-gray-200 flex items-center px-4 lg:px-8 justify-between lg:hidden"> {/* Added lg:hidden */}
           <button
             className="lg:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
             onClick={() => setSidebarOpen(true)}
@@ -177,6 +186,8 @@ export default function DashboardLayout({ children }) {
           {children}
         </main>
       </div>
+
+      <BottomNavbar /> {/* Render the BottomNavbar */}
     </div>
   );
 }

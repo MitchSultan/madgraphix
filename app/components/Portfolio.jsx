@@ -53,7 +53,7 @@ export default function Portfolio() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-slate-900">
+          <h2 className="font-thin text-sm text-blue-900 uppercase tracking-wide mb-2">
             Our Work
           </h2>
           <div className="w-24 h-1 bg-emerald-500 mx-auto mb-6"></div>

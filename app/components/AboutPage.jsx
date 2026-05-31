@@ -113,9 +113,7 @@ export default function AboutPage() {
           <h2 className="text-3xl md:text-5xl font-bold text-[#512396] mb-10">OUR MISSION</h2>
           
           <div className="relative">
-            {/* Quote marks */}
-            <span className="absolute -top-10 -left-6 md:-left-12 text-6xl md:text-8xl text-[#f0e6f5] font-serif leading-none">"</span>
-            <span className="absolute -bottom-16 -right-6 md:-right-12 text-6xl md:text-8xl text-[#f0e6f5] font-serif leading-none">"</span>
+            
             
             <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium italic relative z-10">
               To create designs and brands that resonates with authenticity and emotional depth, capturing the essence of the human experience through every design.

@@ -37,7 +37,7 @@ export default async function OrdersPage() {
         <span className="text-sm text-gray-500">{orders?.length ?? 0} total</span>
       </div>
 
-      <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+      <div className="bg-white rounded-sm border shadow-sm overflow-hidden">
         <table className="w-full text-sm">
           <thead className="bg-gray-50 border-b">
             <tr>
@@ -77,7 +77,7 @@ export default async function OrdersPage() {
                 </td>
                 <td className="p-4">
                   <Link
-                    href={`/admin/orders/${order.id}`}
+                    href={`/dashboard/orders/${order.id}`}
                     className="text-blue-600 hover:underline text-xs"
                   >
                     View →

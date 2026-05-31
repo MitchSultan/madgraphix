@@ -45,12 +45,13 @@ export default function PartnershipTestimonials() {
   }, []);
 
   return (
-    <section className="w-full bg-zinc-950 py-24 px-6 overflow-hidden">
+    <section className="w-full bg-white py-24 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:justify-between gap-12 md:items-end mb-16">
+        <div className="flex flex-col md:flex-row md:justify-between items-center gap-12 md:items-end mb-16">
           <div className="max-w-lg">
-            <h2 className="text-5xl md:text-6xl font-bold tracking-tighter ">
+            <p className="text-sm font-thin uppercase tracking-wide text-blue-900 mb-2">Testimonials</p>
+            <h2 className="text-5xltext-white md:text-6xl font-bold tracking-tighter ">
               Forming lasting<br />
               <span className="">
                 partnerships
@@ -58,7 +59,7 @@ export default function PartnershipTestimonials() {
             </h2>
           </div>
           
-          <p className="text-zinc-400 text-lg text-right md:max-w-sm">
+          <p className="text-gray-600 text-lg text-right md:max-w-sm">
             Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with us.
           </p>
         </div>
@@ -67,7 +68,7 @@ export default function PartnershipTestimonials() {
         <div className="relative">
           <div className="min-h-[420px] md:min-h-[380px] flex items-center">
             <div 
-              className="w-full transition-all duration-700 ease-out"
+              className="w-full transition-all duration-700 ease-out flex flex-col md:flex-row justify-between rounded-3xl p-8 bg-slate-900/80 border border-zinc-800 shadow-lg"
               style={{ opacity: 1 }}
             >
               <div className="max-w-4xl">
@@ -102,6 +103,9 @@ export default function PartnershipTestimonials() {
                     <p className="text-zinc-400">{testimonials[currentIndex].role}</p>
                   </div>
                 </div>
+              </div>
+              <div>
+                <img src={testimonials[currentIndex].companyLogo} alt={testimonials[currentIndex].company} className="w-32 h-16 object-contain" />
               </div>
             </div>
           </div>

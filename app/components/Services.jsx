@@ -68,7 +68,7 @@ export default function ServiceSection() {
     <section className="w-full py-24 text-gray-800 bg-[#f2f2f2] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-accent mb-4">
+          <p className="font-thin text-sm text-blue-900 uppercase tracking-wide mb-2">
             Services
           </p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight leading-tight">

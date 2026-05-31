@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { time } from 'motion'
 
 export default async function AdminDashboard() {
   const supabase = await createClient()
@@ -11,6 +12,7 @@ export default async function AdminDashboard() {
     { count: totalInvoices },
     { data: recentOrders },
     { data: ordersByStatus },
+    { data: analyticsData },
   ] = await Promise.all([
     supabase.from('orders').select('*', { count: 'exact', head: true }),
     supabase.from('orders').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
@@ -18,6 +20,7 @@ export default async function AdminDashboard() {
     supabase.from('invoices').select('*', { count: 'exact', head: true }),
     supabase.from('orders').select('*').order('created_at', { ascending: false }).limit(5),
     supabase.from('orders').select('status'),
+    supabase.from('analytics').select('visitor_id'),
   ])
 
   // Calculate revenue from invoices
@@ -28,7 +31,12 @@ export default async function AdminDashboard() {
 
   const totalRevenue = paidInvoices?.reduce((sum, inv) => sum + Number(inv.amount), 0) ?? 0
 
+  const totalViews = analyticsData?.length ?? 0
+  const uniqueVisitors = new Set(analyticsData?.map(a => a.visitor_id)).size ?? 0
+
   const stats = [
+    { label: 'Total Page Views', value: totalViews, color: 'bg-indigo-500' },
+    { label: 'Unique Visitors', value: uniqueVisitors, color: 'bg-pink-500' },
     { label: 'Total Orders', value: totalOrders ?? 0, color: 'bg-blue-500' },
     { label: 'Pending Orders', value: pendingOrders ?? 0, color: 'bg-amber-500' },
     { label: 'Products', value: totalProducts ?? 0, color: 'bg-emerald-500' },
@@ -47,12 +55,15 @@ export default async function AdminDashboard() {
 
   return (
     <div className="p-6 space-y-8">
-      <h1 className="text-2xl font-semibold">Dashboard</h1>
+      <div>
+      <h1 className="text-2xl font-semibold">Welcome, Admin</h1>
+      <p className="text-gray-500 mt-1">Here's a quick overview of your print shop's performance.</p>
+      </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {stats.map((stat) => (
-          <div key={stat.label} className="bg-white rounded-xl border p-5 shadow-sm">
+          <div key={stat.label} className="bg-white rounded-sm border p-5 shadow-sm">
             <div className={`w-2 h-2 rounded-full ${stat.color} mb-3`} />
             <p className="text-3xl font-semibold">{stat.value}</p>
             <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
@@ -61,10 +72,10 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Recent Orders */}
-      <div className="bg-white rounded-xl border shadow-sm">
+      <div className="bg-white rounded-sm border shadow-sm">
         <div className="p-5 border-b flex items-center justify-between">
           <h2 className="font-semibold">Recent Orders</h2>
-          <a href="/admin/orders" className="text-sm text-blue-600 hover:underline">View all</a>
+          <a href="/dashboard/orders" className="text-sm  hover:underline">View all</a>
         </div>
         <div className="divide-y">
           {recentOrders?.length === 0 && (

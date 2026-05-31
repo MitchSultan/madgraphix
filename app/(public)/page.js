@@ -13,7 +13,7 @@ import PartnershipTestimonials from '@/app/components/PartnershipTestimonials';
 
 import FAQs from '@/app/components/FAQs';
 import Footer from '@/app/components/Footer';
-import ClientLayout from '@/app/ClientLayout';
+
 import { createClient } from '@/lib/supabase/server';
 
 export const metadata = {
@@ -57,7 +57,7 @@ export default async function Home() {
   }));
 
   return (
-    <ClientLayout>
+    <>
       <main>
         <Navigation />
         <Hero />
@@ -76,6 +76,6 @@ export default async function Home() {
         
         <Footer />
       </main>
-    </ClientLayout>
+    </>
   );
 }

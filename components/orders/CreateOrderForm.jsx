@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { CalendarCheck, X } from 'lucide-react'
-import { createOrder } from '@/lib/actions/orders'
+import { createOrder } from '@/app/lib/actions/orders'
 
 export default function CreateOrderForm({ role, clients, onClose }) {
   const [form, setForm] = useState({

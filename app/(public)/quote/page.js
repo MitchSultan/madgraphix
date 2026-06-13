@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { quoteFormSchema } from '@/lib/validations';
+import { quoteFormSchema } from '@/app/lib/validations';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 

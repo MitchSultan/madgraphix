@@ -1,0 +1,79 @@
+// {
+//   "compilerOptions": {
+//     "target": "ES2017",
+//     "lib": [
+//       "dom",
+//       "dom.iterable",
+//       "esnext"
+//     ],
+//     "allowJs": true,
+//     "skipLibCheck": true,
+//     "strict": false,
+//     "noEmit": true,
+//     "incremental": true,
+//     "module": "esnext",
+//     "esModuleInterop": true,
+//     "moduleResolution": "node",
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "jsx": "react-jsx",
+//     "plugins": [
+//       {
+//         "name": "next"
+//       }
+//     ]
+//   },
+//   "include": [
+//     "next-env.d.ts",
+//     ".next/types/**/*.ts",
+//     ".next/dev/types/**/*.ts",
+//     "**/*.mts",
+//     "**/*.ts",
+//     "**/*.tsx"
+// , "app/(admin)/admin/dashboard/components/form/form-elements/DropZone.jsx", "app/(admin)/admin/dashboard/components/form/form-elements/FileInputExample.sx", "app/(admin)/admin/dashboard/components/form/form-elements/DefaultInputs.jsx", "app/(admin)/admin/dashboard/components/form/form-elements/CheckboxComponents.jsx", "app/(admin)/admin/dashboard/components/ecommerce/StatisticsChart.jsx", "app/(admin)/admin/dashboard/components/ecommerce/RecentOrders.jsx", "app/(admin)/admin/dashboard/components/ecommerce/MonthlyTarget.jsx", "app/(admin)/admin/dashboard/components/ecommerce/MonthlySalesChart.jsx", "app/(admin)/admin/dashboard/components/ecommerce/EcommerceMetrics.jsx", "app/(admin)/admin/dashboard/components/ecommerce/DemographicCard.jsx", "app/(admin)/admin/dashboard/components/ecommerce/CountryMap.jsx", "app/(admin)/admin/dashboard/components/AppSidebar.jsx"  ],
+//   "exclude": [
+//     "node_modules"
+//   ]
+// }
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "incremental": true,
+    "module": "esnext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

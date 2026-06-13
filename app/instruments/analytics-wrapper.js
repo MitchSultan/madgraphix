@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { trackPageView } from '@/lib/utils/analytics';
+import { trackPageView } from '@/app/lib/utils/analytics';
 
 export default function InstrumentsPageWithAnalytics({ children }) {
   useEffect(() => {

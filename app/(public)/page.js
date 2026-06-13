@@ -1,20 +1,20 @@
 import Link from 'next/link';
-import Navigation from '@/app/components/Navigation';
-import Hero from '@/app/components/Hero';
-import About from '@/app/components/About';
-import Services from '@/app/components/Services';
+import Navigation from '../components/Navigation';
+import Hero from '../components/Hero';
+import About from '../components/About';
+import Services from '../components/Services';
 
-import WorkShowcase from '@/app/components/WorkShowcase';
+import WorkShowcase from '../components/WorkShowcase';
 
-import Partners from '@/app/components/Partners';
+import Partners from '../components/Partners';
 
-import Print from '@/app/components/Print';
-import PartnershipTestimonials from '@/app/components/PartnershipTestimonials';
+import Print from '../components/Print';
+import PartnershipTestimonials from '../components/PartnershipTestimonials';
 
-import FAQs from '@/app/components/FAQs';
-import Footer from '@/app/components/Footer';
+import FAQs from '../components/FAQs';
+import Footer from '../components/Footer';
 
-import { createClient } from '@/lib/supabase/server';
+import { createClient } from '../../lib/supabase/server';
 
 export const metadata = {
   title: 'Mirror Arts Designs - M.A.D Graphix | Creative Graphic Design Studio',

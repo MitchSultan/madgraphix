@@ -6,7 +6,7 @@ function useItemsPerView(desktopCount) {
 
   useEffect(() => {
     const update = () =>
-      setItems(window.innerWidth >= 768 ? desktopCount : 1);
+      setItems(window.innerWidth >= 768 ? desktopCount : 3);
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);

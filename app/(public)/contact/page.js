@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { contactFormSchema } from '@/lib/validations';
-import Navigation from '@/app/components/Navigation';
+import { contactFormSchema } from '../../lib/validations';
+import Navigation from '../../components/Navigation';
 import { MapPin,Mail, Phone } from 'lucide-react';
-import ContactForm from '@/app/components/ContactForm';
-import FAQs from '@/app/components/FAQs';
-import Footer from '@/app/components/Footer';
+import ContactForm from '../../components/ContactForm';
+import FAQs from '../../components/FAQs';
+import Footer from '../../components/Footer';
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);

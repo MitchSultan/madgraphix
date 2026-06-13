@@ -1,4 +1,4 @@
-import { supabaseServer } from '@/lib/supabase/server';
+import { supabaseServer } from '@/app/lib/supabase/server';
 import { NextResponse } from 'next/server';
 
 // GET /api/case-studies/[slug] - Fetch single case study by slug (public if published)

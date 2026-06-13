@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react'
 import { Trash2, ChevronDown, Eye, Search } from 'lucide-react'
 import { ORDER_STATUS_CONFIG, ORDER_STATUSES } from '@/types/database'
-import { updateOrderStatus, deleteOrder } from '@/lib/actions/orders'
+import { updateOrderStatus, deleteOrder } from '@/app/lib/actions/orders'
 
 export default function OrdersTable({ orders, role }) {
   const [statusFilter, setStatusFilter] = useState('all')

@@ -1,7 +1,7 @@
 'use client'
 
 import { useActionState, useEffect, useRef } from 'react'
-import { submitLead } from '../lib/actions/contact'
+import { submitLead } from '@/lib/actions/contact'
 
 const SERVICES = [
   'Business Cards',

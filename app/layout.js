@@ -77,34 +77,24 @@
 
 
 // app/layout.tsx
-'use client';
-
-import { useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 import Script from 'next/script';
-import "./globals.css";
+import GoogleAnalytics from '../components/shared/GoogleAnalytics'; // adjust the import path
+import './globals.css';
 
+export const metadata = {
+  title: 'MAD Graphix',
+  description: 'Design and Development',
+};
 
-// export const metadata = {
-//   title: "MAD Graphix",
-//   description: "Design and Development",
-// };
-
-export default function RootLayout({
-  children,
-}) {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const url = `${pathname}${searchParams?.toString() ? `?${searchParams.toString()}` : ''}`;
-    window.gtag('config', 'G-NS3672QL6H', { page_path: url });
-  }, [pathname, searchParams]);
-
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta name="google-site-verification" content="PTZDRGmQAsl75nljt0vaOtv3ZcTexP8xNLKZToic32I" />
+        <meta
+          name="google-site-verification"
+          content="PTZDRGmQAsl75nljt0vaOtv3ZcTexP8xNLKZToic32I"
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-NS3672QL6H"
           strategy="afterInteractive"
@@ -118,7 +108,12 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body>{children}</body>
+      <body>
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
+        {children}
+      </body>
     </html>
   );
 }

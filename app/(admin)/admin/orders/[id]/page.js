@@ -1,4 +1,4 @@
-import { createClient } from '@/app/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import OrderStatusUpdater from './orderStatusUpdater';
@@ -204,7 +204,7 @@ function CreateInvoiceButton({ orderId, order }) {
   return (
     <form action={async () => {
       'use server'
-      const { createClient } = await import('@/app/lib/supabase/server')
+      const { createClient } = await import('@/lib/supabase/server')
       const supabase = await createClient()
       await supabase.from('invoices').insert({
         order_id: orderId,

@@ -106,7 +106,7 @@ export default async function CaseStudiesDashboardPage() {
                           <Eye size={18} />
                         </Link>
                         <Link
-                          href={`/dashboard/case-studies/${study.slug}/edit`}
+                          href={`/admin/case-studies/${study.slug}/edit`}
                           className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
                           title="Edit"
                         >

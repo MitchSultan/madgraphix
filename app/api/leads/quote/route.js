@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { createServiceRoleClient } from '@/app/lib/supabase/service';
-import { quoteFormSchema } from '@/app/lib/validations';
-import { resend, EMAIL_TO, EMAIL_FROM } from '@/app/lib/resend';
+import { createServiceRoleClient } from '@/lib/supabase/service';
+import { quoteFormSchema } from '@/lib/validations';
+import { resend, EMAIL_TO, EMAIL_FROM } from '@/lib/resend';
 
 export async function POST(request) {
   try {

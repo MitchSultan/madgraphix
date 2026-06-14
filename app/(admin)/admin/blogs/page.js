@@ -1,4 +1,4 @@
-import { supabaseServer } from '../../../lib/supabase/server';
+import { supabaseServer } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { PlusCircle, Eye, Edit, Trash2, FileText } from 'lucide-react';
 import DeleteBlogButton from './DeleteBlogButton';
@@ -32,7 +32,7 @@ export default async function BlogsDashboardPage() {
           <p className="text-gray-500">Create, edit, and manage your blog posts</p>
         </div>
         <Link
-          href="/dashboard/blogs/create"
+          href="/admin/blogs/create"
           className="inline-flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors"
         >
           <PlusCircle size={20} />
@@ -101,7 +101,7 @@ export default async function BlogsDashboardPage() {
                           <Eye size={18} />
                         </Link>
                         <Link
-                          href={`/dashboard/blogs/${blog.slug}/edit`}
+                          href={`/admin/blogs/${blog.slug}/edit`}
                           className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
                           title="Edit"
                         >

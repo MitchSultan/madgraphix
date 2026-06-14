@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { recordInvoicePayment } from '../../../lib/services/invoice.service';
+import { recordInvoicePayment } from '@/lib/services/invoice.service';
 
 export async function PATCH(request) {
   const body = await request.json();

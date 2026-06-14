@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { createClientAccount } from '@/app/lib/actions/clients'
+import { createClientAccount } from '@/lib/actions/clients'
 
 export default function ClientForm() {
   const router = useRouter()

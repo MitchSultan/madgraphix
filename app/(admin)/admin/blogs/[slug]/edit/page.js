@@ -1,4 +1,4 @@
-import { supabaseServer } from '../../../../../lib/supabase/server';
+import { supabaseServer } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import EditBlogForm from './EditBlogForm';
 

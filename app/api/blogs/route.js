@@ -1,4 +1,4 @@
-import { supabaseServer } from '@/app/lib/supabase/server';
+import { supabaseServer } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 
 // GET /api/blogs - Fetch all published blogs (public) or all blogs (admin)

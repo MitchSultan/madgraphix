@@ -42,6 +42,9 @@
         "./*"
       ]
     },
+  
+  
+
     "target": "ES2017",
     "lib": [
       "dom",
@@ -56,6 +59,7 @@
     "module": "esnext",
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
@@ -72,7 +76,7 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/(admin)/admin/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

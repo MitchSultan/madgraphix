@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { createServiceRoleClient } from '@/app/lib/supabase/service';
-import { contactFormSchema } from '@/app/lib/validations';
-import { resend, EMAIL_TO, EMAIL_FROM } from '@/app/lib/resend';
-import { trackContact } from '@/app/lib/analytics';
+import { createServiceRoleClient } from '@/lib/supabase/service';
+import { contactFormSchema } from '@/lib/validations';
+import { resend, EMAIL_TO, EMAIL_FROM } from '@/lib/resend';
+import { trackContact } from '@/lib/analytics';
 
 export async function POST(request) {
   try {

@@ -1,4 +1,4 @@
-import { supabaseServer } from '@/app/lib/supabase/server';
+import { supabaseServer } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Mail, Phone, Building, Calendar, Tag } from 'lucide-react';
 import Link from 'next/link';

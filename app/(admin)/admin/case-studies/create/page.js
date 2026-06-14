@@ -66,7 +66,7 @@ export default function CreateCaseStudyPage() {
       });
 
       if (res.ok) {
-        router.push('/dashboard/case-studies');
+        router.push('/admin/case-studies');
         router.refresh();
       } else {
         const error = await res.json();
@@ -84,7 +84,7 @@ export default function CreateCaseStudyPage() {
       {/* Header */}
       <div className="flex items-center gap-4">
         <Link
-          href="/dashboard/case-studies"
+          href="/admin/case-studies"
           className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
         >
           <ArrowLeft size={20} />
@@ -300,7 +300,7 @@ export default function CreateCaseStudyPage() {
         {/* Actions */}
         <div className="flex gap-3 justify-end mt-8 pt-6 border-t border-gray-100">
           <Link
-            href="/dashboard/case-studies"
+            href="/admin/case-studies"
             className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
           >
             Cancel

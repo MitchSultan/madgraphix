@@ -81,6 +81,8 @@ import { Suspense } from 'react';
 import Script from 'next/script';
 import GoogleAnalytics from '../components/shared/GoogleAnalytics'; // adjust the import path
 import './globals.css';
+import CookieBanner from './components/CookieBanner';
+import EmailPopup from './components/EmailPopup';
 
 export const metadata = {
   title: 'MAD Graphix',
@@ -113,6 +115,8 @@ export default function RootLayout({ children }) {
           <GoogleAnalytics />
         </Suspense>
         {children}
+        <CookieBanner/>
+        <EmailPopup/>
       </body>
     </html>
   );

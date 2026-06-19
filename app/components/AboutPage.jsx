@@ -2,6 +2,7 @@
 import React from 'react';
 import ServiceSection from './Services';
 import Numbers from './Numbers';
+import AboutUsSections from './AboutUsSections';
 
 export default function AboutPage() {
   const services = [
@@ -137,29 +138,7 @@ export default function AboutPage() {
       </section>
 
       <Numbers/>
-      <section className=" p-12  md:py-4 bg-white " >
-        <h1 className='text-6xl text-black'> Our Values</h1>
-        <div className=" mx-auto px-6 lg:px-4 grid grid-cols-1 lg:grid-cols-4 gap-10 items-center">
-          
-          {/* <div className=" overflow-hidden relative bg-[#f0e6f5] bg-[url('/images/4.png')] border-3 [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " >
-          <div className='scan-line'></div>
-          </div> */}
-          <div className=" overflow-hidden card border-3   [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " >
-            <div></div>
-          </div>
-          <div className=" overflow-hidden card border-3   [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " >
-            <div></div>
-          </div>
-          <div className=" overflow-hidden card border-3   [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " >
-            <div></div>
-          </div>
-          <div className=" overflow-hidden card border-3   [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " >
-            <div></div>
-          </div>
-          {/* <div className=" overflow-hidden bg-[#f0e6f5]  border-3 [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " ></div> */}
-        </div>
-
-      </section>
+      <AboutUsSections/>
 
 
 

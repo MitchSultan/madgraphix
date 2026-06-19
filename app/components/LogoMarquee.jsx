@@ -87,14 +87,14 @@ import {
 
 // Mock logo data – replace the `src` with your actual logo paths
 const logos =  [
-  { id: 1, name: "ToG", src: "/logos/denri.png" },
-  { id: 2, name: "Luxury by Tina", src: "/logos/merishaw.png" },
-  { id: 3, name: "CanvasPile", src: "/logos/fayahh.png" },
-  { id: 4, name: "MadGraphix", src: "/logos/moko.png" },
-  { id: 5, name: "Evolve Sphere", src: "/logos/the.png" },
-  { id: 6, name: "Inner Harbor", src: "/logos/tog.png" },
-  { id: 7, name: "Nesh Collections", src: "/logos/kings.png" },
-  { id: 8, name: "Reuben", src: "/logos/kimuka.png" },
+  { id: 1, alt: "ToG", src: "/logos/denri.png" },
+  { id: 2, alt: "Luxury by Tina", src: "/logos/merishaw.png" },
+  { id: 3, alt: "CanvasPile", src: "/logos/fayahh.png" },
+  { id: 4, alt: "MadGraphix", src: "/logos/moko.png" },
+  { id: 5, alt: "Evolve Sphere", src: "/logos/the.png" },
+  { id: 6, alt: "Inner Harbor", src: "/logos/tog.png" },
+  { id: 7, alt: "Nesh Collections", src: "/logos/kings.png" },
+  { id: 8, alt: "Reuben", src: "/logos/kimuka.png" },
 ];
 
 export default function LogoMarquee() {

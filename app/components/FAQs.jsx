@@ -50,7 +50,7 @@ export default function FAQs() {
         </div>
 
         {/* FAQ Grid */}
-        <div className="grid md:grid-cols-1 gap-6 w-1/2">
+        <div className="grid w-full md:grid-cols-1 gap-6 md:sw-1/2">
           {faqs.map((faq, index) => (
             <div
               key={index}

@@ -49,11 +49,11 @@ const services = [
 ];
 
 export default function WebDesignStack() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef();
 
   useGSAP(
     () => {
-      const cards = gsap.utils.toArray<HTMLElement>(".stack-card");
+      const cards = gsap.utils.toArray(".stack-card");
 
       // Use ScrollTrigger.matchMedia to enable pinning only on md+ screens
       ScrollTrigger.matchMedia({
@@ -92,7 +92,7 @@ export default function WebDesignStack() {
                 scrub: 0.5,
                 onEnter: () => {
                   gsap.to(prevCard, {
-                    opacity: 0,
+                    opacity: 1,
                     scale: 0.95,
                     duration: 0.6,
                     ease: "power2.out",

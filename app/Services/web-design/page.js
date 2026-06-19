@@ -19,7 +19,7 @@ export default function WebDesignPage() {
           </p>
         </div>
       </section>
-      {/* <WebDesignPage/> */}
+      <WebDesignStack/>
 
       {/* Service Details */}
       <section className="py-20 px-6 bg-white">

@@ -49,12 +49,12 @@ function Print() {
 
                 <div className="slider-container -mx-4">
                     <Slider {...settings}>
-                        <div className="px-4 outline-none">
-                            <div className="rounded-3xl overflow-hidden shadow-lg border border-white hover:shadow-xl transition-shadow duration-300">
+                        <div className="px-4 outline-none ">
+                            <div className="rounded-3xl overflow-hidden shadow-lg  hover:shadow-xl transition-shadow duration-300 border border-white [clip-path:polygon(0 0, calc(100% - 1rem) 0, 100% 100%, 0 100%)]">
                                 <img src="/posters/stan.webp" alt="Print Poster" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
                             </div>
                         </div>
-                        <div className="px-4 outline-none">
+                        <div className="px-4 outline-none border border-white">
                             <div className="rounded-3xl overflow-hidden shadow-lg border border-white hover:shadow-xl transition-shadow duration-300">
                                 <img src="/posters/phon.webp" alt="Print Poster" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
                             </div>

@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import ServiceSection from './Services';
+import Numbers from './Numbers';
 
 export default function AboutPage() {
   const services = [
@@ -62,7 +63,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold  mb-6 tracking-tight">
-              Hey there! <br /> Welcome to <span className="text-transparent bg-clip-text bg-[#78a9ff]">M.A.D Graphix!</span>
+              The Heart <br />  <span className="text-transparent bg-clip-text bg-[#78a9ff]">behind the Art</span>
             </h1>
             <div className="text-lg md:text-xl text-gray-700 space-y-6 max-w-2xl">
               <p>
@@ -75,46 +76,47 @@ export default function AboutPage() {
                 Our team is here to turn your ideas into reality. We work closely with you to make sure your brand looks just as awesome as you imagined.
               </p>
             </div>
-            
+
             <div className="mt-10">
               <a href="https://wa.me/254708779284" className="inline-block bg-blue-600 text-white hover:bg-blue-700 border-2 border-blue-600 hover:border-blue-700 px-8 py-4 rounded-pill font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                 Let's Work Together
               </a>
             </div>
           </div>
-          
+
           <div className="flex-1 w-full flex justify-center">
             {/* Visual element placeholder mimicking the hero from screenshot */}
             <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-sms bg-gradient-to-br from-[#of62fe] to-[#78a9ff] shadow-2xl flex items-center justify-center p-4">
               <div className="w-full h-full rounded-sm bg-white flex items-center justify-center overflow-hidden border-8 border-white shadow-inner">
-                <img src="/posters/billb.webp" alt="Creative Design" className="w-full h-full object-cover" />
+                <img src="/posters/spost.webp" alt="Creative Design" className="w-full h-full object-cover" />
+                <div></div>
               </div>
-              
+
               {/* Floating badges */}
-              <div className="absolute -top-4 -right-4 bg-white p-2 rounded-xl shadow-lg border border-purple-100 transform rotate-6">
+              {/* <div className="absolute -top-4 -right-4 bg-white p-2 rounded-xl shadow-lg border border-purple-100 transform rotate-6">
                 <span className="font-bold text-[#512396]">100%</span>
                 <p className="text-xs text-gray-500">Creative</p>
               </div>
               <div className="absolute bottom-10 -left-10 bg-white p-2 rounded-xl shadow-lg border border-purple-100 transform -rotate-3">
                 <span className="font-bold text-[#ff8c00]">Unique</span>
                 <p className="text-xs text-gray-500">Designs</p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </section>
 
       {/* Our Mission Section */}
-      <section className="p-24 px-6 flex flex-col md:flex-row-reverse bg-white relative">
+      <section className="p-12 px-6 flex flex-col md:flex-row-reverse bg-white relative">
         <div className="max-w-4xl mx-auto">
           <div className="inline-block mb-4">
             <span className="bg-[#f0e6f5] text-[#512396] px-4 py-1.5 rounded-full text-sm font-bold tracking-wider uppercase">Our Purpose</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#512396] mb-10">OUR MISSION</h2>
-          
+          <h2 className="text-3xl md:text-5xl font-bold text-[#512396] mb-10">Our Story</h2>
+
           <div className="relative">
-            
-            
+
+
             <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium italic relative z-10">
               To create designs and brands that resonates with authenticity and emotional depth, capturing the essence of the human experience through every design.
             </p>
@@ -122,19 +124,44 @@ export default function AboutPage() {
               We are dedicated to not only inspire but also forge a deep connection with our audience, reflecting true passion and creativity in every work we produce.
             </p>
           </div>
-          
+
           <div className="mt-12">
-            <span className="text-2xl md:text-3xl font-extrabold text-[#ff8c00] transform -rotate-2 inline-block">
-              Art Straight from the Heart! 
-            </span>
+            {/* <span className="text-2xl md:text-3xl font-extrabold text-[#ff8c00] transform -rotate-2 inline-block">
+              Art Straight from the Heart!
+            </span> */}
           </div>
         </div>
         <div className='md:max-w-1/2 p-24'>
-          <img src="/posters/poster.webp" alt="Our Mission" className="w-full h-full object-cover" />
+          <img src="/posters/spost.webp" alt="Our Mission" className="w-full h-full object-cover" />
         </div>
       </section>
-        
-      
+
+      <Numbers/>
+      <section className=" p-12  md:py-4 bg-white " >
+        <h1 className='text-6xl text-black'> Our Values</h1>
+        <div className=" mx-auto px-6 lg:px-4 grid grid-cols-1 lg:grid-cols-4 gap-10 items-center">
+          
+          {/* <div className=" overflow-hidden relative bg-[#f0e6f5] bg-[url('/images/4.png')] border-3 [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " >
+          <div className='scan-line'></div>
+          </div> */}
+          <div className=" overflow-hidden card border-3   [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " >
+            <div></div>
+          </div>
+          <div className=" overflow-hidden card border-3   [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " >
+            <div></div>
+          </div>
+          <div className=" overflow-hidden card border-3   [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " >
+            <div></div>
+          </div>
+          <div className=" overflow-hidden card border-3   [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " >
+            <div></div>
+          </div>
+          {/* <div className=" overflow-hidden bg-[#f0e6f5]  border-3 [clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] h-96   " ></div> */}
+        </div>
+
+      </section>
+
+
 
       {/* What We Do Section */}
       <ServiceSection />

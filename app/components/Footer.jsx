@@ -7,16 +7,20 @@ export default function Footer() {
   return (
     <footer className=" rounded-t-[3rem] mt-12 overflow-hidden shadow-2xl relative">
       {/* Decorative background circle */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full filter blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
+      {/* <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full filter blur-3xl transform translate-x-1/3 -translate-y-1/3"></div> */}
 
       <div className="mx-auto max-w-7xl px-6 pt-20 pb-12 sm:px-8 relative z-10">
-        <div className="mx-auto max-w-md flex flex-col justify-space-between text-center">
+        <div className="mx-auto max-w-full flex flex-col md:flex-row md:justify-between justify-content text-left">
+          <div>
           <strong className="block text-2xl font-bold  sm:text-3xl mb-2">
-            Get Quality Newsletters to your inbox?
+            Only quality news your inbox?
           </strong>
           <p className=" mb-6">Stay updated with our latest creative insights.</p>
+          </div>
+          <div>
 
           <SubscribeForm />
+          </div>
         </div>
 
         <div className="mt-20 bg[#f2f2f2] grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-32">
@@ -54,22 +58,22 @@ export default function Footer() {
               <ul className="mt-6 space-y-3">
                 
                   <li >
-                    <a className=" font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
+                    <a className=" font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
                       Brand Identity
                     </a>
                   </li>
                   <li >
-                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
                       Graphic Design
                     </a>
                   </li>
                   <li >
-                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
                       Web Design
                     </a>
                   </li>
                   <li >
-                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
                       Brand Identity
                     </a>
                   </li>
@@ -82,22 +86,22 @@ export default function Footer() {
               <ul className="mt-6 space-y-3">
                 
                   <li >
-                    <a className="font-thin hover:text-blue-300 hover:translate-x-1  transition-all" href="/About">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1  transition-all" href="/About">
                       About Us
                     </a>
                   </li>
                   <li >
-                    <a className="font-thin hover:text-blue-300 hover:translate-x-1  transition-all" href="/case-studies">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1  transition-all" href="/case-studies">
                       Case Studies
                     </a>
                   </li>
                   <li >
-                    <a className="font-thin hover:text-blue-300 hover:translate-x-1  transition-all" href="/blog">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1  transition-all" href="/blog">
                       Blog
                     </a>
                   </li>
                   <li >
-                    <a className="font-thin hover:text-blue-300 hover:translate-x-1  transition-all" href="/our-team">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1  transition-all" href="/our-team">
                       Our Team
                     </a>
                   </li>
@@ -110,17 +114,17 @@ export default function Footer() {
               <ul className="mt-6 space-y-3">
                 
                   <li >
-                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/contact#faqs">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/contact#faqs">
                       FAQs 
                     </a>
                   </li>
                   <li >
-                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/contact">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/contact">
                       Contact
                     </a>
                   </li>
                   <li >
-                    <a className="font-thin hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/wa.me/254708779284">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/wa.me/254708779284">
                       Live Chat
                     </a>
                   </li>

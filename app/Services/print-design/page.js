@@ -11,10 +11,10 @@ export default function DigitalAdsPage() {
       <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-rose-50 to-pink-100 pt-32 pb-20 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight text-gray-900">
-            Digital Advertising
+            Print Design
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto">
-            Get value for money spent on strategic ad campaigns that drive results
+          From the shelves of Nairobi's biggest supermarkets to premium corporate boardrooms, we design physical assets that demand attention, build trust, and close deals.
           </p>
         </div>
       </section>
@@ -24,16 +24,14 @@ export default function DigitalAdsPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
             <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
-              <img src="/images/services/ads.jpg" alt="Digital Advertising" className="w-full h-full object-cover rounded-2xl" />
+              <img src="/images/services/print-design.jpg" alt="Print Design" className="w-full h-full object-cover rounded-2xl" />
             </div>
             <div>
-              <h2 className="text-4xl font-bold mb-6">Maximize Your ROI</h2>
+              <h2 className="text-4xl font-bold mb-6">Retail Packaging & Label Design</h2>
               <p className="text-gray-700 text-lg mb-4">
-                Every advertising dollar should work hard for your business. We create and manage high-performing ad campaigns across multiple platforms that reach the right audience at the right time.
-              </p>
+              With the booming local manufacturing and FMCG space ("Buy Kenya, Build Kenya"), your product packaging needs to scream premium. We design packaging that catches the eye on crowded supermarket shelves and builds instant brand loyalty  </p>
               <p className="text-gray-700 text-lg">
-                From Google Ads to social media advertising, we optimize every campaign for maximum return on investment.
-              </p>
+              Stickers & Bottle Labels: Durable, high-visual-impact label designs tailored for water bottles, juices, and essential oils.</p>
             </div>
           </div>
 

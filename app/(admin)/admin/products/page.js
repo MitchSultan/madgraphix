@@ -40,7 +40,7 @@ export default async function ProductsPage() {
             type="button"
             className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto transition-all"
           
-          ><link href="/dashboard/products/app" className="w-full h-full"/>
+          ><link href="./add" className="w-full h-full"/>
             Add Product
           </button>
         </div>
@@ -71,7 +71,7 @@ export default async function ProductsPage() {
               </h3>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">{product.description}</p>
               <div className="mt-auto pt-4 flex items-center justify-between">
-                <p className="text-base font-medium text-gray-900 dark:text-white">${product.price.toFixed(2)}</p>
+                <p className="text-base font-medium text-gray-900 dark:text-white">${product.price}</p>
                 <span className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${product.is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                   {product.is_active ? 'Active' : 'Inactive'}
                 </span>

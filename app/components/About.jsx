@@ -75,12 +75,12 @@ export default function AboutUs() {
         {/* RIGHT — VIDEO */}
         <div className="rounded-xl overflow-hidden    " >
           <video ref={container}
-            src="/videos/about.mp4"
+            src="/videos/md.webm/"
             autoPlay
             loop
             muted
             playsInline
-            className="w-full max-h-[600px] object-contain"
+            className=" object-contain aspect-video "
           ></video>
         </div>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '../../components/Navigation';
+import WebDesignStack from '@/app/components/web-design';
 import Footer from '../../components/Footer';
 
 export default function WebDesignPage() {
@@ -8,21 +9,22 @@ export default function WebDesignPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 pt-32 pb-20 px-6">
-        <div className="max-w-5xl mx-auto text-center">
+      <section className="relative px-6 min-h-[60vh] flex items-start  bg-gradient-to-br from-blue-50 to-indigo-100 pt-32 pb-20 px-6">
+        <div className="max-w-5xl  text-left">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight text-gray-900">
-            Web Design & Development
+            Web Design & <br></br> Development
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto">
             Creating beautiful, responsive websites that captivate and convert your audience
           </p>
         </div>
       </section>
+      {/* <WebDesignPage/> */}
 
       {/* Service Details */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+          {/* <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
             <div>
               <h2 className="text-4xl font-bold mb-6">Stunning Websites That Work</h2>
               <p className="text-gray-700 text-lg mb-4">
@@ -35,7 +37,8 @@ export default function WebDesignPage() {
             <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
               <img src="/posters/phon.webp" alt="Web Design" className="w-full h-full object-cover rounded-2xl" />
             </div>
-          </div>
+          </div> */}
+
 
           {/* What We Offer */}
           <div className="mb-20">

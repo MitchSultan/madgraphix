@@ -64,7 +64,10 @@ module.exports = {
         'body-lg': ['1.25rem', { lineHeight: '1.4' }],
         body: ['1.125rem', { lineHeight: '1.45' }],
         'body-sm': ['1rem', { lineHeight: '1.45' }]
-      }
+      },
+       clipPath: {
+        'triangle': 'polygon(50% 0%, 0% 100%, 100% 100%)',
+      },
     }
   },
   plugins: []

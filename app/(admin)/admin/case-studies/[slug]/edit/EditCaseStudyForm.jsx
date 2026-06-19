@@ -57,7 +57,7 @@ export default function EditCaseStudyForm({ caseStudy }) {
             });
 
             if (res.ok) {
-                router.push('/dashboard/case-studies');
+                router.push('/admin/case-studies');
                 router.refresh();
             } else {
                 const error = await res.json();

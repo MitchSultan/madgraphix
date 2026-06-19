@@ -69,7 +69,7 @@ export default function LoginForm({ redirectTo }) {
   };
 
   return (
-    <div className="min-h-screen m-2 flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen m-2 flex items-center justify-center ">
       <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
         <h2 className="text-2xl font-bold text-center mb-6">Mad Graphix Login</h2>
 
@@ -81,6 +81,33 @@ export default function LoginForm({ redirectTo }) {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* inputs unchanged... */}
+           <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Email
+            </label>
+            <input
+              {...register('email')}
+              type="email"
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Password
+            </label>
+            <input
+              {...register('password')}
+              type="password"
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+            {errors.password && (
+              <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
+            )}
+          </div>
           <button
             type="submit"
             disabled={loading}

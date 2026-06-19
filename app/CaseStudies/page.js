@@ -29,9 +29,9 @@ export default async function CaseStudiesPage() {
 
       <main className="pt-24">
         {/* Hero Section */}
-        <div className="max-w-5xl mx-auto px-6 pt-16 pb-20 text-center">
-          <div className="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-700 rounded-full px-4 py-1.5 mb-6">
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+        <div className="max-w-full mx-auto px-6 pt-16 pb-20 text-left">
+          <div className="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-700 rounded-sm px-4 py-1.5 mb-6">
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
             <span className="text-sm uppercase tracking-[2px] font-mono text-zinc-400">Featured Work</span>
           </div>
           
@@ -39,14 +39,14 @@ export default async function CaseStudiesPage() {
             Case Studies
           </h1>
           
-          <p className=" text-center mx-auto text-xl text-zinc-400 leading-relaxed">
+          <p className=" max-w-md  mx-auto text-xl text-zinc-400 leading-relaxed">
             Real results. Real impact. Explore how we&apos;ve transformed brands through 
             strategic design and cutting-edge development.
           </p>
         </div>
 
         {/* Case Studies Section */}
-        <div className="max-w-7xl mx-auto px-6 pb-24">
+        <div className=" mx-auto px-6 pb-24">
           {caseStudies && caseStudies.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
               {caseStudies.map((study) => (
@@ -55,7 +55,7 @@ export default async function CaseStudiesPage() {
             </div>
           ) : (
             <div className="text-center py-32">
-              <div className="mx-auto w-20 h-20 bg-zinc-900 rounded-2xl flex items-center justify-center mb-6">
+              <div className="mx-auto w-20 h-20 bg-zinc-900 rounded-sm flex items-center justify-center mb-6">
                 <span className="text-4xl">📂</span>
               </div>
               <p className="text-2xl font-medium text-zinc-300 mb-3">No case studies yet</p>
@@ -67,8 +67,8 @@ export default async function CaseStudiesPage() {
         </div>
 
         {/* Stats Bar */}
-        <div className="border-t border-b border-zinc-800 bg-zinc-900 py-12">
-          <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div className="border-t border-b border-zinc-800 bg-blue-900 py-12">
+          <div className="max-w-5xl text-white mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-5xl font-bold  mb-1">50+</div>
               <div className="text-zinc-400 text-sm tracking-widest">PROJECTS DELIVERED</div>

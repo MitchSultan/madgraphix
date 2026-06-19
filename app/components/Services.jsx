@@ -87,10 +87,10 @@ export default function ServiceSection() {
             <Link
               key={service.title}
               href={service.href}
-              className="group rounded-3xl bg-white border border-purple-50 p-8 min-h-[280px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-200"
+              className="group hover:[clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] bg-white border border-purple-50 p-8 min-h-[280px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-200"
             >
               <div>
-                <span className="inline-flex rounded-full bg-[#78a9ff] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
+                <span className="inline-flex [clip-path:polygon(0_0,calc(100%_-_10px)_0,100%_10px,100%_100%,0_100%)] bg-[#78a9ff] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
                   Mad Graphix
                 </span>
                 <h3 className="mt-6 text-2xl font-bold text-gray-800 leading-tight group-hover:text-primary transition-colors">
@@ -100,12 +100,17 @@ export default function ServiceSection() {
                   {service.description}
                 </p>
               </div>
-              <div className="mt-8 flex items-center gap-2 text-sm font-semibold text-accent transition-all duration-300 group-hover:gap-3">
+              <div className="mt-8 flex items-center gap-2 text-sm font-semibold text-blue transition-all duration-300 group-hover:gap-3">
                 <span className="border-b-2 border-accent border-dashed pb-0.5">Explore</span>
                 <span aria-hidden="true" className="text-lg">→</span>
               </div>
             </Link>
           ))}
+          <div className='bg-white p-8 min-h-[280px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-200'>
+            <h3 >Need something custom</h3>
+            <p>Reach out to us today and we will deliver. </p>
+            <button className='border border-1 '>Reach Out</button>
+          </div>
         </div>
 
         {/* Mobile carousel layout */}
@@ -125,16 +130,19 @@ export default function ServiceSection() {
                   <span className="inline-flex rounded-full bg-purple-50 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-primary">
                     Mad Graphix
                   </span>
-                  <h3 className="mt-6 text-2xl font-bold text-gray-800 leading-tight">
+                
+                </div>
+                <div className="mt-8 flex flex-col items-start gap-2 text-sm font-bold text-blue">
+                    <h3 className="mt-6 text-2xl font-bold text-gray-800 leading-tight">
                     {service.title}
                   </h3>
                   <p className="mt-4 text-base leading-relaxed text-gray-600">
                     {service.description}
                   </p>
-                </div>
-                <div className="mt-8 flex items-center gap-2 text-sm font-bold text-accent">
-                  <span className="border-b-2 border-accent border-dashed pb-0.5">Explore</span>
+                  <div className=" flex  items-center justify-between gap-2 text-sm font-semibold text-blue transition-all duration-300 group-hover:gap-3">
+                  <span className=" border-blue border-dashed pb-0.5">Explore</span>
                   <span aria-hidden="true" className="text-lg">→</span>
+                  </div>
                 </div>
               </Link>
             ))}

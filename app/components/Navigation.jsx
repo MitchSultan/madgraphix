@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { gsap } from 'gsap';
+import {User} from 'lucide-react'
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -92,7 +93,7 @@ export default function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 shadow-md py-3' : 'bg-transparent py-5'
+      className={`fixed top-0 left-0 right-0 z-50 bg-[#f3f4f6]  transition-all duration-300 ${isScrolled ? 'bg-white/95 shadow-md py-3' : 'bg-transparent py-5'
         } backdrop-blur-md`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -137,7 +138,7 @@ export default function Navigation() {
                     </svg>
                   </Link>
 
-                  <div className="absolute left-0 top-full mt-0 min-w-[240px] rounded-2xl shadow-xl opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-200 origin-top bg-white border border-purple-50">
+                  <div className="absolute left-0 top-full   mt-0 min-w-[240px] rounded-2xl shadow-xl opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-200 origin-top bg-white border border-purple-50">
                     <div className="w-full rounded-2xl py-3 flex flex-col">
                       {link.children.map((child) => (
                         <Link
@@ -154,11 +155,26 @@ export default function Navigation() {
               );
             })}
           </nav>
+          <div className="hidden md:flex  items-center gap-4">
+          <div>
+            <Link href="/login" className="hidden [clip-path:polygon(0_0,calc(100%_-_10px)_0,100%_10px,100%_100%,0_100%)] md:flex items-center gap-2 bg-blue-600 text-white hover:bg-accent px-6 py-2.5 rounded-pill font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+              <User className="w-6 h-6 text-white" />
+          
+            </Link>
+          </div>
+          {/* <div className="md:hidden">
+            <Link href="/login" className="flex items-center gap-2 bg-blue-600 text-white hover:bg-accent px-4 py-2 rounded-pill font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+              <user className="w-6 h-6 text-white" />
+            </Link>
+            <user className="w-6 h-6 text-primary" />
+
+          </div> */}
           
           <div className="hidden md:flex">
              <Link href="https://wa.me/254708779284" className="bg-blue-600 text-white hover:bg-accent px-6 py-2.5 rounded-pill font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
                Get Started
              </Link>
+          </div>
           </div>
 
           {/* Mobile toggle */}

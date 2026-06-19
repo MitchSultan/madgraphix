@@ -60,7 +60,7 @@ export default function Contact() {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-blue-100 flex items-center justify-center">
                   <Phone className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
@@ -70,7 +70,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-blue-100 flex items-center justify-center">
                   <Mail className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
@@ -80,7 +80,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 rounded-sm bg-blue-100 flex items-center justify-center">
                   <MapPin className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
@@ -135,9 +135,9 @@ export default function Contact() {
               <button
                 type="submit"
                 size="lg"
-                className="w-full bg-emerald-500 hover:bg-emerald-600 text-white text-lg py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white text-lg py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
-                Apply Now
+                Let's Talk
               </button>
             </form>
           </motion.div>

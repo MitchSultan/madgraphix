@@ -31,7 +31,7 @@ export default async function CaseStudiesDashboardPage() {
           <p className="text-gray-500">Create, edit, and manage your portfolio case studies</p>
         </div>
         <Link
-          href="./create"
+          href="./case-studies/create"
           className="inline-flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors"
         >
           <PlusCircle size={20} />

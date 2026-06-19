@@ -36,10 +36,10 @@ export default function FAQs() {
   };
 
   return (
-    <section className="w-full py-20 bg-gray-100">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section className="w-full  py-20 bg-gray-100">
+      <div className="w-full flex flex-col md:flex-row gap-12 justify-center px-6 lg:px-12">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-left mb-16">
           <p className="text-gray-500 text-sm mb-2">(FAQs)</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4">
             Your Questions, Answered
@@ -50,7 +50,7 @@ export default function FAQs() {
         </div>
 
         {/* FAQ Grid */}
-        <div className="grid md:grid-cols-1 gap-6">
+        <div className="grid md:grid-cols-1 gap-6 w-1/2">
           {faqs.map((faq, index) => (
             <div
               key={index}
@@ -63,7 +63,7 @@ export default function FAQs() {
                 <span className="text-lg font-semibold text-gray-900 pr-4">
                   {faq.question}
                 </span>
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center">
+                <div className="flex-shrink-0 w-6 h-6 rounded-sm bg-blue-900 flex items-center justify-center">
                   {openIndex === index ? (
                     <svg
                       className="w-4 h-4 text-white"

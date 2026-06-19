@@ -1,9 +1,10 @@
 // app/login/page.jsx  (NO 'use client' directive)
 import LoginForm from '../../../components/shared/LoginForm';
 
-export default function LoginPage({ searchParams }) {
+export default async function LoginPage({ searchParams }) {
   // searchParams is a regular object, safe to use on the server
-  const redirectTo = searchParams?.redirect ?? null;
+   const params = await searchParams;
+  const redirectTo = params?.redirect ?? null;
 
   return <LoginForm redirectTo={redirectTo} />;
 }

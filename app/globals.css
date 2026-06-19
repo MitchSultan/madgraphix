@@ -6,16 +6,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ----------------------------------------------------
-   DESIGN.TOKENS imported from DESIGN.md (figma system)
-   ---------------------------------------------------- */
 
 :root {
-  /* Font families (figmaSans -> Inter, figmaMono -> JetBrains Mono) */
   --font-figma-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial;
   --font-figma-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
 
-  /* Colors */
+  
   --color-primary: #000000;
   --color-on-primary: #ffffff;
   --color-ink: #000000;
@@ -37,7 +33,7 @@
   --color-semantic-success: #1ea64a;
   --color-overlay-scrim: rgba(0,0,0,0.6);
 
-  /* Spacing scale */
+  
   --space-hair: 1px;
   --space-xxs: 4px;
   --space-xs: 8px;
@@ -48,7 +44,7 @@
   --space-xxl: 48px;
   --space-section: 96px;
 
-  /* Rounded */
+  
   --radius-xs: 2px;
   --radius-sm: 6px;
   --radius-md: 8px;
@@ -496,4 +492,45 @@ ol {
 
   }
 
+}
+
+/* .card {
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(...);
+} */
+.scan-line {
+  position: absolute;
+  left: 0; right: 0; height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99, 102, 241, 0.9),
+    rgba(168, 85, 247, 0.9),
+    transparent
+  );
+  filter: blur(1px);
+  animation: scan 2.5s linear infinite;
+}
+
+@keyframes scan {
+  0%   { top: -2px; opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { top: 110%; opacity: 0; }
+}
+
+.card {
+  /* clip-path: polygon(...); */
+  background: linear-gradient(
+    -45deg,
+    #4f46e5, #7c3aed, #1e40af, #0891b2
+  );
+  background-size: 400% 400%;          /* ← oversized for shift room */
+  animation: grad-shift 5s ease infinite;
+}
+
+@keyframes grad-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
 }

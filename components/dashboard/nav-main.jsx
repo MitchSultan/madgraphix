@@ -4,6 +4,7 @@ import { Button } from "./ui/button"
 import {
   SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -11,11 +12,13 @@ import {
 import { CirclePlusIcon, MailIcon } from "lucide-react"
 
 export function NavMain({
-  items
+  items 
+  
 }) {
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
+        <SidebarGroupLabel>Business</SidebarGroupLabel>
         <SidebarMenu>
           <SidebarMenuItem className="flex items-center gap-2">
             <SidebarMenuButton
@@ -38,12 +41,19 @@ export function NavMain({
           </SidebarMenuItem>
         </SidebarMenu>
         <SidebarMenu>
+            {console.log('NavMain items count:', items.length)}
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
+              {/* <div tooltip={item.title}>
                 {item.icon}
                 <span>{item.title}</span>
-              </SidebarMenuButton>
+              </div> */}
+              <SidebarMenuButton asChild>
+                            <a href={item.url}>
+                              {item.icon}
+                              <span>{item.title}</span>
+                            </a>
+                          </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>

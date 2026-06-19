@@ -47,7 +47,7 @@ export default function EditBlogForm({ blog }) {
             });
 
             if (res.ok) {
-                router.push('/dashboard/blogs');
+                router.push('/admin/blogs');
                 router.refresh();
             } else {
                 const error = await res.json();
@@ -65,7 +65,7 @@ export default function EditBlogForm({ blog }) {
             {/* Header */}
             <div className="flex items-center gap-4">
                 <Link
-                    href="/dashboard/blogs"
+                    href="/admin/blogs"
                     className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                 >
                     <ArrowLeft size={20} />
@@ -223,7 +223,7 @@ export default function EditBlogForm({ blog }) {
                 {/* Actions */}
                 <div className="flex gap-3 justify-end mt-8 pt-6 border-t border-gray-100">
                     <Link
-                        href="/dashboard/blogs"
+                        href="/admin/blogs"
                         className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
                     >
                         Cancel
@@ -231,7 +231,7 @@ export default function EditBlogForm({ blog }) {
                     <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="inline-flex items-center gap-2 px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors disabled:opacity-50"
+                        className="inline-flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
                     >
                         <Save size={18} />
                         <span>{isSubmitting ? 'Saving...' : 'Save Changes'}</span>

@@ -136,7 +136,7 @@ const chartConfig = {
   },
   mobile: {
     label: "Mobile",
-    color: "var(--primary)",
+    color: "[bg-#f43f5e]",
   },
 } 
 

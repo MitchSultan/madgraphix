@@ -118,7 +118,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={pending}
-        className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:bg-emerald-300 disabled:cursor-not-allowed text-white text-lg py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 disabled:scale-100 font-semibold flex items-center justify-center gap-3"
+        className="w-full bg-blue-500 hover:bg-blue-600 disabled:bg-blue-300 disabled:cursor-not-allowed text-white text-lg py-4 rounded-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 disabled:scale-100 font-semibold flex items-center justify-center gap-3"
       >
         {pending ? (
           <>
@@ -128,7 +128,7 @@ export default function ContactForm() {
             </svg>
             Sending…
           </>
-        ) : 'Apply Now'}
+        ) : 'Lets Talk'}
       </button>
 
     </form>

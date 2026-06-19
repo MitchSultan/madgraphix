@@ -230,7 +230,7 @@ export default function CreateBlogPage() {
         {/* Actions */}
         <div className="flex gap-3 justify-end mt-8 pt-6 border-t border-gray-100">
           <Link
-            href="/dashboard/blogs"
+            href="/admin/blogs"
             className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
           >
             Cancel

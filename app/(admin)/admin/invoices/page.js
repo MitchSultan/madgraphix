@@ -1,27 +1,32 @@
-import { createClient } from '@/lib/supabase/server';
-import { getUser } from '@/lib/auth';
 import { Badge } from '@/components/ui/badge';
-// import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-// similar to admin list but filtered by client_email = user.email
+import { supabaseServer } from '@/lib/supabase/server';
 
-export default async function ClientInvoicesPage() {
-  // const { user } = await getUser();
-  const supabase = await createClient();
+const invoiceStatusVariant = {
+  draft: 'secondary',
+  sent: 'default',        // blue
+  paid: 'success',        // green
+  overdue: 'destructive', // red
+  cancelled: 'outline',
+};
 
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login');
+const paymentStatusVariant = {
+  Unpaid: 'secondary',
+  Partial: 'warning',     // yellow – you may need to define a custom variant
+  'Fully Paid': 'success',
+};
 
-  const { data: invoices } = await supabase
+export default async function AdminInvoicesPage() {
+  const supabase =  await supabaseServer();
+  const { data: invoices, error } = await supabase
     .from('invoices')
     .select('*')
-    .eq('client_email', user.email)
     .order('created_at', { ascending: false });
-
-  return ( 
-<div className="p-6">
+    if (error) throw new Error(error.message)
+  return (
+    <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Invoices</h1>
         <div>
@@ -68,6 +73,5 @@ export default async function ClientInvoicesPage() {
         </TableBody>
       </Table>
     </div>
-
-   );
+  );
 }

@@ -148,6 +148,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import AnalyticsDashboard from './AnalyticsDashboard';
 
 // interface ChartData {
 //   date: string;
@@ -160,7 +161,7 @@ export default function AnalyticsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/analytics')
+    fetch('../../../api/analytics')
       .then((res) => res.json())
       .then((data) => {
         if (!data.error) setData(data);
@@ -176,34 +177,37 @@ export default function AnalyticsPage() {
   if (data.length === 0) return <div className="p-6 text-center">No data found.</div>;
 
   return (
-    <div className="w-full h-[400px] bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-      <h3 className="text-lg font-semibold mb-4 text-gray-800">Website Traffic (Past 7 Days)</h3>
-      <ResponsiveContainer width="100%" height="90%">
-        <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="date" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          {/* Active Users Line */}
-          <Line 
-            type="monotone" 
-            dataKey="activeUsers" 
-            name="Active Users" 
-            stroke="#3b82f6" 
-            strokeWidth={2}
-            activeDot={{ r: 8 }} 
-          />
-          {/* Page Views Line */}
-          <Line 
-            type="monotone" 
-            dataKey="pageViews" 
-            name="Page Views" 
-            stroke="#10b981" 
-            strokeWidth={2} 
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+    // <div className="w-full h-[400px] bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+    //   <h3 className="text-lg font-semibold mb-4 text-gray-800">Website Traffic (Past 7 Days)</h3>
+    //   <ResponsiveContainer width="100%" height="90%">
+    //     <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+    //       <CartesianGrid strokeDasharray="3 3" vertical={false} />
+    //       <XAxis dataKey="date" />
+    //       <YAxis />
+    //       <Tooltip />
+    //       <Legend />
+    //       {/* Active Users Line */}
+    //       <Line 
+    //         type="monotone" 
+    //         dataKey="activeUsers" 
+    //         name="Active Users" 
+    //         stroke="#3b82f6" 
+    //         strokeWidth={2}
+    //         activeDot={{ r: 8 }} 
+    //       />
+    //       {/* Page Views Line */}
+    //       <Line 
+    //         type="monotone" 
+    //         dataKey="pageViews" 
+    //         name="Page Views" 
+    //         stroke="#10b981" 
+    //         strokeWidth={2} 
+    //       />
+    //     </LineChart>
+    //   </ResponsiveContainer>
+    // </div>
+    <>
+    <AnalyticsDashboard/>
+    </>
   );
 }

@@ -18,8 +18,8 @@ export function NavMain({
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
-        <SidebarGroupLabel>Business</SidebarGroupLabel>
-        <SidebarMenu>
+        <SidebarGroupLabel>CMS</SidebarGroupLabel>
+        {/* <SidebarMenu>
           <SidebarMenuItem className="flex items-center gap-2">
             <SidebarMenuButton
               tooltip="Quick Create"
@@ -39,7 +39,7 @@ export function NavMain({
               <span className="sr-only">Inbox</span>
             </Button>
           </SidebarMenuItem>
-        </SidebarMenu>
+        </SidebarMenu> */}
         <SidebarMenu>
             {console.log('NavMain items count:', items.length)}
           {items.map((item) => (

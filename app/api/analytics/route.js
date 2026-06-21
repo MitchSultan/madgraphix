@@ -52,7 +52,8 @@ export async function GET() {
 
     return NextResponse.json(sortedData);
   } catch (error) {
-    console.error('GA4 API Error:', error);
-    return NextResponse.json({ error: 'Failed to fetch analytics data' }, { status: 500 });
+  console.error('GA4 API Error:', error);
+  console.error('Error details:', JSON.stringify(error, null, 2));
+  return NextResponse.json({ error: 'Failed to fetch analytics data', details: error.message }, { status: 500 });
   }
 }

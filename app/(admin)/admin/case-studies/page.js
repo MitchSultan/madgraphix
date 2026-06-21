@@ -23,16 +23,16 @@ export default async function CaseStudiesDashboardPage() {
   const caseStudies = await getCaseStudies();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-8">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-start">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Case Study Management</h1>
           <p className="text-gray-500">Create, edit, and manage your portfolio case studies</p>
         </div>
         <Link
           href="./case-studies/create"
-          className="inline-flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors"
+          className="inline-flex items-left md:items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
         >
           <PlusCircle size={20} />
           <span>New Case Study</span>

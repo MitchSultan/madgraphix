@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useHeadingReveal } from './hooks/Useheadingreveal';
 
 const services = [
   {
@@ -36,6 +37,7 @@ const services = [
 export default function ServiceSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef(null);
+  const title = useRef(null);
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -64,6 +66,19 @@ export default function ServiceSection() {
     carousel.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
   };
 
+ useHeadingReveal(title , {y:100, duration:2})
+
+
+
+
+
+
+
+
+
+
+ 
+
   return (
     <section className="w-full py-24 text-gray-800 bg-[#f2f2f2] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -71,11 +86,11 @@ export default function ServiceSection() {
           <p className="font-thin text-sm text-blue-900 uppercase tracking-wide mb-2">
             Services
           </p>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight leading-tight">
+          <h2 ref={title} className="text-4xl  md:text-5xl font-extrabold text-primary tracking-tight leading-tight">
             What We Do
           </h2>
           <div className="mt-5 h-1.5 w-24 rounded-full bg-accent" />
-          <p className="mt-6 max-w-2xl text-lg text-gray-600">
+          <p className="mt-6 max-w-md text-lg text-gray-600">
             Premium creative experiences built for brands that want a refined presence.
             Every detail is designed with precision, authority, and a polished finish.
           </p>

@@ -75,7 +75,7 @@ export default function SettingsLayout({
   const isAdmin = profile?.role === 'admin';
 
   return (
-    <div className="container max-w-5xl py-10">
+    <div className="container max-w-5xl p-10">
       <h1 className="text-3xl font-bold mb-2">Settings</h1>
       <p className="text-muted-foreground mb-6">Manage your account and team</p>
 

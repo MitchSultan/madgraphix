@@ -20,8 +20,8 @@ export default async function SettingsPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-4xl">
-      <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
+    <div className="space-y-6 p-4 ">
+      {/* <h1 className="text-2xl font-bold text-gray-900">Settings</h1> */}
 
       {/* Configuration Info */}
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">

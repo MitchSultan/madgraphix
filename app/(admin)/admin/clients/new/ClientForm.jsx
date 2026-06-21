@@ -32,7 +32,7 @@ export default function ClientForm() {
       setError(result.error)
       setLoading(false)
     } else {
-      router.push('/dashboard/clients')
+      router.push('/admin/clients')
     }
   }
 

@@ -78,31 +78,37 @@
 
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
 
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { useHeadingReveal } from "./hooks/Useheadingreveal";
 
 // Mock logo data – replace the `src` with your actual logo paths
 const logos =  [
-  { id: 1, alt: "ToG", src: "/logos/denri.png" },
-  { id: 2, alt: "Luxury by Tina", src: "/logos/merishaw.png" },
-  { id: 3, alt: "CanvasPile", src: "/logos/fayahh.png" },
-  { id: 4, alt: "MadGraphix", src: "/logos/moko.png" },
-  { id: 5, alt: "Evolve Sphere", src: "/logos/the.png" },
-  { id: 6, alt: "Inner Harbor", src: "/logos/tog.png" },
-  { id: 7, alt: "Nesh Collections", src: "/logos/kings.png" },
-  { id: 8, alt: "Reuben", src: "/logos/kimuka.png" },
+  { id: 1, alt: "ToG", src: "/logos/denri.webp" },
+  { id: 2, alt: "Luxury by Tina", src: "/logos/merishaw.webp" },
+  { id: 3, alt: "CanvasPile", src: "/logos/faya.webp" },
+  { id: 4, alt: "MadGraphix", src: "/logos/moko.webp" },
+  { id: 5, alt: "Evolve Sphere", src: "/logos/the.webp" },
+  { id: 6, alt: "Inner Harbor", src: "/logos/tog.webp" },
+  { id: 7, alt: "Nesh Collections", src: "/logos/kings.webp" },
+  { id: 8, alt: "Reuben", src: "/logos/kimuka.webp" },
 ];
 
 export default function LogoMarquee() {
+
+  const title = useRef();
+
+  useHeadingReveal(title, {y:100,duration:1})
   return (
     <section className="py-16 md:py-24 bg-background relative overflow-hidden">
       {/* Optional heading */}
       <div className="max-w-6xl mx-auto mb-10 px-4 text-center">
-        <h2 className="text-sm text-black font-semibold uppercase tracking-widest text-muted-foreground">
+        <h2 ref={title} className="text-sm text-black font-semibold uppercase ">
           Trusted by industry leaders
         </h2>
       </div>

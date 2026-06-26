@@ -370,6 +370,10 @@ import {
   FileChartColumnIcon,
   FileIcon,
   CommandIcon,
+    User,
+    ShoppingCart,
+    Coins,
+
 } from "lucide-react"
 
 const data = {
@@ -490,19 +494,19 @@ const data = {
       name: "Products",
       url: "/products",
       roles: ["admin", "staff", "client"],
-      icon: <FileChartColumnIcon />,
+      icon: <ShoppingCart />,
     },
     {
       name: "Invoices",
       url: "/invoices",
       roles: ["admin", "client"],
-      icon: <FileIcon />,
+      icon: <Coins />,
     },
     {
       name: "Clients",
       url: "/clients",
-      roles: ["admin", "client"],
-      icon: <FileIcon />,
+      roles: ["admin"],
+      icon: <User />,
     },
     {
       name: "Orders",

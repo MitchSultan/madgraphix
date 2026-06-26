@@ -7,6 +7,7 @@ import Services from '../components/Services';
 import WorkShowcase from '../components/WorkShowcase';
 
 import Partners from '../components/Partners';
+import Numbers from '../components/Numbers';
 
 import Print from '../components/Print';
 import PartnershipTestimonials from '../components/PartnershipTestimonials';
@@ -67,6 +68,7 @@ export default async function Home() {
         
         
         <WorkShowcase works={works} />
+        <Numbers/>
 
         <PartnershipTestimonials />
         

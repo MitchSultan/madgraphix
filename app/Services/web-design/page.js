@@ -1,46 +1,43 @@
 import React from 'react';
 import Navigation from '../../components/Navigation';
 import WebDesignStack from '@/app/components/web-design';
+import WebDesignServices from '@/app/components/web-designn/WebDesignServices';
+import HowWeWork from '@/app/components/howWeWork';
+import HeroBlog from '@/app/components/heroBlog';
+import Banner from '@/app/components/Banner';
 import Footer from '../../components/Footer';
 
 export default function WebDesignPage() {
   return (
-    <>
+    <div className='overflow-x-hidden'>
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative px-6 min-h-[60vh] flex items-start  bg-gradient-to-br from-blue-50 to-indigo-100 pt-32 pb-20 px-6">
-        <div className="max-w-5xl  text-left">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight text-gray-900">
-            Web Design & <br></br> Development
+      <section className="relative bg-[url(/mockups/pln.jpeg)] bg-left bg-cover bg-no-repeat px-6 min-h-[80vh] flex items-start  pt-32 pb-20 md:px-24">
+       
+       <div className='absolute top-0 left-0 w-full h-full bg-black/50 z-0'></div>
+        <div className="max-w-5xl z-10  text-left">
+          <h1 className="text-4xl font-normal max-w-xl md:text-6xl lg:text-7xl  mb-6 leading-tight text-gray-200">
+            High-performing web solutions built to grow with your brand
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto">
-            Creating beautiful, responsive websites that captivate and convert your audience
-          </p>
+          <p className="text-xl md:text-2xl text-gray-100 max-w-sm mx-auto">
+        How does your brand show up online? With our Webflow-certified experts, you get fast, scalable web experiences, designed and optimized to convert across every screen, segment, and stage of the funnel.  </p>
+        
+        <button className='btn-slide'>
+          <span className="ta">Learn More</span>
+                  <span className="tb">Let's Talk →</span>
+        </button>
         </div>
       </section>
       <WebDesignStack/>
 
       {/* Service Details */}
-      <section className="py-20 px-6 bg-white">
+      {/* <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          {/* <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-            <div>
-              <h2 className="text-4xl font-bold mb-6">Stunning Websites That Work</h2>
-              <p className="text-gray-700 text-lg mb-4">
-                We create modern, responsive websites that not only look amazing but deliver exceptional user experiences. Our web solutions are built with the latest technologies to ensure speed, security, and scalability.
-              </p>
-              <p className="text-gray-700 text-lg">
-                Whether you need a corporate website, e-commerce platform, or a custom web application, we've got you covered.
-              </p>
-            </div>
-            <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
-              <img src="/posters/phon.webp" alt="Web Design" className="w-full h-full object-cover rounded-2xl" />
-            </div>
-          </div> */}
+         
 
 
-          {/* What We Offer */}
+         
           <div className="mb-20">
             <h3 className="text-3xl font-bold mb-8 text-center">What We Offer</h3>
             <div className="grid md:grid-cols-3 gap-8">
@@ -76,7 +73,7 @@ export default function WebDesignPage() {
             </div>
           </div>
 
-          {/* CTA */}
+          
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-12 text-center text-white">
             <h3 className="text-3xl font-bold mb-4">Ready to build your dream website?</h3>
             <p className="text-xl mb-8 text-white/90">Let's discuss your project and bring your vision to life</p>
@@ -88,9 +85,14 @@ export default function WebDesignPage() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
+      <WebDesignServices/>
+      <HowWeWork/>
+      {/* <HeroBlog/> */}
+      <Banner/>
 
       <Footer />
-    </>
+      {/* <webDesignServices/> */}
+    </div>
   );
 }

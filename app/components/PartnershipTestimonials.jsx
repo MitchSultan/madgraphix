@@ -174,8 +174,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card } from "@/components/ui/card";
+import { useHeadingReveal } from "./hooks/Useheadingreveal";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
+
 
 // Mock data – replace with your own images and testimonials
 const testimonials = [
@@ -231,6 +233,7 @@ const testimonials = [
 
 export default function PortraitCarousel() {
   const sectionRef = useRef(null);
+  const title = useRef(null);
 
   // GSAP stagger animation on scroll
   useEffect(() => {
@@ -253,6 +256,8 @@ export default function PortraitCarousel() {
     return () => ctx.revert(); // cleanup
   }, []);
 
+  useHeadingReveal(title, {y:100,duration:1})
+
   return (
     <section
       ref={sectionRef}
@@ -260,7 +265,7 @@ export default function PortraitCarousel() {
     >
       {/* Heading */}
       <div className="max-w-6xl mx-auto mb-12 ">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+        <h2 ref={title} className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
           What Our Clients Say
         </h2>
         <p className="mt-4 text-muted-foreground  max-w-2xl mx-auto text-lg">
@@ -288,14 +293,14 @@ export default function PortraitCarousel() {
                 <Card className="relative overflow-hidden h-[420px] border-0 group">
                   {/* Background image */}
                   <div className="absolute inset-0">
-                    <Image
+                    {/* <Image
                       src={item.image}
                       alt={item.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                       priority
-                    />
+                    /> */}
                     {/* Gradient overlay – darker at bottom */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   </div>
@@ -303,7 +308,7 @@ export default function PortraitCarousel() {
                   {/* Content */}
                   <div className="relative z-10 flex flex-col justify-end h-full p-5 text-white">
                     {/* Quote */}
-                    <blockquote className="text-sm md:text-base leading-relaxed mb-4 italic opacity-90">
+                    <blockquote className="text-sm text-black md:text-base leading-relaxed mb-4 italic opacity-90">
                       “{item.quote}”
                     </blockquote>
                     {/* Client info */}

@@ -3,6 +3,7 @@ import React from 'react';
 import ServiceSection from './Services';
 import Numbers from './Numbers';
 import AboutUsSections from './AboutUsSections';
+import { useHeadingReveal } from './hooks/Useheadingreveal';
 
 export default function AboutPage() {
   const services = [
@@ -53,20 +54,22 @@ export default function AboutPage() {
     }
   ];
 
+
+
   return (
     <div className="font-sans bg-[#f1f1f1] min-h-screen">
       {/* Hero / About Us Section */}
-      <section className="relative  pt-32 pb-24 px-6 overflow-hidden">
+      <section className="relative bg-[url(/mockups/bssncd.jpeg)] bg-right bg-no-repeat bg-cover  pt-32 pb-24 px-6 overflow-hidden">
         {/* Decorative background shapes */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#d1c2eb] rounded-full mix-blend-multiply filter blur-3xl opacity-50 transform translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#fbd4a1] rounded-full mix-blend-multiply filter blur-3xl opacity-40 transform -translate-x-1/2 translate-y-1/2"></div>
-
+        {/* <div className="absolute top-0 right-0 w-96 h-96 bg-[#d1c2eb] rounded-full mix-blend-multiply filter blur-3xl opacity-50 transform translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#fbd4a1] rounded-full mix-blend-multiply filter blur-3xl opacity-40 transform -translate-x-1/2 translate-y-1/2"></div> */}
+ <div className='absolute top-0 left-0 w-full h-full bg-black/50'></div>
         <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold  mb-6 tracking-tight">
+            <h1 className="text-4xl text-white md:text-5xl lg:text-6xl font-extrabold  mb-6 tracking-tight">
               The Heart <br />  <span className="text-transparent bg-clip-text bg-[#78a9ff]">behind the Art</span>
             </h1>
-            <div className="text-lg md:text-xl text-gray-700 space-y-6 max-w-2xl">
+            <div className="text-lg md:text-xl text-gray-100 space-y-6 max-w-2xl">
               <p>
                 We are all about bringing your brand to life with creative and eye-catching designs. At <span className="font-bold text-[#512396]">Mirror Arts Designs Graphix</span>, we mix a love for design with a knack for making your brand pop.
               </p>
@@ -79,22 +82,24 @@ export default function AboutPage() {
             </div>
 
             <div className="mt-10">
-              <a href="https://wa.me/254708779284" className="inline-block bg-blue-600 text-white hover:bg-blue-700 border-2 border-blue-600 hover:border-blue-700 px-8 py-4 rounded-pill font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
-                Let's Work Together
+              <a href="https://wa.me/254708779284" >
+                <button className='btn-slide'>
+                  <span className="ta">Learn More</span>
+                  <span className="tb">Let's Talk →</span>
+                </button>
               </a>
             </div>
           </div>
 
-          <div className="flex-1 w-full flex justify-center">
-            {/* Visual element placeholder mimicking the hero from screenshot */}
-            <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-sms bg-gradient-to-br from-[#of62fe] to-[#78a9ff] shadow-2xl flex items-center justify-center p-4">
+          {/* <div className="flex-1 w-full flex justify-center"> */}
+          {/* <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-sms bg-gradient-to-br from-[#of62fe] to-[#78a9ff] shadow-2xl flex items-center justify-center p-4">
               <div className="w-full h-full rounded-sm bg-white flex items-center justify-center overflow-hidden border-8 border-white shadow-inner">
                 <img src="/posters/spost.webp" alt="Creative Design" className="w-full h-full object-cover" />
                 <div></div>
-              </div>
+              </div> */}
 
-              {/* Floating badges */}
-              {/* <div className="absolute -top-4 -right-4 bg-white p-2 rounded-xl shadow-lg border border-purple-100 transform rotate-6">
+          {/* Floating badges */}
+          {/* <div className="absolute -top-4 -right-4 bg-white p-2 rounded-xl shadow-lg border border-purple-100 transform rotate-6">
                 <span className="font-bold text-[#512396]">100%</span>
                 <p className="text-xs text-gray-500">Creative</p>
               </div>
@@ -102,8 +107,8 @@ export default function AboutPage() {
                 <span className="font-bold text-[#ff8c00]">Unique</span>
                 <p className="text-xs text-gray-500">Designs</p>
               </div> */}
-            </div>
-          </div>
+          {/* </div> */}
+          {/* </div> */}
         </div>
       </section>
 
@@ -137,8 +142,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Numbers/>
-      <AboutUsSections/>
+      <Numbers />
+      <AboutUsSections />
 
 
 

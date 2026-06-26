@@ -82,9 +82,9 @@ function ValueCard({
 export function ValuesSection() {
   return (
     <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl flex flex-col md:flex-row-reverse gap-6 mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <div className="text-left mb-12">
+        <div className="text-right mb-12">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
              The Heart of M.A.D Graphix
           </h2>
@@ -95,7 +95,7 @@ export function ValuesSection() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 max-w-1/2  gap-8">
           {values.map((v) => (
             <ValueCard key={v.title} {...v} />
           ))}
@@ -108,7 +108,7 @@ export function ValuesSection() {
 export function WhyChooseUsSection() {
   return (
     <section className="py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl flex flex-col md:flex-row mx-auto px-4 sm:px-6">
         {/* Heading */}
         <div className="text-left mb-12">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
@@ -121,7 +121,7 @@ export function WhyChooseUsSection() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 max-w-1/2 gap-8">
           {reasons.map((r) => (
             <ValueCard key={r.title} {...r} />
           ))}

@@ -1,21 +1,26 @@
 import React from 'react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
+import CarouselSize from '@/app/components/webhero';
 
 export default function IllustrationPage() {
   return (
     <>
       <Navigation />
       
+      
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-yellow-50 to-amber-100 pt-32 pb-20 px-6">
-        <div className="max-w-5xl mx-auto text-center">
+        {/* <div className="max-w-5xl mx-auto text-center md:max-w-2/3">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight text-gray-900">
             Illustration & Art
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto">
             Express your brand in a unique and artistic way with custom illustrations
           </p>
+        </div> */}
+        <div>
+        <CarouselSize/>
         </div>
       </section>
 

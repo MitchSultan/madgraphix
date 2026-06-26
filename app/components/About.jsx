@@ -76,20 +76,23 @@ export default function AboutUs() {
 
         {/* RIGHT — VIDEO */}
         <div className="rounded-xl overflow-hidden    " >
-          <video 
+          {/* <video 
             src="/videos/md.webm/"
             autoPlay
             loop
             muted
             playsInline
             className=" object-contain aspect-video "
-          ></video>
+          ></video> */}
+
+          <img src='/mockups/fr.png'>
+          </img>
         </div>
 
         {/* LEFT — TEXT */}
         <div>
           <div className=" font-thin text-sm text-blue-900 uppercase tracking-wide mb-2">About us</div>
-          <h2 ref={title1} className="text-4xl text-black lg:text-5xl font-bold mb-6 leading-tight split" >
+          <h2  className="text-4xl text-black lg:text-5xl font-bold mb-6 leading-tight split" >
             This is where Creativity Goes Mad
           </h2>
 
@@ -102,8 +105,9 @@ export default function AboutUs() {
 
 
           <a href="/About" >
-          <button className="bg-[#0043CE] text-white px-6 py-3 rounded-sm hover:bg-gray-900 transition">
-            Learn More
+          <button className="btn-slide"> 
+            <span className="ta">Learn More</span>
+                  <span className="tb">Let's Talk →</span>
           </button>
           </a>
         </div>

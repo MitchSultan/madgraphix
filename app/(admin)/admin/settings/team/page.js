@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { supabaseBrowser } from '@/lib/supabase/client';
+import { createClient } from '@/lib/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
@@ -12,14 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { toast } from 'sonner';
 import { inviteUser } from '@/lib/actions/user-actions';
 
-// type Profile = {
-//   id: string;
-//   email: string;
-//   first_name: string;
-//   last_name: string;
-//   role: 'admin' | 'staff';
-//   created_at: string;
-// };
+
 
 export default function TeamPage() {
   const [users, setUsers] = useState([]);
@@ -35,7 +28,7 @@ export default function TeamPage() {
   const [phone, setPhone] = useState('');
 
   const fetchUsers = async () => {
-    const { data, error } = await supabaseBrowser
+    const { data, error } = await createClient()
       .from('profiles')
       .select('*')
       .order('created_at', { ascending: false });

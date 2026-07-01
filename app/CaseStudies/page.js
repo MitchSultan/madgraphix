@@ -39,7 +39,7 @@ export default async function CaseStudiesPage() {
             Case Studies
           </h1>
           
-          <p className=" max-w-md  mx-auto text-xl text-zinc-400 leading-relaxed">
+          <p className=" max-w-md  mx-auto text-xl text-black-400 leading-relaxed">
             Real results. Real impact. Explore how we&apos;ve transformed brands through 
             strategic design and cutting-edge development.
           </p>
@@ -88,35 +88,7 @@ export default async function CaseStudiesPage() {
           </div>
         </div>
 
-        {/* Work Showcase Teaser */}
-        <div className="max-w-7xl mx-auto px-6 py-24">
-          <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-5/12">
-              <h2 className="text-5xl font-bold tracking-tighter mb-6">
-                More <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">incredible work</span>
-              </h2>
-              <p className="text-zinc-400 text-lg mb-8">
-                From brand identities to complex web platforms, we craft digital experiences that stand out.
-              </p>
-              <Link 
-                href="/work" 
-                className="inline-flex items-center gap-3 group text-lg font-medium"
-              >
-                Browse all projects
-                <span className="group-hover:translate-x-1 transition">→</span>
-              </Link>
-            </div>
-            
-            <div className="md:w-7/12 grid grid-cols-2 gap-4">
-              <div className="aspect-video bg-zinc-900 rounded-3xl overflow-hidden">
-                <div className="h-full w-full bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:20px_20px]"></div>
-              </div>
-              <div className="aspect-video bg-zinc-900 rounded-3xl overflow-hidden mt-12">
-                <div className="h-full w-full bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:20px_20px]"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </main>
 
       

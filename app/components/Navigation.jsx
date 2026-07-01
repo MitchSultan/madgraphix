@@ -81,8 +81,8 @@ export default function Navigation() {
       children: [
         { href: '/Services/web-design', label: 'Web Design ' },
         { href: '/Services/brand-identity', label: 'Brand Identity' },
-        { href: '/Services/logo-design', label: 'Logo Design' },
-        { href: '/Services/Packaging-designs', label: 'Packaging Design' },
+        { href: '/Services/social-media', label: 'Social Media' },
+        { href: '/Services/packaging-designs', label: 'Packaging Design' },
         { href: '/Services/print-design', label: 'Print Design' },
       ],
     },
@@ -157,8 +157,8 @@ export default function Navigation() {
           </nav>
           <div className="hidden md:flex  items-center gap-4">
           <div>
-            <Link href="/login" className="hidden [clip-path:polygon(0_0,calc(100%_-_10px)_0,100%_10px,100%_100%,0_100%)] md:flex items-center gap-2 bg-blue-600 text-white hover:bg-accent px-6 py-2.5 rounded-pill font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
-              <User className="w-6 h-6 text-white" />
+            <Link href="/login" className="hidden md:flex items-center hover:bg-accent  rounded-pill font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+              <User className="w-6 h-6 text-black" />
           
             </Link>
           </div>
@@ -216,6 +216,12 @@ export default function Navigation() {
 
             return (
               <div key={link.href} className="w-full">
+                <div>
+            <Link href="/login" className="hidden md:flex items-center hover:bg-accent  rounded-pill font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+              <User className="w-6 h-6 text-black" />
+          
+            </Link>
+          </div>
                 <button
                   onClick={() => setMobileServicesOpen((s) => !s)}
                   className="w-full flex items-center justify-between text-primary font-bold hover:text-accent transition-colors py-3"
@@ -255,7 +261,7 @@ export default function Navigation() {
              <Link 
                href="/contact" 
                onClick={() => setMobileOpen(false)}
-               className="block w-full text-center bg-primary text-white hover:bg-accent px-6 py-3 rounded-pill font-bold shadow-md transition-all"
+               className="block w-full text-center bg-blue text-white hover:bg-accent px-6 py-3 rounded-pill font-bold shadow-md transition-all"
              >
                Get Started
              </Link>

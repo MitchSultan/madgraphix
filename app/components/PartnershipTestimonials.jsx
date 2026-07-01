@@ -306,16 +306,14 @@ export default function PortraitCarousel() {
                   </div>
 
                   {/* Content */}
-                  <div className="relative z-10 flex flex-col justify-end h-full p-5 text-white">
+                  <div className="relative z-10 flex flex-col items-start  h-full p-5 text-white">
                     {/* Quote */}
                     <blockquote className="text-sm text-black md:text-base leading-relaxed mb-4 italic opacity-90">
                       “{item.quote}”
                     </blockquote>
                     {/* Client info */}
                     <div className="mt-auto">
-                      <p className="text-xs uppercase tracking-widest text-primary-foreground/70 mb-1">
-                        Client
-                      </p>
+                      
                       <p className="font-semibold text-lg">{item.name}</p>
                       {item.role && (
                         <p className="text-sm text-white/70">{item.role}</p>

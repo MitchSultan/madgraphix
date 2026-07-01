@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Banner() {
   return (
-    <div className='p-32 rounded-sm  '>
-      <section className='p-12 bg-[url(/mockups/bann.png)] bg-left bg-no-repeat bg-cover'>
+    <div className='md:p-32 rounded-sm  '>
+      <section className='p-4 md:p-12 bg-[url(/mockups/bann.png)] bg-left bg-no-repeat bg-cover'>
         <h2 className='text-white max-w-xl'>Go M.A.D for your next project.</h2>
         <p className='max-w-md text-white'>This is just one of many creative services—what you do with them is up to you. Let's chat.</p>
        

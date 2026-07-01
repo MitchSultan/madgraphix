@@ -9,7 +9,7 @@ export default function Footer() {
       {/* Decorative background circle */}
       {/* <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full filter blur-3xl transform translate-x-1/3 -translate-y-1/3"></div> */}
 
-      <div className="mx-auto max-w-7xl px-6 pt-20 pb-12 sm:px-8 relative z-10">
+      <div className=" mx-auto max-w-7xl  relative z-10">
         <div className="mx-auto max-w-full flex flex-col md:flex-row md:justify-between justify-content text-left">
           <div>
           <strong className="block text-2xl font-bold  sm:text-3xl mb-2">
@@ -58,23 +58,28 @@ export default function Footer() {
               <ul className="mt-6 space-y-3">
                 
                   <li >
-                    <a className=" font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
-                      Brand Identity
-                    </a>
-                  </li>
-                  <li >
-                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
-                      Graphic Design
-                    </a>
-                  </li>
-                  <li >
-                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
+                    <a className=" font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/Services/web-design">
                       Web Design
                     </a>
                   </li>
                   <li >
-                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="#">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/Services/brand-identity">
                       Brand Identity
+                    </a>
+                  </li>
+                  <li >
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/Services/social-media">
+                      Social Media
+                    </a>
+                  </li>
+                  <li >
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" href="/Services/print-design">
+                      Print Design
+                    </a>
+                  </li>
+                  <li >
+                    <a href='/Services/packaging-designs' className="font-normal hover:text-blue-300 hover:translate-x-1 inline-block transition-all" >
+                      Packaging Design
                     </a>
                   </li>
               
@@ -91,7 +96,7 @@ export default function Footer() {
                     </a>
                   </li>
                   <li >
-                    <a className="font-normal hover:text-blue-300 hover:translate-x-1  transition-all" href="/case-studies">
+                    <a className="font-normal hover:text-blue-300 hover:translate-x-1  transition-all" href="/Casestudies">
                       Case Studies
                     </a>
                   </li>

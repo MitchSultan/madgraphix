@@ -8,26 +8,31 @@ const services = [
   {
     title: 'Web Design ',
     href: '/Services/web-design',
+    url:'/posters/phon.webp',
     description: 'We make digital experiences smooth and enjoyable.',
   },
   {
     title: 'Brand Identity',
     href: '/Services/brand-identity',
+    url:'/posters/tote.jfif',
     description: 'Your brand deserves a unique personality.',
   },
   {
-    title: 'Logo Design',
-    href: '/Services/logo-design',
+    title: 'Social Media',
+    href: '/Services/social-media',
+    url:'/posters/scl.jfif',
     description: 'Your message deserves to be seen.',
   },
   {
     title: 'Packaging designs',
     href: '/Services/packaging-designs',
+    url:'/posters/pouchh.jfif',
     description: 'Add life and movement to your brand.',
   },
   {
     title: 'Print Design',
     href: '/Services/print-design',
+    url:'/posters/bkk.jfif',
     description:
       'From custom art pieces to digital illustrations, we help you express your brand in a unique and artistic way.',
   },
@@ -102,26 +107,30 @@ export default function ServiceSection() {
             <Link
               key={service.title}
               href={service.href}
-              className="group hover:[clip-path:polygon(0_0,calc(100%_-_40px)_0,100%_40px,100%_100%,0_100%)] bg-white border border-purple-50 p-8 min-h-[280px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-200"
+              style={{ backgroundImage: `url(${service.url})` }}
+              className="group bg-white bg-cover bg-no-repeat bg-bottom
+            
+              border border-purple-50  min-h-96 rounded-sm flex flex-col justify-end transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-200"
             >
-              <div>
-                <span className="inline-flex [clip-path:polygon(0_0,calc(100%_-_10px)_0,100%_10px,100%_100%,0_100%)] bg-[#78a9ff] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
+              <div className=' bg-white p-4'>
+                {/* <span className="inline-flex [clip-path:polygon(0_0,calc(100%_-_10px)_0,100%_10px,100%_100%,0_100%)] bg-[#78a9ff] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
                   Mad Graphix
-                </span>
+                </span> */}
                 <h3 className="mt-6 text-2xl font-bold text-gray-800 leading-tight group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
-                <p className="mt-4 text-base leading-relaxed text-gray-600">
+                <p className="mt-4 text-base hidden hover:block leading-relaxed text-gray-600">
                   {service.description}
                 </p>
-              </div>
-              <div className="mt-8 flex items-center gap-2 text-sm font-semibold text-blue transition-all duration-300 group-hover:gap-3">
+                <div className="mt-8 flex items-center gap-2 text-sm font-semibold text-blue transition-all duration-300 group-hover:gap-3">
                 <span className="border-b-2 border-accent border-dashed pb-0.5">Explore</span>
                 <span aria-hidden="true" className="text-lg">→</span>
               </div>
+              </div>
+              
             </Link>
           ))}
-          <div className='bg-white p-8 min-h-[280px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-200'>
+          <div className='bg-white p-8 min-h-[280px] flex flex-col justify-end transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-200'>
             <h3 >Need something custom</h3>
             <p>Reach out to us today and we will deliver. </p>
             <button className='border border-1 '>Reach Out</button>
@@ -139,19 +148,21 @@ export default function ServiceSection() {
                 key={service.title}
                 href={service.href}
                 data-service-card={index}
-                className="snap-start shrink-0 w-[85vw] min-w-[85vw] rounded-3xl bg-white border border-purple-50 p-8 flex flex-col justify-between transition-all duration-300 shadow-md"
+                
+              style={{ backgroundImage: `url(${service.url})` }}
+                className="snap-start shrink-0 w-[85vw] min-w-[85vw] rounded-3xl bg-white bg-cover bg-no-repeat bg-center border border-purple-50  flex flex-col justify-between transition-all duration-300 shadow-md"
               >
                 <div>
-                  <span className="inline-flex rounded-full bg-purple-50 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-primary">
+                  {/* <span className="inline-flex rounded-full bg-purple-50 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-primary">
                     Mad Graphix
-                  </span>
+                  </span> */}
                 
                 </div>
-                <div className="mt-8 flex flex-col items-start gap-2 text-sm font-bold text-blue">
+                <div className="mt-8 flex p-4 flex-col items-start bg-white gap-2 text-sm font-bold text-blue">
                     <h3 className="mt-6 text-2xl font-bold text-gray-800 leading-tight">
                     {service.title}
                   </h3>
-                  <p className="mt-4 text-base leading-relaxed text-gray-600">
+                  <p className="mt-4 text-base hidden leading-relaxed text-gray-600">
                     {service.description}
                   </p>
                   <div className=" flex  items-center justify-between gap-2 text-sm font-semibold text-blue transition-all duration-300 group-hover:gap-3">
@@ -161,6 +172,11 @@ export default function ServiceSection() {
                 </div>
               </Link>
             ))}
+            <div className='bg-white p-8 min-h-[280px] w-[85vw] flex flex-col justify-end transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-200'>
+            <h3 >Need something custom</h3>
+            <p>Reach out to us today and we will deliver. </p>
+            <button className='border border-1 '>Reach Out</button>
+          </div>
           </div>
 
           {/* Scroll indicator dots */}

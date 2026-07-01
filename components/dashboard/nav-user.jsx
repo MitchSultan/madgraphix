@@ -1,5 +1,7 @@
 "use client"
 
+import { createClient } from '@/lib/supabase/client'
+import { useRouter } from 'next/navigation'
 import {
   Avatar,
   AvatarFallback,
@@ -22,10 +24,23 @@ import {
 } from "./ui/sidebar"
 import { EllipsisVerticalIcon, CircleUserRoundIcon, CreditCardIcon, BellIcon, LogOutIcon } from "lucide-react"
 
+import {logout} from "@/lib/actions/auth"
+
 export function NavUser({
   user,
 }) {
   const { isMobile } = useSidebar()
+
+  
+   const router = useRouter()
+  const supabase = createClient()
+
+
+    const handleLogout = async () => {
+    await supabase.auth.signOut()
+    router.refresh()
+    router.push('/login')
+  }
 
   return (
     <SidebarMenu>
@@ -88,11 +103,10 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogOutIcon
-              />
-              Log out
-            </DropdownMenuItem>
+             <DropdownMenuItem onClick={handleLogout} className="text-red-600">
+          <LogOutIcon className="mr-2 h-4 w-4" />
+          Log out
+        </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>

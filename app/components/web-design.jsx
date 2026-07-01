@@ -174,7 +174,7 @@ export default function WebDesignStack() {
     <div className=' overflow-hidden p-2 md:p-24 flex flex-col gap-4 md:flex-row md:w-screen'>
       <div className=' flex flex-col justify-between md:max-w-1/2 md:space-y-8 '>
         
-        <h3 className=' font-normal text-7xl'>Your website isn’t a billboard, it’s a growth engine</h3>
+        <h1 className=' font-normal text-7xl'>Your website isn’t a billboard, it’s a growth engine</h1>
          <h5 className='font-thin  text-2xl leading-none'>Your digital presence is often your audience's first experience of your brand. But too many teams are stuck with outdated, unresponsive websites with no easy way to fix them.</h5>
         <p>Delivering digital experiences that actually convert takes more than pretty visuals. It takes UX strategy, brand consistency, conversion-focused messaging, and the ability to scale quickly. M.A.D brings it all together in one flexible, expert partner.</p>
       </div>

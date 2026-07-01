@@ -73,12 +73,12 @@ export default function Hero() {
           </p>
 
           <div className="hero-element flex flex-col-reverse sm:flex-row gap-4 justify-center lg:justify-start">
-            <Link
+            {/* <Link
               href="/CaseStudies"
               className=" text-white"
             >
               Our Work
-            </Link>
+            </Link> */}
             <a
               href="https://wa.me/254708779284"
             ><button className="btn-slide">
